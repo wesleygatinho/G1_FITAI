@@ -1,10 +1,15 @@
-## Reconhecimentos e Direitos Autorais
+# Reconhecimentos e Direitos Autorais
  
 @autor: ANDRE LUIS AGUIAR DO NASCIMENTO, LEONARDO SAMPAIO SERRA, HUGO SAMUEL DE LIMA OLIVEIRA, LUCAS EMANOEL AMARAL GOMES, WESLEY DOS SANTOS GATINHO
+
 @contato: andre.aguiar@discente.ufma.br, leonardo.sampaio@discente.ufma.br, hugo.samuel@discente.ufma.br, lucas.amaral@discente.ufma.br, wesley.gatinho@discente.ufma.br
+
 @data última versão: 11/06/2025
+
 @versão: 1.0
+
 @outros repositórios: https://github.com/wesleygatinho/G1_FITAI.git
+
 @Agradecimentos: Universidade Federal do Maranhão (UFMA), Professor Doutor Thales Levi Azevedo Valente, e colegas de curso.
  
 Copyright/License
@@ -16,3 +21,5 @@ Licenciado sob a Licença MIT. Permissão é concedida, gratuitamente, a qualque
 Este aviso de direitos autorais e este aviso de permissão devem ser incluídos em todas as cópias ou partes substanciais do Software.
  
 O SOFTWARE É FORNECIDO "COMO ESTÁ", SEM GARANTIA DE QUALQUER TIPO, EXPRESSA OU IMPLÍCITA, INCLUINDO MAS NÃO SE LIMITANDO ÀS GARANTIAS DE COMERCIALIZAÇÃO, ADEQUAÇÃO A UM DETERMINADO FIM E NÃO INFRINGÊNCIA. EM NENHUM CASO OS AUTORES OU DETENTORES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR QUALQUER RECLAMAÇÃO, DANOS OU OUTRA RESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO, TORT OU OUTRA FORMA, DECORRENTE DE, FORA DE OU EM CONEXÃO COM O SOFTWARE OU O USO OU OUTRAS NEGOCIAÇÕES NO SOFTWARE.
+
+Para mais informações sobre a Licença MIT: https://opensource.org/licenses/MIT.
