@@ -1,0 +1,25 @@
+# Framework Web e Servidor ASGI
+fastapi
+uvicorn[standard]
+
+# Banco de Dados e ORM
+sqlalchemy
+psycopg2-binary # Driver para PostgreSQL
+alembic       # Para migrações de banco de dados
+
+# Validação de Dados
+pydantic
+pydantic-settings
+
+# Segurança e Autenticação
+passlib[bcrypt]      # Para hashing de senhas
+python-jose[cryptography] # Para tokens JWT
+fastapi-users[sqlalchemy]
+
+# Integração com APIs externas
+google-generativeai
+PyGithub
+
+# Análise de Imagem/Vídeo
+opencv-python
+mediapipe
