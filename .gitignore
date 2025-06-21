@@ -1,2 +1,78 @@
-Codigos/backend/.venv/
-Codigos/backend/.env
+# Arquivos de Dependências e Pacotes (gerados)
+/node_modules
+/build
+/dist
+/ios/Pods/
+/ios/Flutter/App.framework
+/ios/Flutter/engine.framework
+/ios/Flutter/flutter_assets/
+/android/app/build/
+*.jar
+*.war
+*.ear
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+logs
+*.log
+
+# Arquivos de Sistema Operacional
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Configurações de IDEs
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Flutter
+# Arquivos gerados pelo Flutter (além dos já listados)
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+/ios/Flutter/.last_build_id
+/windows/flutter/ephemeral
+/linux/flutter/ephemeral
+/macos/flutter/ephemeral
+/.metadata
+
+# Backend (Python)
+# Ambientes virtuais
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Arquivos de distribuição
+/dist/
+/build/
+*.egg-info/
+*.egg
+
+# Arquivos de configuração de runtime
+.env
+.web-conf.json
+
+# Arquivos de teste e cobertura
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+
+# Outros
+# Arquivos de documentação gerados (se aplicável)
+/docs/_build/
