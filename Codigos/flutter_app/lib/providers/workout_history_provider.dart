@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../services/api_service.dart';
-import '../models/workout_models.dart';
+import '../models/workout_model.dart';
 
 class WorkoutHistoryProvider with ChangeNotifier {
   List<SessaoDeTreino> _history = [];
