@@ -6,6 +6,7 @@ class DashboardProvider with ChangeNotifier {
   String? _dailyTip;
   bool _isLoading = true;
   String? _error;
+  bool _isDisposed = false; // Adicionamos um flag
 
   String? get dailyTip => _dailyTip;
   bool get isLoading => _isLoading;
@@ -15,13 +16,18 @@ class DashboardProvider with ChangeNotifier {
     fetchDashboardData();
   }
 
+  @override
+  void dispose() {
+    _isDisposed = true; // Marcamos como "destruído"
+    super.dispose();
+  }
+
   Future<void> fetchDashboardData() async {
     _isLoading = true;
     _error = null;
     notifyListeners();
 
     try {
-      // Usar o endpoint que já criámos para as dicas
       final response = await ApiService.get('ai/tips/daily');
       if (response.statusCode == 200) {
         final responseData = json.decode(utf8.decode(response.bodyBytes));
@@ -34,6 +40,10 @@ class DashboardProvider with ChangeNotifier {
     }
 
     _isLoading = false;
-    notifyListeners();
+    
+    // Só notifica se o provider ainda estiver "vivo"
+    if (!_isDisposed) {
+      notifyListeners();
+    }
   }
 }

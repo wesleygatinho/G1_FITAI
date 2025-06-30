@@ -6,12 +6,16 @@ import 'exercise/exercise_list_screen.dart';
 import 'progress/progress_dashboard_screen.dart';
 import 'ai/ai_generator_screen.dart';
 import 'history/workout_history_screen.dart';
+import 'auth/login_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Obtemos o token do nosso AuthService para passar para as telas que precisam.
+    final token = Provider.of<AuthService>(context, listen: false).token;
+
     return ChangeNotifierProvider(
       create: (ctx) => DashboardProvider(),
       child: Scaffold(
@@ -21,54 +25,69 @@ class HomeScreen extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.logout),
               tooltip: 'Sair',
-              onPressed: () {
-                Provider.of<AuthService>(context, listen: false).logout();
+              onPressed: () async {
+                await Provider.of<AuthService>(context, listen: false).logout();
+                
+                if (context.mounted) {
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) => const LoginScreen()),
+                    (Route<dynamic> route) => false,
+                  );
+                }
               },
             ),
           ],
         ),
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              _buildWelcomeHeader(),
-              const SizedBox(height: 24),
-              _buildDailyTipCard(),
-              const SizedBox(height: 24),
-              _buildNavButton(context,
-                  icon: Icons.play_circle_fill,
-                  label: 'INICIAR TREINO',
-                  screen: const ExerciseListScreen()),
-              const SizedBox(height: 16),
-              _buildCustomNavButton(context,
-                  icon: Icons.bar_chart,
-                  label: 'VER PROGRESSO',
-                  isOutlined: true),
-              const SizedBox(height: 16),
-              _buildNavButton(context,
-                  icon: Icons.history,
-                  label: 'HISTÓRICO DE TREINOS',
-                  screen: const WorkoutHistoryScreen(),
-                  isOutlined: true),
-              const SizedBox(height: 16),
-              _buildNavButton(context,
-                  icon: Icons.auto_awesome,
-                  label: 'MAIS DICAS (IA)',
-                  screen: const AiGeneratorScreen(),
-                  isOutlined: true),
-            ],
-          ),
+        body: Consumer<DashboardProvider>(
+          builder: (ctx, dashboard, _) => dashboard.isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : SingleChildScrollView(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // Usando o cabeçalho com o ícone de casinha da versão antiga.
+                      _buildWelcomeHeader(),
+                      const SizedBox(height: 24),
+                      _buildDailyTipCard(dashboard.dailyTip),
+                      const SizedBox(height: 24),
+                      _buildNavButton(context,
+                          icon: Icons.play_circle_fill,
+                          label: 'INICIAR TREINO',
+                          screen: const ExerciseListScreen()),
+                      const SizedBox(height: 16),
+                      // Lógica corrigida para passar o token.
+                      _buildNavButton(context,
+                          icon: Icons.bar_chart,
+                          label: 'VER PROGRESSO',
+                          screen: ProgressDashboardScreen(token: token!),
+                          isOutlined: true),
+                      const SizedBox(height: 16),
+                      _buildNavButton(context,
+                          icon: Icons.history,
+                          label: 'HISTÓRICO DE TREINOS',
+                          screen: const WorkoutHistoryScreen(),
+                          isOutlined: true),
+                      const SizedBox(height: 16),
+                      _buildNavButton(context,
+                          icon: Icons.auto_awesome,
+                          label: 'MAIS DICAS (IA)',
+                          screen: const AiGeneratorScreen(),
+                          isOutlined: true),
+                    ],
+                  ),
+                ),
         ),
       ),
     );
   }
 
+  // --- CABEÇALHO DA VERSÃO ANTIGA INTEGRADO ---
   Widget _buildWelcomeHeader() {
     return const Column(
       children: [
-        Icon(Icons.home, size: 60, color: Colors.amber),
+        Icon(Icons.home, size: 60, color: Colors.amber), // Ícone de casinha
         SizedBox(height: 8),
         Text(
           'Bem-vindo!',
@@ -79,91 +98,65 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDailyTipCard() {
+  // Usando a estrutura do "Card de Dica" da versão nova.
+  Widget _buildDailyTipCard(String? tip) {
     return Card(
       elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Consumer<DashboardProvider>(
-          builder: (ctx, dashboardData, _) {
-            if (dashboardData.isLoading) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            if (dashboardData.error != null) {
-              return Text(dashboardData.error!,
-                  style: const TextStyle(color: Colors.red));
-            }
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Row(
-                  children: [
-                    Icon(Icons.lightbulb_outline, color: Colors.amber),
-                    SizedBox(width: 8),
-                    Text('Dica do Dia',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold)),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  dashboardData.dailyTip ?? 'Não foi possível carregar a dica.',
-                  style: const TextStyle(fontSize: 16, height: 1.5),
-                ),
-              ],
-            );
-          },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Dica do Dia',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            Text(tip ?? 'Carregando dica...'),
+          ],
         ),
       ),
     );
   }
-
+  
+  // Usando a lógica de botões da versão nova (com a cor laranja).
   Widget _buildNavButton(BuildContext context,
       {required IconData icon,
       required String label,
       required Widget screen,
       bool isOutlined = false}) {
-    final baseStyle = ButtonStyle(
-      padding:
-          MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 16)),
-      textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 18)),
-    );
 
-    final button = isOutlined
+    final Color orangeColor = Theme.of(context).colorScheme.primary;
+
+    final style = isOutlined
+        ? OutlinedButton.styleFrom(
+            foregroundColor: orangeColor,
+            side: BorderSide(color: orangeColor, width: 2),
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          )
+        : ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          );
+
+    return isOutlined
         ? OutlinedButton.icon(
             icon: Icon(icon),
             label: Text(label),
-            style: OutlinedButton.styleFrom(
-              side: BorderSide(color: Theme.of(context).colorScheme.secondary),
-            ).merge(baseStyle),
-            onPressed: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => screen)),
+            style: style,
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => screen));
+            },
           )
         : ElevatedButton.icon(
             icon: Icon(icon),
             label: Text(label),
-            style: baseStyle,
-            onPressed: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => screen)),
+            style: style,
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => screen));
+            },
           );
-
-    return button;
-  }
-
-  Widget _buildCustomNavButton(BuildContext context,
-      {required IconData icon,
-      required String label,
-      bool isOutlined = false}) {
-    final authService = Provider.of<AuthService>(context, listen: false);
-    final token = authService.token;
-
-    if (token == null) {
-      return const SizedBox.shrink(); // Ou um botão desativado
-    }
-
-    final screen = ProgressDashboardScreen(token: token);
-
-    return _buildNavButton(context,
-        icon: icon, label: label, screen: screen, isOutlined: isOutlined);
   }
 }
