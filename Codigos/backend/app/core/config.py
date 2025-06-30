@@ -16,6 +16,11 @@ class Settings(BaseSettings):
     # --- CHAVE DA API ATUALIZADA PARA O GOOGLE GEMINI ---
     GOOGLE_API_KEY: str = os.getenv("GOOGLE_API_KEY", "CHAVE_NAO_CONFIGURADA")
 
+    # --- NOVAS CONFIGURAÇÕES PARA O LOGIN COM GOOGLE ---
+    GOOGLE_CLIENT_ID: str = os.getenv("GOOGLE_CLIENT_ID", "")
+    GOOGLE_CLIENT_SECRET: str = os.getenv("GOOGLE_CLIENT_SECRET", "")
+
+
     class Config:
         case_sensitive = True
 

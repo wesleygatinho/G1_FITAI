@@ -23,3 +23,6 @@ PyGithub
 # Análise de Imagem/Vídeo
 opencv-python
 mediapipe
+
+google-auth
+authlib
