@@ -7,8 +7,9 @@ import uuid
 # Importações dos módulos da aplicação
 from app.models.user import User as UserModel
 from app.core.dependencies import get_current_active_user
-# Esta importação agora funcionará porque o nome do ficheiro foi corrigido
-from app.services import ai_generation_service
+# --- CORREÇÃO AQUI ---
+# Importa a instância 'ai_generation_service' diretamente do módulo, em vez do módulo inteiro.
+from app.services.ai_generation_service import ai_generation_service
 from app.services import crud
 from app.core.database import get_db
 from app.schemas.ia_interaction import RegistroInteracaoIA, RegistroInteracaoIACreate
@@ -33,6 +34,7 @@ def get_daily_tip(
     db: Session = Depends(get_db),
     current_user: UserModel = Depends(get_current_active_user)
 ):
+    # Esta chamada agora funcionará corretamente
     interaction_result = ai_generation_service.get_daily_fitness_tip()
     if "error" in interaction_result:
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=interaction_result["error"])

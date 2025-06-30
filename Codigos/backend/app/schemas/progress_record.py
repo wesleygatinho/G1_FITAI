@@ -1,6 +1,6 @@
 import uuid
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Dict, Any
 from pydantic import BaseModel
 
 # --- Schema Base (não usado diretamente, mas bom para referência) ---
@@ -72,3 +72,11 @@ class RegistroImagemCorpo(RegistroImagemCorpoBase):
 
     class Config:
         from_attributes = True
+
+# --- NOVOS SCHEMAS PARA OCR ---
+class OcrRequest(BaseModel):
+    image_base64: str
+    data_type: str # 'weight', 'cardio', etc.
+
+class OcrResponse(BaseModel):
+    extracted_data: Dict[str, Any]

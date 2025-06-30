@@ -18,7 +18,15 @@ dependencies:
   camera: ^0.10.5+5
   flutter_markdown: ^0.6.18
   
-  intl: ^0.18.1
+  flutter_launcher_icons: ^0.13.1
+
+  flutter_native_splash: ^2.4.0
+
+  table_calendar: ^3.1.2
+
+  image_picker: ^1.1.2
+
+  intl: ^0.19.0 
 
   cupertino_icons: ^1.0.2
   collection: ^1.19.1
@@ -30,3 +38,20 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/icon.png" 
+
+flutter_native_splash:
+ 
+  color: "#FFFFFF"  
+ 
+  image: assets/images/icon.png
+
+  
+  android: true
+  ios: true

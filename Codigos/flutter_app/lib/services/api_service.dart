@@ -3,11 +3,24 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
+  /* UTILIZE ESTE SERVIÇO PARA REALIZAR AS REQUISIÇÕES HTTP PARA O BACKEND
+
+  // Se estiver a testar no emulador, pode usar 'localhost'  
   // Substitua "SEU_IP_AQUI" pelo IP da sua máquina se estiver a testar num dispositivo físico.
+  
   static const String _localIp = "192.168.100.160";
 
   static const String baseUrl =
       kIsWeb ? 'http://localhost:8000/api/v1' : 'http://$_localIp:8000/api/v1';
+
+  */
+
+  // Se estiver a usar o ngrok, substitua a URL abaixo pela URL gerada pelo ngrok.
+  // Exemplo: static const String baseUrl = 'https://seu_ngrok_url
+
+  // Substitua pela URL gerada pelo ngrok
+  static const String baseUrl =
+      "https://73cc-2804-d4b-7737-c100-b8ee-3266-6d58-514a.ngrok-free.app/api/v1";
 
   /// Prepara os headers para a requisição, incluindo o token se disponível.
   static Future<Map<String, String>> getHeaders(

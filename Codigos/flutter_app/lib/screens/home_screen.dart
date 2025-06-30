@@ -12,7 +12,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Envolvemos a tela com o novo provider para o painel
     return ChangeNotifierProvider(
       create: (ctx) => DashboardProvider(),
       child: Scaffold(
@@ -43,10 +42,9 @@ class HomeScreen extends StatelessWidget {
                   label: 'INICIAR TREINO',
                   screen: const ExerciseListScreen()),
               const SizedBox(height: 16),
-              _buildNavButton(context,
+              _buildCustomNavButton(context,
                   icon: Icons.bar_chart,
                   label: 'VER PROGRESSO',
-                  screen: const ProgressDashboardScreen(),
                   isOutlined: true),
               const SizedBox(height: 16),
               _buildNavButton(context,
@@ -150,5 +148,22 @@ class HomeScreen extends StatelessWidget {
           );
 
     return button;
+  }
+
+  Widget _buildCustomNavButton(BuildContext context,
+      {required IconData icon,
+      required String label,
+      bool isOutlined = false}) {
+    final authService = Provider.of<AuthService>(context, listen: false);
+    final token = authService.token;
+
+    if (token == null) {
+      return const SizedBox.shrink(); // Ou um botão desativado
+    }
+
+    final screen = ProgressDashboardScreen(token: token);
+
+    return _buildNavButton(context,
+        icon: icon, label: label, screen: screen, isOutlined: isOutlined);
   }
 }
