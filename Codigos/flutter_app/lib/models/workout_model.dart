@@ -7,13 +7,17 @@ class ExercicioHistorico {
   factory ExercicioHistorico.fromJson(Map<String, dynamic> json) {
     // A API retorna um campo 'nome' dentro do objeto 'exercicio'
     return ExercicioHistorico(
-      nome: (json['nome'] as String).replaceAll('_', ' ').split(' ').map((l) => l[0].toUpperCase() + l.substring(1)).join(" "),
+      nome: (json['nome'] as String)
+          .replaceAll('_', ' ')
+          .split(' ')
+          .map((l) => l[0].toUpperCase() + l.substring(1))
+          .join(" "),
     );
   }
 }
 
 class ItemSessao {
-  final ExercicioHistorico exercicio; // Alterado de String para um objeto
+  final ExercicioHistorico exercicio;
   final int series;
   final int repeticoes;
 
@@ -25,7 +29,6 @@ class ItemSessao {
 
   factory ItemSessao.fromJson(Map<String, dynamic> json) {
     return ItemSessao(
-      // Agora, o JSON tem um objeto 'exercicio' aninhado
       exercicio: ExercicioHistorico.fromJson(json['exercicio']),
       series: json['series'],
       repeticoes: json['repeticoes'],
@@ -34,7 +37,7 @@ class ItemSessao {
 }
 
 class SessaoDeTreino {
-  final String id; // O ID agora é um UUID (String)
+  final String id;
   final DateTime dataInicio;
   final List<ItemSessao> itens;
 
@@ -46,11 +49,14 @@ class SessaoDeTreino {
 
   factory SessaoDeTreino.fromJson(Map<String, dynamic> json) {
     var itemsList = json['itens'] as List;
-    List<ItemSessao> parsedItems = itemsList.map((i) => ItemSessao.fromJson(i)).toList();
-    
+    List<ItemSessao> parsedItems =
+        itemsList.map((i) => ItemSessao.fromJson(i)).toList();
+
+    final dataString = json['data_inicio'] as String;
+
     return SessaoDeTreino(
       id: json['id'],
-      dataInicio: DateTime.parse(json['data_inicio']),
+      dataInicio: DateTime.parse('${dataString}Z'),
       itens: parsedItems,
     );
   }

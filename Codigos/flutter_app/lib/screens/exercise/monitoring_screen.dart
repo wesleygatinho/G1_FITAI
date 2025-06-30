@@ -62,7 +62,6 @@ class _MonitoringScreenState extends State<MonitoringScreen> {
       final image = await _cameraController!.takePicture();
       final imageBytes = await image.readAsBytes();
       final base64Image = base64Encode(imageBytes);
-      // --- CORREÇÃO AQUI: Usa apiName para a chamada de API ---
       final response = await ApiService.post(
           'exercises/analyze',
           json.encode({
@@ -81,15 +80,18 @@ class _MonitoringScreenState extends State<MonitoringScreen> {
     } catch (e) {
       print("Erro ao processar o frame: $e");
     }
-    if (mounted)
+    if (mounted) {
       setState(() {
         _isProcessing = false;
       });
+    }
   }
 
   Future<void> _finishWorkout() async {
     final provider =
         Provider.of<WorkoutSessionProvider>(context, listen: false);
+    provider
+        .finishSet(); // Garante que a última série seja registrada antes de salvar
     final success = await provider.saveWorkoutSession();
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -111,24 +113,26 @@ class _MonitoringScreenState extends State<MonitoringScreen> {
     final landmarks = _analysisResult?['landmarks'] as Map<String, dynamic>?;
     return Scaffold(
       appBar: AppBar(
-        // --- CORREÇÃO AQUI: Usa displayName para a UI ---
         title: Text('Monitorando: ${widget.exercise.displayName}'),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       backgroundColor: Colors.black,
-      body: _isCameraInitialized
-          ? Stack(fit: StackFit.expand, children: [
-              CameraPreview(_cameraController!),
-              if (landmarks != null)
-                CustomPaint(
-                    painter: PosePainter(
-                        landmarks: landmarks,
-                        imageSize: _cameraController!.value.previewSize!,
-                        exerciseType: widget.exercise.apiName)),
-              _buildUIOverlay(),
-            ])
-          : const Center(child: CircularProgressIndicator()),
+      // SafeArea é o widget que resolve o problema de sobreposição
+      body: SafeArea(
+        child: _isCameraInitialized
+            ? Stack(fit: StackFit.expand, children: [
+                CameraPreview(_cameraController!),
+                if (landmarks != null)
+                  CustomPaint(
+                      painter: PosePainter(
+                          landmarks: landmarks,
+                          imageSize: _cameraController!.value.previewSize!,
+                          exerciseType: widget.exercise.apiName)),
+                _buildUIOverlay(),
+              ])
+            : const Center(child: CircularProgressIndicator()),
+      ),
     );
   }
 
@@ -152,7 +156,6 @@ class _MonitoringScreenState extends State<MonitoringScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // --- CORREÇÃO AQUI: Usa displayName para a UI ---
                 Text('Exercício: ${widget.exercise.displayName}',
                     style: const TextStyle(
                         color: Colors.white,

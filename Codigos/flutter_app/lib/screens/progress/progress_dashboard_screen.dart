@@ -1,25 +1,37 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:fl_chart/fl_chart.dart';
-import '../../services/auth_service.dart';
 import '../../providers/progress_provider.dart';
 
+// Classe auxiliar para definir múltiplas séries de dados em um único gráfico
+class ChartSeries<T> {
+  final String name;
+  final Color color;
+  final double Function(T) valueExtractor;
+
+  ChartSeries(
+      {required this.name, required this.color, required this.valueExtractor});
+}
+
 class ProgressDashboardScreen extends StatelessWidget {
-  const ProgressDashboardScreen({super.key});
+  final String token;
+  const ProgressDashboardScreen({super.key, required this.token});
 
   @override
   Widget build(BuildContext context) {
-    // Obtém o token para passar para o provider
-    final authToken = Provider.of<AuthService>(context, listen: false).token;
-
     return ChangeNotifierProvider(
-      create: (ctx) => ProgressProvider(authToken),
+      create: (ctx) => ProgressProvider(token),
       child: DefaultTabController(
-        length: 3, // Número de abas
+        length: 3,
         child: Scaffold(
           appBar: AppBar(
             title: const Text('Painel de Progresso'),
             bottom: const TabBar(
+              indicatorColor: Colors.orange,
+              labelColor: Colors.orange,
+              unselectedLabelColor: Colors.grey,
               tabs: [
                 Tab(icon: Icon(Icons.monitor_weight), text: 'Peso'),
                 Tab(icon: Icon(Icons.straighten), text: 'Medidas'),
@@ -34,18 +46,41 @@ class ProgressDashboardScreen extends StatelessWidget {
               }
               return TabBarView(
                 children: [
-                  _WeightView(records: progressData.weightRecords),
+                  _GroupedChartView<WeightRecord>(
+                    groupedRecords: {
+                      'Evolução do Peso': progressData.weightRecords
+                    },
+                    seriesList: [
+                      ChartSeries<WeightRecord>(
+                          name: 'Peso (kg)',
+                          color: Colors.orange,
+                          valueExtractor: (r) => r.weight),
+                    ],
+                    emptyMessage: 'Nenhum dado de peso registado.',
+                  ),
                   _GroupedChartView<BodyMeasureRecord>(
                     groupedRecords: progressData.groupedBodyMeasureRecords,
-                    unit: 'cm',
+                    seriesList: [
+                      ChartSeries<BodyMeasureRecord>(
+                          name: 'Valor (cm)',
+                          color: Colors.teal,
+                          valueExtractor: (r) => r.value),
+                    ],
                     emptyMessage: 'Nenhum dado de medida registado.',
-                    recordToValue: (record) => record.value,
                   ),
                   _GroupedChartView<CardioRecord>(
                     groupedRecords: progressData.groupedCardioRecords,
-                    unit: 'min',
+                    seriesList: [
+                      ChartSeries<CardioRecord>(
+                          name: 'Duração (min)',
+                          color: Colors.blue,
+                          valueExtractor: (r) => r.duration.toDouble()),
+                      ChartSeries<CardioRecord>(
+                          name: 'Distância (km)',
+                          color: Colors.red,
+                          valueExtractor: (r) => r.distance),
+                    ],
                     emptyMessage: 'Nenhum dado de cardio registado.',
-                    recordToValue: (record) => record.duration.toDouble(),
                   ),
                 ],
               );
@@ -54,6 +89,7 @@ class ProgressDashboardScreen extends StatelessWidget {
           floatingActionButton: Builder(
             builder: (context) => FloatingActionButton(
               onPressed: () => _showAddDialog(context),
+              backgroundColor: Colors.orange,
               child: const Icon(Icons.add),
             ),
           ),
@@ -62,7 +98,7 @@ class ProgressDashboardScreen extends StatelessWidget {
     );
   }
 
-  // Lógica para mostrar o diálogo correto dependendo da aba selecionada
+  // Todos os outros métodos da classe ProgressDashboardScreen permanecem iguais...
   void _showAddDialog(BuildContext context) {
     final tabIndex = DefaultTabController.of(context).index;
     if (tabIndex == 0) _showAddWeightDialog(context);
@@ -70,7 +106,56 @@ class ProgressDashboardScreen extends StatelessWidget {
     if (tabIndex == 2) _showAddCardioDialog(context);
   }
 
-  // --- DIÁLOGOS PARA ADICIONAR NOVOS REGISTOS ---
+  Future<void> _pickAndExtractImage(
+    BuildContext context,
+    String dataType, {
+    TextEditingController? weightController,
+    TextEditingController? measureValueController,
+    TextEditingController? durationController,
+    TextEditingController? distanceController,
+    TextEditingController? caloriesController,
+  }) async {
+    final picker = ImagePicker();
+    final pickedFile =
+        await picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
+
+    if (pickedFile != null) {
+      final imageFile = File(pickedFile.path);
+      try {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content:
+                  Text('Analisando imagem... Isso pode levar um momento.')),
+        );
+        final extractedData =
+            await Provider.of<ProgressProvider>(context, listen: false)
+                .extractDataFromImage(imageFile, dataType);
+
+        if (context.mounted) {
+          if (dataType == 'weight') {
+            weightController?.text =
+                (extractedData['peso_kg'] ?? '').toString();
+          } else if (dataType == 'measure') {
+            measureValueController?.text =
+                (extractedData['valor_cm'] ?? '').toString();
+          } else if (dataType == 'cardio') {
+            durationController?.text =
+                (extractedData['tempo_min'] ?? '').toString();
+            distanceController?.text =
+                (extractedData['distancia_km'] ?? '').toString();
+            caloriesController?.text =
+                (extractedData['calorias'] ?? '').toString();
+          }
+        }
+      } catch (e) {
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Erro ao extrair dados: ${e.toString()}')),
+          );
+        }
+      }
+    }
+  }
 
   void _showAddWeightDialog(BuildContext parentContext) {
     final weightController = TextEditingController();
@@ -82,18 +167,31 @@ class ProgressDashboardScreen extends StatelessWidget {
         title: const Text('Adicionar Novo Peso'),
         content: Form(
           key: formKey,
-          child: TextFormField(
-            controller: weightController,
-            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-            decoration: const InputDecoration(labelText: 'Peso em kg'),
-            validator: (value) {
-              if (value == null ||
-                  double.tryParse(value) == null ||
-                  double.parse(value) <= 0) {
-                return 'Por favor, insira um peso válido.';
-              }
-              return null;
-            },
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextFormField(
+                controller: weightController,
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
+                decoration: const InputDecoration(labelText: 'Peso em kg'),
+                validator: (value) {
+                  if (value == null ||
+                      double.tryParse(value) == null ||
+                      double.parse(value) <= 0) {
+                    return 'Por favor, insira um peso válido.';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton.icon(
+                onPressed: () => _pickAndExtractImage(parentContext, 'weight',
+                    weightController: weightController),
+                icon: const Icon(Icons.camera_alt),
+                label: const Text("Extrair da Foto"),
+              )
+            ],
           ),
         ),
         actions: [
@@ -118,7 +216,14 @@ class ProgressDashboardScreen extends StatelessWidget {
   }
 
   void _showAddMeasureDialog(BuildContext parentContext) {
-    final List<String> measureTypes = ['Braço', 'Glúteo', 'Coxa'];
+    final List<String> measureTypes = [
+      'Braço',
+      'Peito',
+      'Cintura',
+      'Quadril',
+      'Coxa',
+      'Panturrilha'
+    ];
     String? selectedType = measureTypes.first;
     final valueController = TextEditingController();
     final formKey = GlobalKey<FormState>();
@@ -142,17 +247,27 @@ class ProgressDashboardScreen extends StatelessWidget {
                         decoration:
                             const InputDecoration(labelText: 'Parte do Corpo'),
                       ),
+                      const SizedBox(height: 12),
                       TextFormField(
                         controller: valueController,
                         keyboardType: const TextInputType.numberWithOptions(
                             decimal: true),
                         decoration:
                             const InputDecoration(labelText: 'Valor em cm'),
-                        validator: (v) =>
-                            (v == null || double.tryParse(v) == null)
-                                ? 'Valor inválido'
-                                : null,
+                        validator: (v) => (v == null ||
+                                v.trim().isEmpty ||
+                                double.tryParse(v) == null)
+                            ? 'Valor inválido'
+                            : null,
                       ),
+                      const SizedBox(height: 20),
+                      ElevatedButton.icon(
+                        onPressed: () => _pickAndExtractImage(
+                            parentContext, 'measure',
+                            measureValueController: valueController),
+                        icon: const Icon(Icons.camera_alt),
+                        label: const Text("Extrair da Foto"),
+                      )
                     ],
                   )),
               actions: [
@@ -176,9 +291,16 @@ class ProgressDashboardScreen extends StatelessWidget {
   }
 
   void _showAddCardioDialog(BuildContext parentContext) {
-    final List<String> cardioTypes = ['Bicicleta', 'Esteira', 'Escada'];
+    final List<String> cardioTypes = [
+      'Esteira',
+      'Bicicleta',
+      'Escada',
+      'Corrida'
+    ];
     String? selectedType = cardioTypes.first;
     final durationController = TextEditingController();
+    final distanceController = TextEditingController();
+    final caloriesController = TextEditingController();
     final formKey = GlobalKey<FormState>();
 
     showDialog(
@@ -187,29 +309,71 @@ class ProgressDashboardScreen extends StatelessWidget {
               title: const Text('Adicionar Atividade Cardio'),
               content: Form(
                   key: formKey,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      DropdownButtonFormField<String>(
-                        value: selectedType,
-                        items: cardioTypes
-                            .map((type) => DropdownMenuItem(
-                                value: type, child: Text(type)))
-                            .toList(),
-                        onChanged: (value) => selectedType = value,
-                        decoration:
-                            const InputDecoration(labelText: 'Aparelho'),
-                      ),
-                      TextFormField(
-                        controller: durationController,
-                        keyboardType: TextInputType.number,
-                        decoration: const InputDecoration(
-                            labelText: 'Duração em minutos'),
-                        validator: (v) => (v == null || int.tryParse(v) == null)
-                            ? 'Valor inválido'
-                            : null,
-                      ),
-                    ],
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        DropdownButtonFormField<String>(
+                          value: selectedType,
+                          items: cardioTypes
+                              .map((type) => DropdownMenuItem(
+                                  value: type, child: Text(type)))
+                              .toList(),
+                          onChanged: (value) => selectedType = value,
+                          decoration:
+                              const InputDecoration(labelText: 'Aparelho'),
+                        ),
+                        const SizedBox(height: 12),
+                        TextFormField(
+                          controller: durationController,
+                          keyboardType: TextInputType.number,
+                          decoration: const InputDecoration(
+                              labelText: 'Duração em minutos'),
+                          validator: (v) => (v == null ||
+                                  v.trim().isEmpty ||
+                                  int.tryParse(v) == null)
+                              ? 'Valor inválido'
+                              : null,
+                        ),
+                        const SizedBox(height: 12),
+                        TextFormField(
+                          controller: distanceController,
+                          keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true),
+                          decoration: const InputDecoration(
+                              labelText: 'Distância em km'),
+                          validator: (v) => (v == null ||
+                                  v.trim().isEmpty ||
+                                  double.tryParse(v) == null)
+                              ? 'Valor inválido'
+                              : null,
+                        ),
+                        const SizedBox(height: 12),
+                        TextFormField(
+                          controller: caloriesController,
+                          keyboardType: TextInputType.number,
+                          decoration: const InputDecoration(
+                              labelText: 'Calorias Queimadas'),
+                          validator: (v) => (v == null ||
+                                  v.trim().isEmpty ||
+                                  int.tryParse(v) == null)
+                              ? 'Valor inválido'
+                              : null,
+                        ),
+                        const SizedBox(height: 20),
+                        ElevatedButton.icon(
+                          onPressed: () => _pickAndExtractImage(
+                            parentContext,
+                            'cardio',
+                            durationController: durationController,
+                            distanceController: distanceController,
+                            caloriesController: caloriesController,
+                          ),
+                          icon: const Icon(Icons.camera_alt),
+                          label: const Text("Extrair da Foto"),
+                        )
+                      ],
+                    ),
                   )),
               actions: [
                 TextButton(
@@ -220,8 +384,11 @@ class ProgressDashboardScreen extends StatelessWidget {
                     if (formKey.currentState!.validate()) {
                       await Provider.of<ProgressProvider>(parentContext,
                               listen: false)
-                          .addCardioRecord(selectedType!,
-                              int.parse(durationController.text));
+                          .addCardioRecord(
+                              type: selectedType!,
+                              duration: int.parse(durationController.text),
+                              distance: double.parse(distanceController.text),
+                              calories: int.parse(caloriesController.text));
                       if (ctx.mounted) Navigator.of(ctx).pop();
                     }
                   },
@@ -232,51 +399,54 @@ class ProgressDashboardScreen extends StatelessWidget {
   }
 }
 
-// --- WIDGETS REUTILIZÁVEIS PARA AS ABAS ---
-
-class _WeightView extends StatelessWidget {
-  final List<WeightRecord> records;
-  const _WeightView({required this.records});
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text('Evolução do Peso (kg)',
-              style: Theme.of(context).textTheme.headlineSmall),
-          const SizedBox(height: 20),
-          SizedBox(
-            height: 300,
-            child: records.isEmpty
-                ? const Center(child: Text('Nenhum dado de peso registado.'))
-                : LineChart(
-                    _buildChartData(records.map((r) => r.weight).toList())),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class _GroupedChartView<T> extends StatelessWidget {
   final Map<String, List<T>> groupedRecords;
-  final String unit;
+  final List<ChartSeries<T>> seriesList;
   final String emptyMessage;
-  final double Function(T) recordToValue;
 
   const _GroupedChartView(
       {required this.groupedRecords,
-      required this.unit,
+      required this.seriesList,
       required this.emptyMessage,
-      required this.recordToValue,
       super.key});
+
+  // --- WIDGET DA LEGENDA CORRIGIDO ---
+  Widget _buildLegend(BuildContext context) {
+    if (seriesList.length < 2) return const SizedBox.shrink();
+
+    return Padding(
+      padding: const EdgeInsets.only(top: 16.0),
+      child: Wrap(
+        spacing: 16,
+        runSpacing: 8,
+        alignment: WrapAlignment.center,
+        children: seriesList.map((series) {
+          return Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 12,
+                height: 12,
+                // A propriedade 'color' foi removida daqui
+                decoration: BoxDecoration(
+                    color: series
+                        .color, // A cor agora está apenas dentro do BoxDecoration
+                    border: Border.all(color: Colors.black54, width: 0.5),
+                    borderRadius: BorderRadius.circular(2)),
+              ),
+              const SizedBox(width: 6),
+              Text(series.name, style: Theme.of(context).textTheme.bodySmall),
+            ],
+          );
+        }).toList(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    if (groupedRecords.isEmpty) {
+    if (groupedRecords.isEmpty ||
+        groupedRecords.values.every((list) => list.isEmpty)) {
       return Center(
           child: Text(emptyMessage,
               style: const TextStyle(fontSize: 16, color: Colors.grey)));
@@ -286,20 +456,34 @@ class _GroupedChartView<T> extends StatelessWidget {
       children: groupedRecords.entries.map((entry) {
         final category = entry.key;
         final records = entry.value;
-        (records as List).sort((a, b) => a.date.compareTo(b.date));
+        if (records.isEmpty) return const SizedBox.shrink();
+
+        (records as List).sort((a, b) {
+          final dateA = (a as dynamic).date as DateTime;
+          final dateB = (b as dynamic).date as DateTime;
+          return dateA.compareTo(dateB);
+        });
 
         return Card(
           margin: const EdgeInsets.only(bottom: 16),
+          elevation: 2,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           child: ExpansionTile(
             title:
                 Text(category, style: Theme.of(context).textTheme.titleLarge),
+            initiallyExpanded: true,
             children: [
               Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: SizedBox(
-                  height: 200,
-                  child: LineChart(
-                      _buildChartData(records.map(recordToValue).toList())),
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 250,
+                      child: LineChart(_buildChartData(records, seriesList)),
+                    ),
+                    _buildLegend(context),
+                  ],
                 ),
               ),
             ],
@@ -310,35 +494,62 @@ class _GroupedChartView<T> extends StatelessWidget {
   }
 }
 
-// --- FUNÇÃO AUXILIAR REUTILIZÁVEL PARA CRIAR GRÁFICOS ---
-
-LineChartData _buildChartData(List<double> dataPoints) {
-  final spots = dataPoints.asMap().entries.map((entry) {
-    return FlSpot(entry.key.toDouble(), entry.value);
-  }).toList();
-
+LineChartData _buildChartData<T>(
+    List<T> records, List<ChartSeries<T>> seriesList) {
   return LineChartData(
+    lineTouchData: LineTouchData(
+      handleBuiltInTouches: true,
+      touchTooltipData: LineTouchTooltipData(
+        tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
+        getTooltipItems: (List<LineBarSpot> touchedBarSpots) {
+          return touchedBarSpots.map((barSpot) {
+            final series = seriesList[barSpot.barIndex];
+
+            String text;
+            if (series.name.toLowerCase().contains('km')) {
+              text = '${barSpot.y.toStringAsFixed(1)} km';
+            } else if (series.name.toLowerCase().contains('min')) {
+              text = '${barSpot.y.toInt()} min';
+            } else {
+              text = barSpot.y.toStringAsFixed(1);
+            }
+
+            return LineTooltipItem(
+              text,
+              TextStyle(
+                color: series.color,
+                fontWeight: FontWeight.bold,
+              ),
+            );
+          }).toList();
+        },
+      ),
+    ),
     gridData: const FlGridData(show: false),
-    titlesData: FlTitlesData(
-      leftTitles: const AxisTitles(
+    titlesData: const FlTitlesData(
+      leftTitles: AxisTitles(
           sideTitles: SideTitles(showTitles: true, reservedSize: 40)),
-      bottomTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-      topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-      rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+      bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+      topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+      rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
     ),
     borderData: FlBorderData(
-        show: true, border: Border.all(color: Colors.grey.shade400)),
-    lineBarsData: [
-      LineChartBarData(
+        show: true, border: Border.all(color: Colors.grey.shade300)),
+    lineBarsData: seriesList.map((series) {
+      final spots = records.asMap().entries.map((entry) {
+        return FlSpot(entry.key.toDouble(), series.valueExtractor(entry.value));
+      }).toList();
+
+      return LineChartBarData(
         spots: spots,
         isCurved: true,
-        color: Colors.orange,
+        color: series.color,
         barWidth: 4,
         isStrokeCapRound: true,
         dotData: const FlDotData(show: true),
         belowBarData:
-            BarAreaData(show: true, color: Colors.orange.withOpacity(0.3)),
-      ),
-    ],
+            BarAreaData(show: true, color: series.color.withOpacity(0.3)),
+      );
+    }).toList(),
   );
 }

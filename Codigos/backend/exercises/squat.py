@@ -1,51 +1,62 @@
-import cv2
-# O ficheiro angle_calculation.py não precisa de alterações
-from .angle_calculation import calculate_angle
+import numpy as np
 
 class Squat:
     def __init__(self):
-        self.counter = 0
         self.stage = "up"
-        self.feedback = "Inicie o movimento"
+        self.counter = 0
+        self.feedback = ""
 
-    def _calculate_angle(self, p1, p2, p3):
-        # Esta função está definida em angle_calculation.py
-        return calculate_angle(p1, p2, p3)
+    def calculate_angle(self, a, b, c):
+        a = np.array(a)
+        b = np.array(b)
+        c = np.array(c)
+        radians = np.arctan2(c[1]-b[1], c[0]-b[0]) - np.arctan2(a[1]-b[1], a[0]-b[0])
+        angle = np.abs(radians*180.0/np.pi)
+        if angle > 180.0:
+            angle = 360 - angle
+        return angle
 
-    def track_squat(self, landmarks, frame_shape):
-        # Extrai os pontos relevantes do corpo (coordenadas normalizadas de 0.0 a 1.0)
-        shoulder = [landmarks[11].x, landmarks[11].y]
-        hip = [landmarks[23].x, landmarks[23].y]
-        knee = [landmarks[25].x, landmarks[25].y]
-        ankle = [landmarks[27].x, landmarks[27].y]
+    def track_squat(self, landmarks, image_shape):
+        self.feedback = "" # Limpa o feedback a cada frame
 
-        # Calcula o ângulo do joelho
-        angle = self._calculate_angle(
-            (hip[0], hip[1]), 
-            (knee[0], knee[1]), 
-            (ankle[0], ankle[1])
-        )
+        # --- CORREÇÃO APLICADA AQUI ---
+        # Adiciona um bloco try-except para garantir que todos os landmarks existem
+        try:
+            # Pega as coordenadas dos pontos de referência necessários
+            hip = [landmarks[23].x, landmarks[23].y]
+            knee = [landmarks[25].x, landmarks[25].y]
+            ankle = [landmarks[27].x, landmarks[27].y]
+            shoulder = [landmarks[11].x, landmarks[11].y]
 
-        # Lógica de contagem de repetições e feedback
-        if angle > 160: # Se o utilizador está de pé
-            if self.stage == 'down':
-                # Só dá feedback de "bom trabalho" se a fase anterior foi "para baixo"
-                self.feedback = "Bom trabalho! Inicie a próxima repetição."
+        except (IndexError, AttributeError):
+            # Se um ponto não for encontrado, retorna o feedback de erro
+            self.feedback = "Enquadramento ruim! Posicione a câmera para que seu corpo inteiro (dos ombros aos pés) apareça."
+            return self.counter, 0, self.stage, self.feedback, {}, 0
+
+        # Lógica de cálculo de ângulo e contagem (original, mas agora segura)
+        angle = self.calculate_angle(hip, knee, ankle)
+        progress = np.interp(angle, [90, 160], [100, 0])
+
+        if angle > 160:
             self.stage = "up"
-        elif angle < 90 and self.stage == 'up': # Se o utilizador agachou
+        if angle < 90 and self.stage == 'up':
             self.stage = "down"
             self.counter += 1
-            self.feedback = "Suba de forma controlada!"
-        elif self.stage == 'up' and angle < 160 and angle >= 90:
-            self.feedback = "Desça mais um pouco!"
+            self.feedback = "Repetição completa!"
         
-        # Estrutura de retorno de dados melhorada para o frontend
-        landmarks_to_draw = {
-            "shoulder": shoulder,
-            "hip": hip,
-            "knee": knee,
-            "ankle": ankle,
-        }
+        # Feedback de profundidade
+        if self.stage == 'down' and angle > 100:
+            self.feedback = "Desça mais para um agachamento completo."
+        
+        # Feedback de postura (tronco)
+        angle_trunk = self.calculate_angle(shoulder, hip, knee)
+        if angle_trunk < 70:
+            self.feedback = "Mantenha o peito aberto e as costas retas."
 
-        # Retorna todos os dados para a API
-        return self.counter, angle, self.stage, self.feedback, landmarks_to_draw
+        if not self.feedback:
+            self.feedback = "Bom trabalho, continue!"
+
+        # Converte landmarks para o formato de dicionário para o JSON
+        landmarks_dict = {str(i): {'x': lm.x, 'y': lm.y, 'z': lm.z, 'visibility': lm.visibility} for i, lm in enumerate(landmarks)}
+
+        return self.counter, angle, self.stage, self.feedback, landmarks_dict, progress
