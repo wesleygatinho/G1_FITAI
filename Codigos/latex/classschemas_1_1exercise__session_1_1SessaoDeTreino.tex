@@ -1,0 +1,63 @@
+\doxysection{schemas.\+exercise\+\_\+session.\+Sessao\+De\+Treino Class Reference}
+\hypertarget{classschemas_1_1exercise__session_1_1SessaoDeTreino}{}\label{classschemas_1_1exercise__session_1_1SessaoDeTreino}\index{schemas.exercise\_session.SessaoDeTreino@{schemas.exercise\_session.SessaoDeTreino}}
+
+
+Schema para representar uma sessão de treino lida da base de dados.  
+
+
+
+
+Inheritance diagram for schemas.\+exercise\+\_\+session.\+Sessao\+De\+Treino\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classschemas_1_1exercise__session_1_1SessaoDeTreino__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for schemas.\+exercise\+\_\+session.\+Sessao\+De\+Treino\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classschemas_1_1exercise__session_1_1SessaoDeTreino__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classschemas_1_1exercise__session_1_1SessaoDeTreino_1_1Config}{Config}}
+\begin{DoxyCompactList}\small\item\em Configuração Pydantic para permitir a criação a partir de atributos do modelo ORM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classschemas_1_1exercise__session_1_1SessaoDeTreino_a63d3cac47adddc3a5fe99154af08e073}\label{classschemas_1_1exercise__session_1_1SessaoDeTreino_a63d3cac47adddc3a5fe99154af08e073} 
+uuid {\bfseries id} .UUID
+\item 
+\Hypertarget{classschemas_1_1exercise__session_1_1SessaoDeTreino_a2b584525d79de5bc3d36d490e97d0773}\label{classschemas_1_1exercise__session_1_1SessaoDeTreino_a2b584525d79de5bc3d36d490e97d0773} 
+datetime {\bfseries data\+\_\+inicio}
+\item 
+\Hypertarget{classschemas_1_1exercise__session_1_1SessaoDeTreino_ae8513122f93b163347e486952863d8a7}\label{classschemas_1_1exercise__session_1_1SessaoDeTreino_ae8513122f93b163347e486952863d8a7} 
+Optional {\bfseries data\+\_\+fim} \mbox{[}datetime\mbox{]}
+\item 
+\Hypertarget{classschemas_1_1exercise__session_1_1SessaoDeTreino_aec935d2a780cf2b2b2744736fff29045}\label{classschemas_1_1exercise__session_1_1SessaoDeTreino_aec935d2a780cf2b2b2744736fff29045} 
+list {\bfseries itens} = \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Schema para representar uma sessão de treino lida da base de dados. 
+
+\begin{DoxyVerb}Attributes:
+    id (uuid.UUID): ID único da sessão de treino.
+    data_inicio (datetime): Data e hora de início da sessão, geradas automaticamente.
+    data_fim (Optional[datetime]): Data e hora de fim da sessão, pode ser nula se a sessão estiver em andamento.
+    itens (List[ItemSessao]): Lista dos itens da sessão, já formatados com os detalhes do exercício.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/schemas/\mbox{\hyperlink{schemas_2exercise__session_8py}{exercise\+\_\+session.\+py}}\end{DoxyCompactItemize}

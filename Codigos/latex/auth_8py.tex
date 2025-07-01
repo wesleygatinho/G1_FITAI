@@ -1,0 +1,97 @@
+\doxysection{backend/app/api/v1/endpoints/auth.py File Reference}
+\hypertarget{auth_8py}{}\label{auth_8py}\index{backend/app/api/v1/endpoints/auth.py@{backend/app/api/v1/endpoints/auth.py}}
+
+
+Define os endpoints da API para autenticação de utilizadores, incluindo registo, login e Google Sign-\/\+In.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classapi_1_1v1_1_1endpoints_1_1auth_1_1GoogleToken}{api.\+v1.\+endpoints.\+auth.\+Google\+Token}}
+\begin{DoxyCompactList}\small\item\em Schema para a requisição de login com o token do Google. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{auth_8py_a5488c0fb5bfee2ae364d962ab56dd36c}{api.\+v1.\+endpoints.\+auth.\+register\+\_\+user}} (User\+Create user, Session db=Depends(get\+\_\+db))
+\begin{DoxyCompactList}\small\item\em Regista um novo utilizador com e-\/mail e senha. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{auth_8py_ad6fb097b16ec3a39058be7aa513a474b}{api.\+v1.\+endpoints.\+auth.\+login\+\_\+for\+\_\+access\+\_\+token}} (Session db=Depends(get\+\_\+db), OAuth2\+Password\+Request\+Form form\+\_\+data=Depends())
+\begin{DoxyCompactList}\small\item\em Autentica um utilizador com e-\/mail e senha, retornando um token de acesso JWT. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{auth_8py_abf409fa5714c28f0e3895d182ad35126}{api.\+v1.\+endpoints.\+auth.\+login\+\_\+with\+\_\+google\+\_\+token}} (\mbox{\hyperlink{classapi_1_1v1_1_1endpoints_1_1auth_1_1GoogleToken}{Google\+Token}} google\+\_\+token, Session db=Depends(get\+\_\+db))
+\begin{DoxyCompactList}\small\item\em Autentica ou regista um utilizador usando um ID Token do Google. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{auth_8py_ab443611d5fe0246dbc756d14da2197e2}\label{auth_8py_ab443611d5fe0246dbc756d14da2197e2} 
+{\bfseries api.\+v1.\+endpoints.\+auth.\+router} = APIRouter()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Define os endpoints da API para autenticação de utilizadores, incluindo registo, login e Google Sign-\/\+In. 
+
+\begin{DoxyAuthor}{Author}
+André Luis Aguiar do Nascimento 
+
+Hugo Samuel de Lima Oliveira 
+
+Leonardo Sampaio Serra 
+
+Lucas Emanoel Amaral Gomes 
+
+Wesley dos Santos Gatinho 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{auth_8py_ad6fb097b16ec3a39058be7aa513a474b}\label{auth_8py_ad6fb097b16ec3a39058be7aa513a474b} 
+\index{auth.py@{auth.py}!login\_for\_access\_token@{login\_for\_access\_token}}
+\index{login\_for\_access\_token@{login\_for\_access\_token}!auth.py@{auth.py}}
+\doxysubsubsection{\texorpdfstring{login\_for\_access\_token()}{login\_for\_access\_token()}}
+{\footnotesize\ttfamily api.\+v1.\+endpoints.\+auth.\+login\+\_\+for\+\_\+access\+\_\+token (\begin{DoxyParamCaption}\item[{Session }]{db = {\ttfamily Depends(get\+\_\+db)},  }\item[{OAuth2\+Password\+Request\+Form }]{form\+\_\+data = {\ttfamily Depends()} }\end{DoxyParamCaption})}
+
+
+
+Autentica um utilizador com e-\/mail e senha, retornando um token de acesso JWT. 
+
+\begin{DoxyVerb}:param (Session) db: A sessão da base de dados.
+:param (OAuth2PasswordRequestForm) form_data: Dados do formulário com 'username' (e-mail) e 'password'.
+:raises HTTPException: Se o e-mail ou a senha estiverem incorretos.
+:return (Token): O token de acesso e o seu tipo ("bearer").
+\end{DoxyVerb}
+ \Hypertarget{auth_8py_abf409fa5714c28f0e3895d182ad35126}\label{auth_8py_abf409fa5714c28f0e3895d182ad35126} 
+\index{auth.py@{auth.py}!login\_with\_google\_token@{login\_with\_google\_token}}
+\index{login\_with\_google\_token@{login\_with\_google\_token}!auth.py@{auth.py}}
+\doxysubsubsection{\texorpdfstring{login\_with\_google\_token()}{login\_with\_google\_token()}}
+{\footnotesize\ttfamily api.\+v1.\+endpoints.\+auth.\+login\+\_\+with\+\_\+google\+\_\+token (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classapi_1_1v1_1_1endpoints_1_1auth_1_1GoogleToken}{Google\+Token}}}]{google\+\_\+token,  }\item[{Session }]{db = {\ttfamily Depends(get\+\_\+db)} }\end{DoxyParamCaption})}
+
+
+
+Autentica ou regista um utilizador usando um ID Token do Google. 
+
+\begin{DoxyVerb}Valida o token do Google, verifica se o utilizador existe na base de dados local,
+cria um novo utilizador se necessário, e emite um token JWT da nossa própria API.
+
+:param (GoogleToken) google_token: O corpo da requisição contendo o token do Google.
+:param (Session) db: A sessão da base de dados.
+:raises HTTPException: Se o token do Google for inválido.
+:return (Token): O token de acesso da nossa API e o seu tipo ("bearer").
+\end{DoxyVerb}
+ \Hypertarget{auth_8py_a5488c0fb5bfee2ae364d962ab56dd36c}\label{auth_8py_a5488c0fb5bfee2ae364d962ab56dd36c} 
+\index{auth.py@{auth.py}!register\_user@{register\_user}}
+\index{register\_user@{register\_user}!auth.py@{auth.py}}
+\doxysubsubsection{\texorpdfstring{register\_user()}{register\_user()}}
+{\footnotesize\ttfamily api.\+v1.\+endpoints.\+auth.\+register\+\_\+user (\begin{DoxyParamCaption}\item[{User\+Create}]{user,  }\item[{Session }]{db = {\ttfamily Depends(get\+\_\+db)} }\end{DoxyParamCaption})}
+
+
+
+Regista um novo utilizador com e-\/mail e senha. 
+
+\begin{DoxyVerb}Verifica se o e-mail já existe na base de dados antes de criar um novo registo.
+
+:param (UserCreate) user: Os dados do novo utilizador a serem criados.
+:param (Session) db: A sessão da base de dados.
+:raises HTTPException: Se o e-mail fornecido já estiver registado.
+:return (User): Os dados do utilizador recém-criado (sem a senha).
+\end{DoxyVerb}
+ 

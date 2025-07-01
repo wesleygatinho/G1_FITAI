@@ -1,0 +1,13 @@
+<map id="schemas.progress_record.CardioRecord" name="schemas.progress_record.CardioRecord">
+<area shape="rect" id="Node000001" title="Schema para representar um registo de cardio lido da base de dados." alt="" coords="157,240,349,280"/>
+<area shape="rect" id="Node000002" href="$classschemas_1_1progress__record_1_1CardioRecordBase.html" title="Schema base para um registo de exercício cardiovascular." alt="" coords="11,123,203,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,169,230,238,227,242,140,174"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,100,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="66,43,101,121,96,123,61,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="125,5,202,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="155,45,118,123,114,121,150,43"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="227,130,278,155"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="255,169,255,240,250,240,250,169"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="303,130,384,155"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="336,169,324,194,308,218,282,242,279,238,304,214,320,191,331,167"/>
+</map>

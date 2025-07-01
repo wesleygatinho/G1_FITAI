@@ -1,0 +1,7 @@
+<map id="schemas.token.TokenData" name="schemas.token.TokenData">
+<area shape="rect" id="Node000001" title="Representa os dados (payload) codificados dentro de um token JWT." alt="" coords="11,93,203,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,100,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,41,102,91,97,94,65,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="125,5,202,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="151,44,117,94,113,91,146,41"/>
+</map>

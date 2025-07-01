@@ -1,0 +1,133 @@
+\doxysection{models.\+user.\+User Class Reference}
+\hypertarget{classmodels_1_1user_1_1User}{}\label{classmodels_1_1user_1_1User}\index{models.user.User@{models.user.User}}
+
+
+Modelo de dados para a tabela \textquotesingle{}users\textquotesingle{}, representando um utilizador no sistema.  
+
+
+
+
+Inheritance diagram for models.\+user.\+User\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{classmodels_1_1user_1_1User__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for models.\+user.\+User\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{classmodels_1_1user_1_1User__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classmodels_1_1user_1_1User_a3d26a2426315737ccb1e4ab478674a66}\label{classmodels_1_1user_1_1User_a3d26a2426315737ccb1e4ab478674a66} 
+{\bfseries \+\_\+\+\_\+repr\+\_\+\+\_\+} (self)
+\begin{DoxyCompactList}\small\item\em Representação em string do objeto User, útil para depuração. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classmodels_1_1user_1_1User_a66705dc3546a36de1cbd9ca7e654ed84}\label{classmodels_1_1user_1_1User_a66705dc3546a36de1cbd9ca7e654ed84} 
+{\bfseries id} = Column(UUID(as\+\_\+uuid=True), primary\+\_\+key=True, default=uuid.\+uuid4)
+\item 
+\Hypertarget{classmodels_1_1user_1_1User_a1a025dc51a469a9800220476c848ae18}\label{classmodels_1_1user_1_1User_a1a025dc51a469a9800220476c848ae18} 
+{\bfseries email} = Column(String, unique=True, index=True, nullable=False)
+\item 
+\Hypertarget{classmodels_1_1user_1_1User_a43703e1dbdb15f460aa9aad8db2e1def}\label{classmodels_1_1user_1_1User_a43703e1dbdb15f460aa9aad8db2e1def} 
+{\bfseries hashed\+\_\+password} = Column(String, nullable=False)
+\item 
+\Hypertarget{classmodels_1_1user_1_1User_ab1aba8cff2193030a4e8a6771c04f03d}\label{classmodels_1_1user_1_1User_ab1aba8cff2193030a4e8a6771c04f03d} 
+{\bfseries nome} = Column(String, nullable=True)
+\item 
+\Hypertarget{classmodels_1_1user_1_1User_a4345409800dcf9f4e35f2914c02b6b01}\label{classmodels_1_1user_1_1User_a4345409800dcf9f4e35f2914c02b6b01} 
+{\bfseries data\+\_\+nascimento} = Column(Date, nullable=True)
+\item 
+\Hypertarget{classmodels_1_1user_1_1User_a52458f89614186d894bf1d7bd82b8ef0}\label{classmodels_1_1user_1_1User_a52458f89614186d894bf1d7bd82b8ef0} 
+{\bfseries altura\+\_\+cm} = Column(Float, nullable=True)
+\item 
+\Hypertarget{classmodels_1_1user_1_1User_ac30da705c91bbb62b449102ef7c68684}\label{classmodels_1_1user_1_1User_ac30da705c91bbb62b449102ef7c68684} 
+{\bfseries peso\+\_\+kg} = Column(Float, nullable=True)
+\item 
+\Hypertarget{classmodels_1_1user_1_1User_ab6039e82b23958df592e9e2da2cb6245}\label{classmodels_1_1user_1_1User_ab6039e82b23958df592e9e2da2cb6245} 
+{\bfseries sexo} = Column(String, nullable=True)
+\item 
+\Hypertarget{classmodels_1_1user_1_1User_af9713c57a63be4f532fb4741c273fedc}\label{classmodels_1_1user_1_1User_af9713c57a63be4f532fb4741c273fedc} 
+{\bfseries is\+\_\+active} = Column(Boolean, default=True, nullable=False)
+\item 
+\Hypertarget{classmodels_1_1user_1_1User_aec2ce39a40f7c53feae960107b54cbdd}\label{classmodels_1_1user_1_1User_aec2ce39a40f7c53feae960107b54cbdd} 
+{\bfseries is\+\_\+superuser} = Column(Boolean, default=False, nullable=False)
+\item 
+\Hypertarget{classmodels_1_1user_1_1User_aca2360e975c9e76ae45636fd16c4ed39}\label{classmodels_1_1user_1_1User_aca2360e975c9e76ae45636fd16c4ed39} 
+{\bfseries is\+\_\+verified} = Column(Boolean, default=False, nullable=False)
+\item 
+\mbox{\hyperlink{classmodels_1_1user_1_1User_ad505304e7cda31a000e9b2f8127d2efa}{registros\+\_\+progresso}}
+\item 
+\mbox{\hyperlink{classmodels_1_1user_1_1User_aa277308ea4701d696d413bc34f0a0c79}{sessoes\+\_\+de\+\_\+treino}}
+\item 
+\mbox{\hyperlink{classmodels_1_1user_1_1User_a00e1b8aeede8aee14cb36e5afaf61074}{registros\+\_\+interacao\+\_\+ia}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Modelo de dados para a tabela \textquotesingle{}users\textquotesingle{}, representando um utilizador no sistema. 
+
+Attributes\+: id (UUID)\+: ID único do utilizador, gerado automaticamente. email (str)\+: E-\/mail do utilizador, deve ser único e é indexado para buscas rápidas. hashed\+\_\+password (str)\+: A senha do utilizador, armazenada como um hash seguro. nome (str)\+: Nome completo do utilizador. data\+\_\+nascimento (Date)\+: Data de nascimento do utilizador. altura\+\_\+cm (float)\+: Altura do utilizador em centímetros. peso\+\_\+kg (float)\+: Peso do utilizador em quilogramas. sexo (str)\+: Sexo biológico ou género do utilizador. is\+\_\+active (bool)\+: Flag que indica se a conta do utilizador está ativa. is\+\_\+superuser (bool)\+: Flag que indica se o utilizador tem permissões de superadministrador. is\+\_\+verified (bool)\+: Flag que indica se o e-\/mail do utilizador foi verificado. registros\+\_\+progresso (relationship)\+: Relacionamento com os registos de progresso do utilizador. sessoes\+\_\+de\+\_\+treino (relationship)\+: Relacionamento com as sessões de treino do utilizador. registros\+\_\+interacao\+\_\+ia (relationship)\+: Relacionamento com as interações de IA do utilizador. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmodels_1_1user_1_1User_a00e1b8aeede8aee14cb36e5afaf61074}\label{classmodels_1_1user_1_1User_a00e1b8aeede8aee14cb36e5afaf61074} 
+\index{models.user.User@{models.user.User}!registros\_interacao\_ia@{registros\_interacao\_ia}}
+\index{registros\_interacao\_ia@{registros\_interacao\_ia}!models.user.User@{models.user.User}}
+\doxysubsubsection{\texorpdfstring{registros\_interacao\_ia}{registros\_interacao\_ia}}
+{\footnotesize\ttfamily models.\+user.\+User.\+registros\+\_\+interacao\+\_\+ia\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ relationship(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}RegistroInteracaoIA"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ back\_populates=\textcolor{stringliteral}{"{}owner"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ cascade=\textcolor{stringliteral}{"{}all,\ delete-\/orphan"{}}\ \textcolor{comment}{\#\ Apaga\ as\ interações\ se\ o\ utilizador\ for\ apagado.}}
+\DoxyCodeLine{\ \ \ \ )}
+
+\end{DoxyCode}
+\Hypertarget{classmodels_1_1user_1_1User_ad505304e7cda31a000e9b2f8127d2efa}\label{classmodels_1_1user_1_1User_ad505304e7cda31a000e9b2f8127d2efa} 
+\index{models.user.User@{models.user.User}!registros\_progresso@{registros\_progresso}}
+\index{registros\_progresso@{registros\_progresso}!models.user.User@{models.user.User}}
+\doxysubsubsection{\texorpdfstring{registros\_progresso}{registros\_progresso}}
+{\footnotesize\ttfamily models.\+user.\+User.\+registros\+\_\+progresso\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ relationship(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}RegistroProgresso"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ back\_populates=\textcolor{stringliteral}{"{}owner"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ cascade=\textcolor{stringliteral}{"{}all,\ delete-\/orphan"{}}\ \textcolor{comment}{\#\ Apaga\ os\ registos\ se\ o\ utilizador\ for\ apagado.}}
+\DoxyCodeLine{\ \ \ \ )}
+
+\end{DoxyCode}
+\Hypertarget{classmodels_1_1user_1_1User_aa277308ea4701d696d413bc34f0a0c79}\label{classmodels_1_1user_1_1User_aa277308ea4701d696d413bc34f0a0c79} 
+\index{models.user.User@{models.user.User}!sessoes\_de\_treino@{sessoes\_de\_treino}}
+\index{sessoes\_de\_treino@{sessoes\_de\_treino}!models.user.User@{models.user.User}}
+\doxysubsubsection{\texorpdfstring{sessoes\_de\_treino}{sessoes\_de\_treino}}
+{\footnotesize\ttfamily models.\+user.\+User.\+sessoes\+\_\+de\+\_\+treino\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ relationship(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}SessaoDeTreino"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ back\_populates=\textcolor{stringliteral}{"{}owner"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ cascade=\textcolor{stringliteral}{"{}all,\ delete-\/orphan"{}}\ \textcolor{comment}{\#\ Apaga\ as\ sessões\ se\ o\ utilizador\ for\ apagado.}}
+\DoxyCodeLine{\ \ \ \ )}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/models/\mbox{\hyperlink{models_2user_8py}{user.\+py}}\end{DoxyCompactItemize}

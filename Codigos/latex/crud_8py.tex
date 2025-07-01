@@ -1,0 +1,297 @@
+\doxysection{backend/app/services/crud.py File Reference}
+\hypertarget{crud_8py}{}\label{crud_8py}\index{backend/app/services/crud.py@{backend/app/services/crud.py}}
+
+
+Cont√©m todas as fun√ß√µes CRUD (Create, Read, Update, Delete) para interagir com a base de dados.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+user\+\_\+model.\+User \mbox{\hyperlink{crud_8py_a7ac22e3e3ebc9408869e22d948955012}{services.\+crud.\+get\+\_\+user\+\_\+by\+\_\+email}} (Session db, str email)
+\begin{DoxyCompactList}\small\item\em Busca um utilizador pelo seu endere√ßo de e-\/mail. \end{DoxyCompactList}\item 
+user\+\_\+model.\+User \mbox{\hyperlink{crud_8py_abc9cf61e3af736b1e6823a41e058b26f}{services.\+crud.\+create\+\_\+user}} (Session db, user\+\_\+schema.\+User\+Create user)
+\begin{DoxyCompactList}\small\item\em Cria um novo utilizador na base de dados. \end{DoxyCompactList}\item 
+user\+\_\+model.\+User \mbox{\hyperlink{crud_8py_a870c3a0d6dc7ac328b7d9b98b94e6bf9}{services.\+crud.\+update\+\_\+user}} (Session db, user\+\_\+model.\+User db\+\_\+user, user\+\_\+schema.\+User\+Update user\+\_\+in)
+\begin{DoxyCompactList}\small\item\em Atualiza os dados de um utilizador existente. \end{DoxyCompactList}\item 
+progress\+\_\+model.\+Weight\+Record \mbox{\hyperlink{crud_8py_ad15d0d5aa80a72f07e7a02752367f65c}{services.\+crud.\+create\+\_\+weight\+\_\+record}} (Session db, progress\+\_\+schema.\+Weight\+Record\+Create record, uuid.\+UUID user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Cria um novo registo de peso para um utilizador. \end{DoxyCompactList}\item 
+List\mbox{[}progress\+\_\+model.\+Weight\+Record\mbox{]} \mbox{\hyperlink{crud_8py_a9a11d419f6ad8de31cc8813c4710520d}{services.\+crud.\+get\+\_\+weight\+\_\+records\+\_\+by\+\_\+user}} (Session db, uuid.\+UUID user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Obt√©m todos os registos de peso de um utilizador, ordenados por data descendente. \end{DoxyCompactList}\item 
+progress\+\_\+model.\+Body\+Measure\+Record \mbox{\hyperlink{crud_8py_a64b7d1c1e6e21e480134ce56a5c83059}{services.\+crud.\+create\+\_\+body\+\_\+measure\+\_\+record}} (Session db, progress\+\_\+schema.\+Body\+Measure\+Record\+Create record, uuid.\+UUID user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Cria um novo registo de medida corporal para um utilizador. \end{DoxyCompactList}\item 
+List\mbox{[}progress\+\_\+model.\+Body\+Measure\+Record\mbox{]} \mbox{\hyperlink{crud_8py_ab67ef2bb2e16f6a387aedf6d1310da47}{services.\+crud.\+get\+\_\+body\+\_\+measure\+\_\+records\+\_\+by\+\_\+user}} (Session db, uuid.\+UUID user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Obt√©m todos os registos de medida corporal de um utilizador, ordenados por data. \end{DoxyCompactList}\item 
+progress\+\_\+model.\+Cardio\+Record \mbox{\hyperlink{crud_8py_a13b62a802e71e196c21370aef0937bf0}{services.\+crud.\+create\+\_\+cardio\+\_\+record}} (Session db, progress\+\_\+schema.\+Cardio\+Record\+Create record, uuid.\+UUID user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Cria um novo registo de exerc√≠cio cardiovascular para um utilizador. \end{DoxyCompactList}\item 
+List\mbox{[}progress\+\_\+model.\+Cardio\+Record\mbox{]} \mbox{\hyperlink{crud_8py_afa60f75b03cd56bcea605ed150850549}{services.\+crud.\+get\+\_\+cardio\+\_\+records\+\_\+by\+\_\+user}} (Session db, uuid.\+UUID user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Obt√©m todos os registos de cardio de um utilizador, ordenados por data. \end{DoxyCompactList}\item 
+exercicio\+\_\+model.\+Exercicio \mbox{\hyperlink{crud_8py_a9e13e73d90ee45b015cf3bdb486af7f1}{services.\+crud.\+get\+\_\+exercicio\+\_\+by\+\_\+nome}} (Session db, str nome)
+\begin{DoxyCompactList}\small\item\em Busca um exerc√≠cio pelo seu nome. \end{DoxyCompactList}\item 
+exercicio\+\_\+model.\+Exercicio \mbox{\hyperlink{crud_8py_a8eb7cd642610d768dda434d5a8df15fc}{services.\+crud.\+create\+\_\+exercicio}} (Session db, exercicio\+\_\+schema.\+Exercicio\+Create exercicio)
+\begin{DoxyCompactList}\small\item\em Cria um novo exerc√≠cio na base de dados (usado para popular dados iniciais). \end{DoxyCompactList}\item 
+List\mbox{[}exercicio\+\_\+model.\+Exercicio\mbox{]} \mbox{\hyperlink{crud_8py_a953feba1183aa1a257009ecc6f0a1984}{services.\+crud.\+get\+\_\+exercicios}} (Session db, int skip=0, int limit=100)
+\begin{DoxyCompactList}\small\item\em Obt√©m uma lista de todos os exerc√≠cios dispon√≠veis, com pagina√ß√£o. \end{DoxyCompactList}\item 
+session\+\_\+model.\+Sessao\+De\+Treino \mbox{\hyperlink{crud_8py_a427e4db8080eb43a3501eac454f3e5e3}{services.\+crud.\+create\+\_\+workout\+\_\+session}} (Session db, session\+\_\+schema.\+Sessao\+De\+Treino\+Create session\+\_\+data, uuid.\+UUID user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Cria uma nova sess√£o de treino com os seus itens associados. \end{DoxyCompactList}\item 
+List\mbox{[}session\+\_\+model.\+Sessao\+De\+Treino\mbox{]} \mbox{\hyperlink{crud_8py_ad086c557e400c9d22fa2d77540f41d9d}{services.\+crud.\+get\+\_\+sessions\+\_\+by\+\_\+user}} (Session db, uuid.\+UUID user\+\_\+id, int skip=0, int limit=100)
+\begin{DoxyCompactList}\small\item\em Obt√©m o hist√≥rico de sess√µes de treino de um utilizador. \end{DoxyCompactList}\item 
+ia\+\_\+interaction\+\_\+model.\+Registro\+Interacao\+IA \mbox{\hyperlink{crud_8py_a2ac36131c95aea4f579360b780c8cf1e}{services.\+crud.\+create\+\_\+ia\+\_\+interaction}} (Session db, ia\+\_\+interaction\+\_\+schema.\+Registro\+Interacao\+IACreate interaction, uuid.\+UUID user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Salva um registo de intera√ß√£o com a IA na base de dados. \end{DoxyCompactList}\item 
+List\mbox{[}ia\+\_\+interaction\+\_\+model.\+Registro\+Interacao\+IA\mbox{]} \mbox{\hyperlink{crud_8py_a1b0d0062beb3d3814fd9ab5f69b6fccf}{services.\+crud.\+get\+\_\+ia\+\_\+interactions\+\_\+by\+\_\+user}} (Session db, uuid.\+UUID user\+\_\+id, int skip=0, int limit=100)
+\begin{DoxyCompactList}\small\item\em Obt√©m o hist√≥rico de intera√ß√µes de um utilizador com a IA. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Cont√©m todas as fun√ß√µes CRUD (Create, Read, Update, Delete) para interagir com a base de dados. 
+
+\begin{DoxyAuthor}{Author}
+Andr√© Luis Aguiar do Nascimento 
+
+Hugo Samuel de Lima Oliveira 
+
+Leonardo Sampaio Serra 
+
+Lucas Emanoel Amaral Gomes 
+
+Wesley dos Santos Gatinho 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{crud_8py_a64b7d1c1e6e21e480134ce56a5c83059}\label{crud_8py_a64b7d1c1e6e21e480134ce56a5c83059} 
+\index{crud.py@{crud.py}!create\_body\_measure\_record@{create\_body\_measure\_record}}
+\index{create\_body\_measure\_record@{create\_body\_measure\_record}!crud.py@{crud.py}}
+\doxysubsubsection{\texorpdfstring{create\_body\_measure\_record()}{create\_body\_measure\_record()}}
+{\footnotesize\ttfamily  progress\+\_\+model.\+Body\+Measure\+Record services.\+crud.\+create\+\_\+body\+\_\+measure\+\_\+record (\begin{DoxyParamCaption}\item[{Session}]{db,  }\item[{progress\+\_\+schema.\+Body\+Measure\+Record\+Create}]{record,  }\item[{uuid.\+UUID}]{user\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Cria um novo registo de medida corporal para um utilizador. 
+
+\begin{DoxyVerb}:param (Session) db: A sess√£o da base de dados.
+:param (progress_schema.BodyMeasureRecordCreate) record: Os dados do registo de medida.
+:param (uuid.UUID) user_id: O ID do utilizador associado.
+:return (progress_model.BodyMeasureRecord): O registo de medida criado.
+\end{DoxyVerb}
+ \Hypertarget{crud_8py_a13b62a802e71e196c21370aef0937bf0}\label{crud_8py_a13b62a802e71e196c21370aef0937bf0} 
+\index{crud.py@{crud.py}!create\_cardio\_record@{create\_cardio\_record}}
+\index{create\_cardio\_record@{create\_cardio\_record}!crud.py@{crud.py}}
+\doxysubsubsection{\texorpdfstring{create\_cardio\_record()}{create\_cardio\_record()}}
+{\footnotesize\ttfamily  progress\+\_\+model.\+Cardio\+Record services.\+crud.\+create\+\_\+cardio\+\_\+record (\begin{DoxyParamCaption}\item[{Session}]{db,  }\item[{progress\+\_\+schema.\+Cardio\+Record\+Create}]{record,  }\item[{uuid.\+UUID}]{user\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Cria um novo registo de exerc√≠cio cardiovascular para um utilizador. 
+
+\begin{DoxyVerb}:param (Session) db: A sess√£o da base de dados.
+:param (progress_schema.CardioRecordCreate) record: Os dados do registo de cardio.
+:param (uuid.UUID) user_id: O ID do utilizador associado.
+:return (progress_model.CardioRecord): O registo de cardio criado.
+\end{DoxyVerb}
+ \Hypertarget{crud_8py_a8eb7cd642610d768dda434d5a8df15fc}\label{crud_8py_a8eb7cd642610d768dda434d5a8df15fc} 
+\index{crud.py@{crud.py}!create\_exercicio@{create\_exercicio}}
+\index{create\_exercicio@{create\_exercicio}!crud.py@{crud.py}}
+\doxysubsubsection{\texorpdfstring{create\_exercicio()}{create\_exercicio()}}
+{\footnotesize\ttfamily  exercicio\+\_\+model.\+Exercicio services.\+crud.\+create\+\_\+exercicio (\begin{DoxyParamCaption}\item[{Session}]{db,  }\item[{exercicio\+\_\+schema.\+Exercicio\+Create}]{exercicio }\end{DoxyParamCaption})}
+
+
+
+Cria um novo exerc√≠cio na base de dados (usado para popular dados iniciais). 
+
+\begin{DoxyVerb}:param (Session) db: A sess√£o da base de dados.
+:param (exercicio_schema.ExercicioCreate) exercicio: Os dados do exerc√≠cio a ser criado.
+:return (exercicio_model.Exercicio): O exerc√≠cio criado.
+\end{DoxyVerb}
+ \Hypertarget{crud_8py_a2ac36131c95aea4f579360b780c8cf1e}\label{crud_8py_a2ac36131c95aea4f579360b780c8cf1e} 
+\index{crud.py@{crud.py}!create\_ia\_interaction@{create\_ia\_interaction}}
+\index{create\_ia\_interaction@{create\_ia\_interaction}!crud.py@{crud.py}}
+\doxysubsubsection{\texorpdfstring{create\_ia\_interaction()}{create\_ia\_interaction()}}
+{\footnotesize\ttfamily  ia\+\_\+interaction\+\_\+model.\+Registro\+Interacao\+IA services.\+crud.\+create\+\_\+ia\+\_\+interaction (\begin{DoxyParamCaption}\item[{Session}]{db,  }\item[{ia\+\_\+interaction\+\_\+schema.\+Registro\+Interacao\+IACreate}]{interaction,  }\item[{uuid.\+UUID}]{user\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Salva um registo de intera√ß√£o com a IA na base de dados. 
+
+\begin{DoxyVerb}:param (Session) db: A sess√£o da base de dados.
+:param (ia_interaction_schema.RegistroInteracaoIACreate) interaction: Os dados da intera√ß√£o.
+:param (uuid.UUID) user_id: O ID do utilizador que interagiu com a IA.
+:return (ia_interaction_model.RegistroInteracaoIA): O registo da intera√ß√£o.
+\end{DoxyVerb}
+ \Hypertarget{crud_8py_abc9cf61e3af736b1e6823a41e058b26f}\label{crud_8py_abc9cf61e3af736b1e6823a41e058b26f} 
+\index{crud.py@{crud.py}!create\_user@{create\_user}}
+\index{create\_user@{create\_user}!crud.py@{crud.py}}
+\doxysubsubsection{\texorpdfstring{create\_user()}{create\_user()}}
+{\footnotesize\ttfamily  user\+\_\+model.\+User services.\+crud.\+create\+\_\+user (\begin{DoxyParamCaption}\item[{Session}]{db,  }\item[{user\+\_\+schema.\+User\+Create}]{user }\end{DoxyParamCaption})}
+
+
+
+Cria um novo utilizador na base de dados. 
+
+\begin{DoxyVerb}:param (Session) db: A sess√£o da base de dados.
+:param (user_schema.UserCreate) user: O objeto com os dados do utilizador a ser criado.
+:return (user_model.User): O objeto do utilizador rec√©m-criado.
+\end{DoxyVerb}
+ \Hypertarget{crud_8py_ad15d0d5aa80a72f07e7a02752367f65c}\label{crud_8py_ad15d0d5aa80a72f07e7a02752367f65c} 
+\index{crud.py@{crud.py}!create\_weight\_record@{create\_weight\_record}}
+\index{create\_weight\_record@{create\_weight\_record}!crud.py@{crud.py}}
+\doxysubsubsection{\texorpdfstring{create\_weight\_record()}{create\_weight\_record()}}
+{\footnotesize\ttfamily  progress\+\_\+model.\+Weight\+Record services.\+crud.\+create\+\_\+weight\+\_\+record (\begin{DoxyParamCaption}\item[{Session}]{db,  }\item[{progress\+\_\+schema.\+Weight\+Record\+Create}]{record,  }\item[{uuid.\+UUID}]{user\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Cria um novo registo de peso para um utilizador. 
+
+\begin{DoxyVerb}:param (Session) db: A sess√£o da base de dados.
+:param (progress_schema.WeightRecordCreate) record: Os dados do registo de peso.
+:param (uuid.UUID) user_id: O ID do utilizador associado.
+:return (progress_model.WeightRecord): O registo de peso criado.
+\end{DoxyVerb}
+ \Hypertarget{crud_8py_a427e4db8080eb43a3501eac454f3e5e3}\label{crud_8py_a427e4db8080eb43a3501eac454f3e5e3} 
+\index{crud.py@{crud.py}!create\_workout\_session@{create\_workout\_session}}
+\index{create\_workout\_session@{create\_workout\_session}!crud.py@{crud.py}}
+\doxysubsubsection{\texorpdfstring{create\_workout\_session()}{create\_workout\_session()}}
+{\footnotesize\ttfamily  session\+\_\+model.\+Sessao\+De\+Treino services.\+crud.\+create\+\_\+workout\+\_\+session (\begin{DoxyParamCaption}\item[{Session}]{db,  }\item[{session\+\_\+schema.\+Sessao\+De\+Treino\+Create}]{session\+\_\+data,  }\item[{uuid.\+UUID}]{user\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Cria uma nova sess√£o de treino com os seus itens associados. 
+
+\begin{DoxyVerb}:param (Session) db: A sess√£o da base de dados.
+:param (session_schema.SessaoDeTreinoCreate) session_data: Os dados da sess√£o e seus itens.
+:param (uuid.UUID) user_id: O ID do utilizador que realizou a sess√£o.
+:return (session_model.SessaoDeTreino): A sess√£o de treino criada com seus itens.
+\end{DoxyVerb}
+ \Hypertarget{crud_8py_ab67ef2bb2e16f6a387aedf6d1310da47}\label{crud_8py_ab67ef2bb2e16f6a387aedf6d1310da47} 
+\index{crud.py@{crud.py}!get\_body\_measure\_records\_by\_user@{get\_body\_measure\_records\_by\_user}}
+\index{get\_body\_measure\_records\_by\_user@{get\_body\_measure\_records\_by\_user}!crud.py@{crud.py}}
+\doxysubsubsection{\texorpdfstring{get\_body\_measure\_records\_by\_user()}{get\_body\_measure\_records\_by\_user()}}
+{\footnotesize\ttfamily  List\mbox{[}progress\+\_\+model.\+Body\+Measure\+Record\mbox{]} services.\+crud.\+get\+\_\+body\+\_\+measure\+\_\+records\+\_\+by\+\_\+user (\begin{DoxyParamCaption}\item[{Session}]{db,  }\item[{uuid.\+UUID}]{user\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Obt√©m todos os registos de medida corporal de um utilizador, ordenados por data. 
+
+\begin{DoxyVerb}:param (Session) db: A sess√£o da base de dados.
+:param (uuid.UUID) user_id: O ID do utilizador.
+:return (List[progress_model.BodyMeasureRecord]): Uma lista de registos de medida corporal.
+\end{DoxyVerb}
+ \Hypertarget{crud_8py_afa60f75b03cd56bcea605ed150850549}\label{crud_8py_afa60f75b03cd56bcea605ed150850549} 
+\index{crud.py@{crud.py}!get\_cardio\_records\_by\_user@{get\_cardio\_records\_by\_user}}
+\index{get\_cardio\_records\_by\_user@{get\_cardio\_records\_by\_user}!crud.py@{crud.py}}
+\doxysubsubsection{\texorpdfstring{get\_cardio\_records\_by\_user()}{get\_cardio\_records\_by\_user()}}
+{\footnotesize\ttfamily  List\mbox{[}progress\+\_\+model.\+Cardio\+Record\mbox{]} services.\+crud.\+get\+\_\+cardio\+\_\+records\+\_\+by\+\_\+user (\begin{DoxyParamCaption}\item[{Session}]{db,  }\item[{uuid.\+UUID}]{user\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Obt√©m todos os registos de cardio de um utilizador, ordenados por data. 
+
+\begin{DoxyVerb}:param (Session) db: A sess√£o da base de dados.
+:param (uuid.UUID) user_id: O ID do utilizador.
+:return (List[progress_model.CardioRecord]): Uma lista de registos de cardio.
+\end{DoxyVerb}
+ \Hypertarget{crud_8py_a9e13e73d90ee45b015cf3bdb486af7f1}\label{crud_8py_a9e13e73d90ee45b015cf3bdb486af7f1} 
+\index{crud.py@{crud.py}!get\_exercicio\_by\_nome@{get\_exercicio\_by\_nome}}
+\index{get\_exercicio\_by\_nome@{get\_exercicio\_by\_nome}!crud.py@{crud.py}}
+\doxysubsubsection{\texorpdfstring{get\_exercicio\_by\_nome()}{get\_exercicio\_by\_nome()}}
+{\footnotesize\ttfamily  exercicio\+\_\+model.\+Exercicio services.\+crud.\+get\+\_\+exercicio\+\_\+by\+\_\+nome (\begin{DoxyParamCaption}\item[{Session}]{db,  }\item[{str}]{nome }\end{DoxyParamCaption})}
+
+
+
+Busca um exerc√≠cio pelo seu nome. 
+
+\begin{DoxyVerb}:param (Session) db: A sess√£o da base de dados.
+:param (str) nome: O nome do exerc√≠cio.
+:return (exercicio_model.Exercicio | None): O objeto do exerc√≠cio ou None se n√£o encontrado.
+\end{DoxyVerb}
+ \Hypertarget{crud_8py_a953feba1183aa1a257009ecc6f0a1984}\label{crud_8py_a953feba1183aa1a257009ecc6f0a1984} 
+\index{crud.py@{crud.py}!get\_exercicios@{get\_exercicios}}
+\index{get\_exercicios@{get\_exercicios}!crud.py@{crud.py}}
+\doxysubsubsection{\texorpdfstring{get\_exercicios()}{get\_exercicios()}}
+{\footnotesize\ttfamily  List\mbox{[}exercicio\+\_\+model.\+Exercicio\mbox{]} services.\+crud.\+get\+\_\+exercicios (\begin{DoxyParamCaption}\item[{Session}]{db,  }\item[{int }]{skip = {\ttfamily 0},  }\item[{int }]{limit = {\ttfamily 100} }\end{DoxyParamCaption})}
+
+
+
+Obt√©m uma lista de todos os exerc√≠cios dispon√≠veis, com pagina√ß√£o. 
+
+\begin{DoxyVerb}:param (Session) db: A sess√£o da base de dados.
+:param (int) skip: O n√∫mero de registos a pular.
+:param (int) limit: O n√∫mero m√°ximo de registos a retornar.
+:return (List[exercicio_model.Exercicio]): Uma lista de exerc√≠cios.
+\end{DoxyVerb}
+ \Hypertarget{crud_8py_a1b0d0062beb3d3814fd9ab5f69b6fccf}\label{crud_8py_a1b0d0062beb3d3814fd9ab5f69b6fccf} 
+\index{crud.py@{crud.py}!get\_ia\_interactions\_by\_user@{get\_ia\_interactions\_by\_user}}
+\index{get\_ia\_interactions\_by\_user@{get\_ia\_interactions\_by\_user}!crud.py@{crud.py}}
+\doxysubsubsection{\texorpdfstring{get\_ia\_interactions\_by\_user()}{get\_ia\_interactions\_by\_user()}}
+{\footnotesize\ttfamily  List\mbox{[}ia\+\_\+interaction\+\_\+model.\+Registro\+Interacao\+IA\mbox{]} services.\+crud.\+get\+\_\+ia\+\_\+interactions\+\_\+by\+\_\+user (\begin{DoxyParamCaption}\item[{Session}]{db,  }\item[{uuid.\+UUID}]{user\+\_\+id,  }\item[{int }]{skip = {\ttfamily 0},  }\item[{int }]{limit = {\ttfamily 100} }\end{DoxyParamCaption})}
+
+
+
+Obt√©m o hist√≥rico de intera√ß√µes de um utilizador com a IA. 
+
+\begin{DoxyVerb}:param (Session) db: A sess√£o da base de dados.
+:param (uuid.UUID) user_id: O ID do utilizador.
+:param (int) skip: O n√∫mero de intera√ß√µes a pular.
+:param (int) limit: O n√∫mero m√°ximo de intera√ß√µes a retornar.
+:return (List[ia_interaction_model.RegistroInteracaoIA]): Uma lista de intera√ß√µes.
+\end{DoxyVerb}
+ \Hypertarget{crud_8py_ad086c557e400c9d22fa2d77540f41d9d}\label{crud_8py_ad086c557e400c9d22fa2d77540f41d9d} 
+\index{crud.py@{crud.py}!get\_sessions\_by\_user@{get\_sessions\_by\_user}}
+\index{get\_sessions\_by\_user@{get\_sessions\_by\_user}!crud.py@{crud.py}}
+\doxysubsubsection{\texorpdfstring{get\_sessions\_by\_user()}{get\_sessions\_by\_user()}}
+{\footnotesize\ttfamily  List\mbox{[}session\+\_\+model.\+Sessao\+De\+Treino\mbox{]} services.\+crud.\+get\+\_\+sessions\+\_\+by\+\_\+user (\begin{DoxyParamCaption}\item[{Session}]{db,  }\item[{uuid.\+UUID}]{user\+\_\+id,  }\item[{int }]{skip = {\ttfamily 0},  }\item[{int }]{limit = {\ttfamily 100} }\end{DoxyParamCaption})}
+
+
+
+Obt√©m o hist√≥rico de sess√µes de treino de um utilizador. 
+
+\begin{DoxyVerb}:param (Session) db: A sess√£o da base de dados.
+:param (uuid.UUID) user_id: O ID do utilizador.
+:param (int) skip: O n√∫mero de sess√µes a pular.
+:param (int) limit: O n√∫mero m√°ximo de sess√µes a retornar.
+:return (List[session_model.SessaoDeTreino]): Uma lista de sess√µes de treino.
+\end{DoxyVerb}
+ \Hypertarget{crud_8py_a7ac22e3e3ebc9408869e22d948955012}\label{crud_8py_a7ac22e3e3ebc9408869e22d948955012} 
+\index{crud.py@{crud.py}!get\_user\_by\_email@{get\_user\_by\_email}}
+\index{get\_user\_by\_email@{get\_user\_by\_email}!crud.py@{crud.py}}
+\doxysubsubsection{\texorpdfstring{get\_user\_by\_email()}{get\_user\_by\_email()}}
+{\footnotesize\ttfamily  user\+\_\+model.\+User services.\+crud.\+get\+\_\+user\+\_\+by\+\_\+email (\begin{DoxyParamCaption}\item[{Session}]{db,  }\item[{str}]{email }\end{DoxyParamCaption})}
+
+
+
+Busca um utilizador pelo seu endere√ßo de e-\/mail. 
+
+\begin{DoxyVerb}:param (Session) db: A sess√£o da base de dados.
+:param (str) email: O e-mail do utilizador a ser procurado.
+:return (user_model.User | None): O objeto do utilizador ou None se n√£o for encontrado.
+\end{DoxyVerb}
+ \Hypertarget{crud_8py_a9a11d419f6ad8de31cc8813c4710520d}\label{crud_8py_a9a11d419f6ad8de31cc8813c4710520d} 
+\index{crud.py@{crud.py}!get\_weight\_records\_by\_user@{get\_weight\_records\_by\_user}}
+\index{get\_weight\_records\_by\_user@{get\_weight\_records\_by\_user}!crud.py@{crud.py}}
+\doxysubsubsection{\texorpdfstring{get\_weight\_records\_by\_user()}{get\_weight\_records\_by\_user()}}
+{\footnotesize\ttfamily  List\mbox{[}progress\+\_\+model.\+Weight\+Record\mbox{]} services.\+crud.\+get\+\_\+weight\+\_\+records\+\_\+by\+\_\+user (\begin{DoxyParamCaption}\item[{Session}]{db,  }\item[{uuid.\+UUID}]{user\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Obt√©m todos os registos de peso de um utilizador, ordenados por data descendente. 
+
+\begin{DoxyVerb}:param (Session) db: A sess√£o da base de dados.
+:param (uuid.UUID) user_id: O ID do utilizador.
+:return (List[progress_model.WeightRecord]): Uma lista de registos de peso.
+\end{DoxyVerb}
+ \Hypertarget{crud_8py_a870c3a0d6dc7ac328b7d9b98b94e6bf9}\label{crud_8py_a870c3a0d6dc7ac328b7d9b98b94e6bf9} 
+\index{crud.py@{crud.py}!update\_user@{update\_user}}
+\index{update\_user@{update\_user}!crud.py@{crud.py}}
+\doxysubsubsection{\texorpdfstring{update\_user()}{update\_user()}}
+{\footnotesize\ttfamily  user\+\_\+model.\+User services.\+crud.\+update\+\_\+user (\begin{DoxyParamCaption}\item[{Session}]{db,  }\item[{user\+\_\+model.\+User}]{db\+\_\+user,  }\item[{user\+\_\+schema.\+User\+Update}]{user\+\_\+in }\end{DoxyParamCaption})}
+
+
+
+Atualiza os dados de um utilizador existente. 
+
+\begin{DoxyVerb}:param (Session) db: A sess√£o da base de dados.
+:param (user_model.User) db_user: O objeto do utilizador a ser atualizado.
+:param (user_schema.UserUpdate) user_in: Os novos dados para o utilizador.
+:return (user_model.User): O objeto do utilizador atualizado.
+\end{DoxyVerb}
+ 

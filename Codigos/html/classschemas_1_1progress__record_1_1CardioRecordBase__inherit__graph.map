@@ -1,0 +1,9 @@
+<map id="schemas.progress_record.CardioRecordBase" name="schemas.progress_record.CardioRecordBase">
+<area shape="rect" id="Node000001" title="Schema base para um registo de exercício cardiovascular." alt="" coords="113,79,305,119"/>
+<area shape="rect" id="Node000003" href="$classschemas_1_1progress__record_1_1CardioRecord.html" title="Schema para representar um registo de cardio lido da base de dados." alt="" coords="5,167,197,207"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,129,127,169,124,164,173,125"/>
+<area shape="rect" id="Node000004" href="$classschemas_1_1progress__record_1_1CardioRecordCreate.html" title="Schema para validar dados ao criar um novo registo de cardio." alt="" coords="221,167,413,207"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="246,125,295,164,292,169,242,129"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="162,5,257,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,44,212,79,207,79,207,44"/>
+</map>

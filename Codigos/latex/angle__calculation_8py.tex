@@ -1,0 +1,51 @@
+\doxysection{backend/exercises/angle\+\_\+calculation.py File Reference}
+\hypertarget{angle__calculation_8py}{}\label{angle__calculation_8py}\index{backend/exercises/angle\_calculation.py@{backend/exercises/angle\_calculation.py}}
+
+
+Fornece uma função para calcular o ângulo entre três pontos 2D.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{angle__calculation_8py_a33b77f9060ee3174bfab6e9458a41c72}{exercises.\+angle\+\_\+calculation.\+calculate\+\_\+angle}} (a, b, c)
+\begin{DoxyCompactList}\small\item\em Calcula o ângulo formado por três pontos (a, b, c), com \textquotesingle{}b\textquotesingle{} sendo o vértice. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fornece uma função para calcular o ângulo entre três pontos 2D. 
+
+\begin{DoxyAuthor}{Author}
+André Luis Aguiar do Nascimento 
+
+Hugo Samuel de Lima Oliveira 
+
+Leonardo Sampaio Serra 
+
+Lucas Emanoel Amaral Gomes 
+
+Wesley dos Santos Gatinho 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{angle__calculation_8py_a33b77f9060ee3174bfab6e9458a41c72}\label{angle__calculation_8py_a33b77f9060ee3174bfab6e9458a41c72} 
+\index{angle\_calculation.py@{angle\_calculation.py}!calculate\_angle@{calculate\_angle}}
+\index{calculate\_angle@{calculate\_angle}!angle\_calculation.py@{angle\_calculation.py}}
+\doxysubsubsection{\texorpdfstring{calculate\_angle()}{calculate\_angle()}}
+{\footnotesize\ttfamily exercises.\+angle\+\_\+calculation.\+calculate\+\_\+angle (\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b,  }\item[{}]{c }\end{DoxyParamCaption})}
+
+
+
+Calcula o ângulo formado por três pontos (a, b, c), com \textquotesingle{}b\textquotesingle{} sendo o vértice. 
+
+\begin{DoxyVerb}A função calcula o ângulo usando o produto escalar dos vetores BA e BC.
+Garante que o valor do cosseno esteja no intervalo [-1.0, 1.0] para evitar
+erros de domínio matemático.
+
+:param (list) a: As coordenadas [x, y] do primeiro ponto.
+:param (list) b: As coordenadas [x, y] do ponto do vértice.
+:param (list) c: As coordenadas [x, y] do terceiro ponto.
+:return (float): O ângulo em graus, variando de 0 a 180. Retorna 0 se um dos vetores for nulo.
+\end{DoxyVerb}
+ 

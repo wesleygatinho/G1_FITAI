@@ -1,0 +1,15 @@
+<map id="schemas.user.User" name="schemas.user.User">
+<area shape="rect" id="Node000001" title="Schema principal usado para retornar os dados de um utilizador na API." alt="" coords="160,315,305,340"/>
+<area shape="rect" id="Node000002" href="$classschemas_1_1user_1_1UserInDBBase.html" title="Schema base para representar um utilizador lido da base de dados." alt="" coords="129,240,337,265"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="235,280,235,314,230,314,230,280"/>
+<area shape="rect" id="Node000003" href="$classschemas_1_1user_1_1UserBase.html" title="Schema base que define os campos comuns e editáveis de um utilizador." alt="" coords="75,152,252,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="184,187,225,238,221,241,179,190"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,5,100,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="72,40,157,150,152,153,68,43"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="125,5,202,31"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="166,45,166,152,161,152,161,45"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="226,5,303,31"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="259,45,240,86,212,130,184,154,181,150,208,126,235,84,254,42"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="277,152,327,177"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="286,190,244,241,240,238,282,187"/>
+</map>

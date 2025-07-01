@@ -1,0 +1,64 @@
+\doxysection{schemas.\+user.\+User\+Create Class Reference}
+\hypertarget{classschemas_1_1user_1_1UserCreate}{}\label{classschemas_1_1user_1_1UserCreate}\index{schemas.user.UserCreate@{schemas.user.UserCreate}}
+
+
+Schema para validar os dados ao criar um novo utilizador.  
+
+
+
+
+Inheritance diagram for schemas.\+user.\+User\+Create\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classschemas_1_1user_1_1UserCreate__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for schemas.\+user.\+User\+Create\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classschemas_1_1user_1_1UserCreate__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classschemas_1_1user_1_1UserCreate_a5970fb37d677ba78feed8f099e4943c5}\label{classschemas_1_1user_1_1UserCreate_a5970fb37d677ba78feed8f099e4943c5} 
+str {\bfseries password}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classschemas_1_1user_1_1UserBase}{schemas.\+user.\+User\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+Email\+Str {\bfseries email}
+\item 
+Optional {\bfseries nome} = None
+\item 
+Optional {\bfseries data\+\_\+nascimento} = None
+\item 
+Optional {\bfseries altura\+\_\+cm} = None
+\item 
+Optional {\bfseries peso\+\_\+kg} = None
+\item 
+Optional {\bfseries sexo} = None
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Schema para validar os dados ao criar um novo utilizador. 
+
+\begin{DoxyVerb}Herda os campos de UserBase e adiciona o campo de senha,
+que é obrigatório apenas no momento do registo.
+
+Attributes:
+    password (str): Senha do utilizador. Será processada para gerar um hash antes de ser guardada.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/schemas/\mbox{\hyperlink{schemas_2user_8py}{user.\+py}}\end{DoxyCompactItemize}

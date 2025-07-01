@@ -1,0 +1,9 @@
+<map id="schemas.user.User" name="schemas.user.User">
+<area shape="rect" id="Node000001" title="Schema principal usado para retornar os dados de um utilizador na API." alt="" coords="37,225,182,251"/>
+<area shape="rect" id="Node000002" href="$classschemas_1_1user_1_1UserInDBBase.html" title="Schema base para representar um utilizador lido da base de dados." alt="" coords="5,152,213,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,191,112,225,107,225,107,191"/>
+<area shape="rect" id="Node000003" href="$classschemas_1_1user_1_1UserBase.html" title="Schema base que define os campos comuns e editáveis de um utilizador." alt="" coords="21,79,198,104"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="112,118,112,152,107,152,107,118"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="62,5,157,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="112,44,112,79,107,79,107,44"/>
+</map>

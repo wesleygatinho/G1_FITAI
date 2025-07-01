@@ -1,0 +1,78 @@
+\doxysection{core.\+config.\+Settings Class Reference}
+\hypertarget{classcore_1_1config_1_1Settings}{}\label{classcore_1_1config_1_1Settings}\index{core.config.Settings@{core.config.Settings}}
+
+
+Classe para gerenciar as configurações da aplicação.  
+
+
+
+
+Inheritance diagram for core.\+config.\+Settings\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{classcore_1_1config_1_1Settings__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for core.\+config.\+Settings\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{classcore_1_1config_1_1Settings__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classcore_1_1config_1_1Settings_1_1Config}{Config}}
+\begin{DoxyCompactList}\small\item\em Configuração do Pydantic Settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classcore_1_1config_1_1Settings_a9b3bbdad8d4185c4f35d9025c91b6f6f}\label{classcore_1_1config_1_1Settings_a9b3bbdad8d4185c4f35d9025c91b6f6f} 
+str {\bfseries DATABASE\+\_\+\+URL} = os.\+getenv("{}DATABASE\+\_\+\+URL"{}, "{}postgresql\+://user\+:password@localhost\+:5432/fitai\+\_\+db"{})
+\item 
+\Hypertarget{classcore_1_1config_1_1Settings_a29eee0ff89dea3fda85507c7f2825182}\label{classcore_1_1config_1_1Settings_a29eee0ff89dea3fda85507c7f2825182} 
+str {\bfseries SECRET\+\_\+\+KEY} = os.\+getenv("{}SECRET\+\_\+\+KEY"{}, "{}uma-\/chave-\/secreta-\/muito-\/longa-\/e-\/aleatoria"{})
+\item 
+\Hypertarget{classcore_1_1config_1_1Settings_aa9a7463f3ccc007e005b3d5baa22a421}\label{classcore_1_1config_1_1Settings_aa9a7463f3ccc007e005b3d5baa22a421} 
+str {\bfseries ALGORITHM} = "{}HS256"{}
+\item 
+\Hypertarget{classcore_1_1config_1_1Settings_a72f7a11540b31af9f2a44fc24c57ed9f}\label{classcore_1_1config_1_1Settings_a72f7a11540b31af9f2a44fc24c57ed9f} 
+int {\bfseries ACCESS\+\_\+\+TOKEN\+\_\+\+EXPIRE\+\_\+\+MINUTES} = 30
+\item 
+\Hypertarget{classcore_1_1config_1_1Settings_aa55487be3d8f4a12f943ae9d1e899712}\label{classcore_1_1config_1_1Settings_aa55487be3d8f4a12f943ae9d1e899712} 
+str {\bfseries GOOGLE\+\_\+\+API\+\_\+\+KEY} = os.\+getenv("{}GOOGLE\+\_\+\+API\+\_\+\+KEY"{}, "{}CHAVE\+\_\+\+NAO\+\_\+\+CONFIGURADA"{})
+\item 
+\Hypertarget{classcore_1_1config_1_1Settings_a32bacfd8d749f78cee6a54fd3df51527}\label{classcore_1_1config_1_1Settings_a32bacfd8d749f78cee6a54fd3df51527} 
+str {\bfseries GOOGLE\+\_\+\+CLIENT\+\_\+\+ID} = os.\+getenv("{}GOOGLE\+\_\+\+CLIENT\+\_\+\+ID"{}, "{}"{})
+\item 
+\Hypertarget{classcore_1_1config_1_1Settings_a73eea34b2b32b83d52953b33c7a2d810}\label{classcore_1_1config_1_1Settings_a73eea34b2b32b83d52953b33c7a2d810} 
+str {\bfseries GOOGLE\+\_\+\+CLIENT\+\_\+\+SECRET} = os.\+getenv("{}GOOGLE\+\_\+\+CLIENT\+\_\+\+SECRET"{}, "{}"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe para gerenciar as configurações da aplicação. 
+
+\begin{DoxyVerb}Lê as configurações a partir de variáveis de ambiente, com valores padrão
+de fallback para um ambiente de desenvolvimento local.
+
+Attributes:
+    DATABASE_URL (str): URL de conexão com a base de dados PostgreSQL.
+    SECRET_KEY (str): Chave secreta usada para assinar os tokens JWT.
+    ALGORITHM (str): Algoritmo de criptografia para os tokens JWT.
+    ACCESS_TOKEN_EXPIRE_MINUTES (int): Tempo de expiração do token de acesso em minutos.
+    GOOGLE_API_KEY (str): Chave da API para aceder aos serviços do Google Gemini.
+    GOOGLE_CLIENT_ID (str): Credencial para o login social com o Google (OAuth2).
+    GOOGLE_CLIENT_SECRET (str): Credencial para o login social com o Google (OAuth2).
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/core/\mbox{\hyperlink{config_8py}{config.\+py}}\end{DoxyCompactItemize}

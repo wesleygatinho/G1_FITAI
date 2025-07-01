@@ -1,0 +1,65 @@
+\doxysection{models.\+progress\+\_\+record.\+Registro\+Progresso Class Reference}
+\hypertarget{classmodels_1_1progress__record_1_1RegistroProgresso}{}\label{classmodels_1_1progress__record_1_1RegistroProgresso}\index{models.progress\_record.RegistroProgresso@{models.progress\_record.RegistroProgresso}}
+
+
+Modelo base para todos os tipos de registos de progresso.  
+
+
+
+
+Inheritance diagram for models.\+progress\+\_\+record.\+Registro\+Progresso\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmodels_1_1progress__record_1_1RegistroProgresso__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for models.\+progress\+\_\+record.\+Registro\+Progresso\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classmodels_1_1progress__record_1_1RegistroProgresso__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1RegistroProgresso_a31e9bb3537083806192e2421b593979a}\label{classmodels_1_1progress__record_1_1RegistroProgresso_a31e9bb3537083806192e2421b593979a} 
+{\bfseries id} = Column(UUID(as\+\_\+uuid=True), primary\+\_\+key=True, default=uuid.\+uuid4)
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1RegistroProgresso_a8003221dec1345c36e8fb1d75d3d588c}\label{classmodels_1_1progress__record_1_1RegistroProgresso_a8003221dec1345c36e8fb1d75d3d588c} 
+{\bfseries data} = Column(Date\+Time, default=datetime.\+utcnow, nullable=False)
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1RegistroProgresso_a69471383a8af3e619bc6aedfc11dbb54}\label{classmodels_1_1progress__record_1_1RegistroProgresso_a69471383a8af3e619bc6aedfc11dbb54} 
+{\bfseries user\+\_\+id} = Column(UUID(as\+\_\+uuid=True), Foreign\+Key("{}users.\+id"{}), nullable=False)
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1RegistroProgresso_a53983260e388293927cd52f0e4eaf3a8}\label{classmodels_1_1progress__record_1_1RegistroProgresso_a53983260e388293927cd52f0e4eaf3a8} 
+{\bfseries type} = Column(String(50))
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1RegistroProgresso_a5945c39910af8bab1afe8d993bdcadf1}\label{classmodels_1_1progress__record_1_1RegistroProgresso_a5945c39910af8bab1afe8d993bdcadf1} 
+{\bfseries owner} = relationship("{}User"{}, back\+\_\+populates="{}registros\+\_\+progresso"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Modelo base para todos os tipos de registos de progresso. 
+
+\begin{DoxyVerb}Usa a estratégia de herança "Joined Table" do SQLAlchemy para permitir
+diferentes tipos de registos partilhando campos comuns.
+
+Attributes:
+    id (UUID): ID único para cada registo de progresso.
+    data (DateTime): Data e hora do registo, preenchida com a data/hora atual por padrão.
+    user_id (UUID): Chave estrangeira que liga o registo ao utilizador.
+    type (str): Coluna "discriminadora" que armazena o tipo de subclasse (ex: "peso", "cardio").
+    owner (relationship): Relacionamento para aceder ao objeto User a partir de um registo de progresso.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/models/\mbox{\hyperlink{models_2progress__record_8py}{progress\+\_\+record.\+py}}\end{DoxyCompactItemize}

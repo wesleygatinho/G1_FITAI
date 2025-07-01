@@ -1,0 +1,7 @@
+<map id="schemas.user.UserCreate" name="schemas.user.UserCreate">
+<area shape="rect" id="Node000001" title="Schema para validar os dados ao criar um novo utilizador." alt="" coords="5,152,193,177"/>
+<area shape="rect" id="Node000002" href="$classschemas_1_1user_1_1UserBase.html" title="Schema base que define os campos comuns e editáveis de um utilizador." alt="" coords="11,79,188,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,118,102,152,97,152,97,118"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="52,5,147,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="102,44,102,79,97,79,97,44"/>
+</map>

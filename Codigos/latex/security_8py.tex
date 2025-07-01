@@ -1,0 +1,86 @@
+\doxysection{backend/app/core/security.py File Reference}
+\hypertarget{security_8py}{}\label{security_8py}\index{backend/app/core/security.py@{backend/app/core/security.py}}
+
+
+Fornece funções de utilidade para segurança, como hashing de senhas e criação de tokens JWT.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{security_8py_ab01612f1c7a8f899ae3906a654bff985}{core.\+security.\+verify\+\_\+password}} (str plain\+\_\+password, str hashed\+\_\+password)
+\begin{DoxyCompactList}\small\item\em Verifica se uma senha em texto plano corresponde a um hash existente. \end{DoxyCompactList}\item 
+str \mbox{\hyperlink{security_8py_a20231d0536159113040937b93e5271c0}{core.\+security.\+get\+\_\+password\+\_\+hash}} (str password)
+\begin{DoxyCompactList}\small\item\em Gera um hash seguro para uma senha em texto plano. \end{DoxyCompactList}\item 
+str \mbox{\hyperlink{security_8py_a775bc0b168996889a9df5b5d5a51767b}{core.\+security.\+create\+\_\+access\+\_\+token}} (dict data, Optional\mbox{[}timedelta\mbox{]} expires\+\_\+delta=None)
+\begin{DoxyCompactList}\small\item\em Cria um novo token de acesso JWT. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{security_8py_ad557ee0bd9284def82c58b10bf76ab22}\label{security_8py_ad557ee0bd9284def82c58b10bf76ab22} 
+{\bfseries core.\+security.\+pwd\+\_\+context} = Crypt\+Context(schemes=\mbox{[}"{}bcrypt"{}\mbox{]}, deprecated="{}auto"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fornece funções de utilidade para segurança, como hashing de senhas e criação de tokens JWT. 
+
+\begin{DoxyAuthor}{Author}
+André Luis Aguiar do Nascimento 
+
+Hugo Samuel de Lima Oliveira 
+
+Leonardo Sampaio Serra 
+
+Lucas Emanoel Amaral Gomes 
+
+Wesley dos Santos Gatinho 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{security_8py_a775bc0b168996889a9df5b5d5a51767b}\label{security_8py_a775bc0b168996889a9df5b5d5a51767b} 
+\index{security.py@{security.py}!create\_access\_token@{create\_access\_token}}
+\index{create\_access\_token@{create\_access\_token}!security.py@{security.py}}
+\doxysubsubsection{\texorpdfstring{create\_access\_token()}{create\_access\_token()}}
+{\footnotesize\ttfamily  str core.\+security.\+create\+\_\+access\+\_\+token (\begin{DoxyParamCaption}\item[{dict}]{data,  }\item[{Optional\mbox{[}timedelta\mbox{]} }]{expires\+\_\+delta = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Cria um novo token de acesso JWT. 
+
+\begin{DoxyVerb}Codifica os dados fornecidos num token JWT, adicionando um tempo de expiração.
+Se nenhum 'expires_delta' for fornecido, usa o tempo padrão das configurações.
+
+:param (dict) data: O payload (dados) a ser incluído no token. Deve conter o 'sub' (subject).
+:param (Optional[timedelta]) expires_delta: Tempo de vida opcional para o token.
+:return (str): O token de acesso JWT codificado como uma string.
+\end{DoxyVerb}
+ \Hypertarget{security_8py_a20231d0536159113040937b93e5271c0}\label{security_8py_a20231d0536159113040937b93e5271c0} 
+\index{security.py@{security.py}!get\_password\_hash@{get\_password\_hash}}
+\index{get\_password\_hash@{get\_password\_hash}!security.py@{security.py}}
+\doxysubsubsection{\texorpdfstring{get\_password\_hash()}{get\_password\_hash()}}
+{\footnotesize\ttfamily  str core.\+security.\+get\+\_\+password\+\_\+hash (\begin{DoxyParamCaption}\item[{str}]{password }\end{DoxyParamCaption})}
+
+
+
+Gera um hash seguro para uma senha em texto plano. 
+
+\begin{DoxyVerb}:param (str) password: A senha em texto plano a ser processada.
+:return (str): O hash da senha gerado.
+\end{DoxyVerb}
+ \Hypertarget{security_8py_ab01612f1c7a8f899ae3906a654bff985}\label{security_8py_ab01612f1c7a8f899ae3906a654bff985} 
+\index{security.py@{security.py}!verify\_password@{verify\_password}}
+\index{verify\_password@{verify\_password}!security.py@{security.py}}
+\doxysubsubsection{\texorpdfstring{verify\_password()}{verify\_password()}}
+{\footnotesize\ttfamily  bool core.\+security.\+verify\+\_\+password (\begin{DoxyParamCaption}\item[{str}]{plain\+\_\+password,  }\item[{str}]{hashed\+\_\+password }\end{DoxyParamCaption})}
+
+
+
+Verifica se uma senha em texto plano corresponde a um hash existente. 
+
+\begin{DoxyVerb}:param (str) plain_password: A senha em texto plano a ser verificada.
+:param (str) hashed_password: O hash da senha armazenado na base de dados.
+:return (bool): True se a senha corresponder, False caso contrário.
+\end{DoxyVerb}
+ 

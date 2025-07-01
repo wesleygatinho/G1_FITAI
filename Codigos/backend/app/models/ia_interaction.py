@@ -1,29 +1,45 @@
+"""
+@file ia_interaction.py
+@brief Define o modelo SQLAlchemy para a tabela 'registro_interacao_ia'.
+@author André Luis Aguiar do Nascimento
+@author Hugo Samuel de Lima Oliveira
+@author Leonardo Sampaio Serra
+@author Lucas Emanoel Amaral Gomes
+@author Wesley dos Santos Gatinho
+"""
+
 import uuid
 from sqlalchemy import Column, String, Text, ForeignKey, DateTime, UUID
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
-# Importamos a Base declarativa do nosso modelo de utilizador para manter tudo ligado.
+# Importa a Base declarativa a partir do módulo user para manter a ligação entre os modelos.
 from .user import Base
 
 class RegistroInteracaoIA(Base):
+    """Modelo para a tabela 'registro_interacao_ia'.
+
+    Armazena o histórico de todas as interações entre um utilizador e o serviço
+    de IA generativa, guardando o prompt e a resposta correspondente.
+
+    Attributes:
+        id (UUID): ID único do registo de interação, gerado automaticamente.
+        data (DateTime): Data e hora em que a interação ocorreu.
+        prompt_usuario (Text): O prompt (pergunta) que o utilizador enviou para a IA.
+        resposta_ia (Text): A resposta que a IA gerou para o prompt do utilizador.
+        user_id (UUID): Chave estrangeira que liga o registo ao utilizador que fez a pergunta.
+        owner (relationship): Relacionamento de volta para o utilizador.
     """
-    Modelo para a tabela 'registro_interacao_ia', como definido no diagrama.
-    Armazena o prompt do utilizador e a resposta gerada pela IA.
-    """
+    # Nome da tabela na base de dados.
     __tablename__ = "registro_interacao_ia"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     data = Column(DateTime, default=datetime.utcnow, nullable=False)
     
-    # O prompt (pergunta) que o utilizador enviou.
     prompt_usuario = Column(Text, nullable=False)
     
-    # A resposta que a IA gerou.
     resposta_ia = Column(Text, nullable=False)
 
-    # Ligação ao utilizador que fez a pergunta.
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
 
-    # Relacionamento de volta para o utilizador.
     owner = relationship("User", back_populates="registros_interacao_ia")

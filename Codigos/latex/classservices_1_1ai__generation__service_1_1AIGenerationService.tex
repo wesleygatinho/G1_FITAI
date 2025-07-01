@@ -1,0 +1,108 @@
+\doxysection{services.\+ai\+\_\+generation\+\_\+service.\+AIGeneration\+Service Class Reference}
+\hypertarget{classservices_1_1ai__generation__service_1_1AIGenerationService}{}\label{classservices_1_1ai__generation__service_1_1AIGenerationService}\index{services.ai\_generation\_service.AIGenerationService@{services.ai\_generation\_service.AIGenerationService}}
+
+
+Encapsula a lógica para fazer chamadas à API do Google Gemini.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classservices_1_1ai__generation__service_1_1AIGenerationService_a413b982bab69e44cc076e0d3a082f1c9}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\begin{DoxyCompactList}\small\item\em Inicializa o serviço de geração de IA. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classservices_1_1ai__generation__service_1_1AIGenerationService_aa83e3ec036a751f1eaa937949abdee7a}{get\+\_\+daily\+\_\+fitness\+\_\+tip}} (self)
+\begin{DoxyCompactList}\small\item\em Gera uma dica de fitness diária usando a IA. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classservices_1_1ai__generation__service_1_1AIGenerationService_ab7e5897b1fdf2be97bfb952c50d4d2b4}{generate\+\_\+custom\+\_\+workout\+\_\+plan}} (self, str prompt)
+\begin{DoxyCompactList}\small\item\em Cria um plano de treino personalizado com base em um prompt do usuário. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classservices_1_1ai__generation__service_1_1AIGenerationService_af8a1182feff81fcf12848b3a2c014296}{extract\+\_\+data\+\_\+from\+\_\+image\+\_\+with\+\_\+gemini}} (self, str image\+\_\+base64, str data\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Extrai dados estruturados de uma imagem usando o modelo multimodal do Gemini. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classservices_1_1ai__generation__service_1_1AIGenerationService_ab05abe2da429e1e5194424a36e30a7f3}\label{classservices_1_1ai__generation__service_1_1AIGenerationService_ab05abe2da429e1e5194424a36e30a7f3} 
+{\bfseries api\+\_\+key}
+\item 
+\Hypertarget{classservices_1_1ai__generation__service_1_1AIGenerationService_af29a604502c322baa8af9f3d8f96ca71}\label{classservices_1_1ai__generation__service_1_1AIGenerationService_af29a604502c322baa8af9f3d8f96ca71} 
+{\bfseries model}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Encapsula a lógica para fazer chamadas à API do Google Gemini. 
+
+\begin{DoxyVerb}Esta classe gerencia a configuração do modelo, a geração de conteúdo de texto
+e a extração de dados de imagens (OCR) usando o Gemini.
+
+Attributes:
+    api_key (str): A chave da API do Google carregada a partir das configurações.
+    model (genai.GenerativeModel): A instância do modelo generativo 'gemini-1.5-flash',
+                                   ou None se a configuração falhar.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classservices_1_1ai__generation__service_1_1AIGenerationService_a413b982bab69e44cc076e0d3a082f1c9}\label{classservices_1_1ai__generation__service_1_1AIGenerationService_a413b982bab69e44cc076e0d3a082f1c9} 
+\index{services.ai\_generation\_service.AIGenerationService@{services.ai\_generation\_service.AIGenerationService}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!services.ai\_generation\_service.AIGenerationService@{services.ai\_generation\_service.AIGenerationService}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily services.\+ai\+\_\+generation\+\_\+service.\+AIGeneration\+Service.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Inicializa o serviço de geração de IA. 
+
+\begin{DoxyVerb}    Configura o cliente do Google Gemini com a chave da API fornecida nas
+    configurações. Lida com exceções e avisa se a chave não estiver configurada.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classservices_1_1ai__generation__service_1_1AIGenerationService_af8a1182feff81fcf12848b3a2c014296}\label{classservices_1_1ai__generation__service_1_1AIGenerationService_af8a1182feff81fcf12848b3a2c014296} 
+\index{services.ai\_generation\_service.AIGenerationService@{services.ai\_generation\_service.AIGenerationService}!extract\_data\_from\_image\_with\_gemini@{extract\_data\_from\_image\_with\_gemini}}
+\index{extract\_data\_from\_image\_with\_gemini@{extract\_data\_from\_image\_with\_gemini}!services.ai\_generation\_service.AIGenerationService@{services.ai\_generation\_service.AIGenerationService}}
+\doxysubsubsection{\texorpdfstring{extract\_data\_from\_image\_with\_gemini()}{extract\_data\_from\_image\_with\_gemini()}}
+{\footnotesize\ttfamily services.\+ai\+\_\+generation\+\_\+service.\+AIGeneration\+Service.\+extract\+\_\+data\+\_\+from\+\_\+image\+\_\+with\+\_\+gemini (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{str}]{image\+\_\+base64,  }\item[{str}]{data\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+Extrai dados estruturados de uma imagem usando o modelo multimodal do Gemini. 
+
+\begin{DoxyVerb}    Decodifica uma imagem em base64 e a envia para a IA com um prompt específico
+    para extrair dados de peso, cardio ou medidas, retornando um JSON estruturado.
+
+    :param (str) image_base64: A imagem codificada em formato base64.
+    :param (str) data_type: O tipo de dado a extrair ('weight', 'cardio', 'measure').
+    :return (dict): Um dicionário JSON com os dados extraídos ou uma mensagem de erro.
+\end{DoxyVerb}
+ \Hypertarget{classservices_1_1ai__generation__service_1_1AIGenerationService_ab7e5897b1fdf2be97bfb952c50d4d2b4}\label{classservices_1_1ai__generation__service_1_1AIGenerationService_ab7e5897b1fdf2be97bfb952c50d4d2b4} 
+\index{services.ai\_generation\_service.AIGenerationService@{services.ai\_generation\_service.AIGenerationService}!generate\_custom\_workout\_plan@{generate\_custom\_workout\_plan}}
+\index{generate\_custom\_workout\_plan@{generate\_custom\_workout\_plan}!services.ai\_generation\_service.AIGenerationService@{services.ai\_generation\_service.AIGenerationService}}
+\doxysubsubsection{\texorpdfstring{generate\_custom\_workout\_plan()}{generate\_custom\_workout\_plan()}}
+{\footnotesize\ttfamily services.\+ai\+\_\+generation\+\_\+service.\+AIGeneration\+Service.\+generate\+\_\+custom\+\_\+workout\+\_\+plan (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{str}]{prompt }\end{DoxyParamCaption})}
+
+
+
+Cria um plano de treino personalizado com base em um prompt do usuário. 
+
+\begin{DoxyVerb}    :param (str) prompt: A solicitação do usuário para o plano de treino.
+    :return (dict): Um dicionário contendo o plano gerado ou uma mensagem de erro.
+\end{DoxyVerb}
+ \Hypertarget{classservices_1_1ai__generation__service_1_1AIGenerationService_aa83e3ec036a751f1eaa937949abdee7a}\label{classservices_1_1ai__generation__service_1_1AIGenerationService_aa83e3ec036a751f1eaa937949abdee7a} 
+\index{services.ai\_generation\_service.AIGenerationService@{services.ai\_generation\_service.AIGenerationService}!get\_daily\_fitness\_tip@{get\_daily\_fitness\_tip}}
+\index{get\_daily\_fitness\_tip@{get\_daily\_fitness\_tip}!services.ai\_generation\_service.AIGenerationService@{services.ai\_generation\_service.AIGenerationService}}
+\doxysubsubsection{\texorpdfstring{get\_daily\_fitness\_tip()}{get\_daily\_fitness\_tip()}}
+{\footnotesize\ttfamily services.\+ai\+\_\+generation\+\_\+service.\+AIGeneration\+Service.\+get\+\_\+daily\+\_\+fitness\+\_\+tip (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Gera uma dica de fitness diária usando a IA. 
+
+\begin{DoxyVerb}    Envia um prompt para a IA solicitando uma dica motivacional e prática.
+
+    :return (dict): Um dicionário contendo a dica gerada ou uma mensagem de erro.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/services/\mbox{\hyperlink{ai__generation__service_8py}{ai\+\_\+generation\+\_\+service.\+py}}\end{DoxyCompactItemize}

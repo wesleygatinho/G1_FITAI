@@ -1,0 +1,7 @@
+<map id="schemas.progress_record.CardioRecordBase" name="schemas.progress_record.CardioRecordBase">
+<area shape="rect" id="Node000001" title="Schema base para um registo de exercício cardiovascular." alt="" coords="11,123,203,163"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,100,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,43,101,121,96,123,61,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="125,5,202,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="155,45,118,123,114,121,150,43"/>
+</map>

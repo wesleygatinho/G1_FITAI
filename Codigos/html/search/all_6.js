@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['generate_5fcustom_5fworkout_5fplan_0',['generate_custom_workout_plan',['../classservices_1_1ai__generation__service_1_1AIGenerationService.html#ab7e5897b1fdf2be97bfb952c50d4d2b4',1,'services::ai_generation_service::AIGenerationService']]],
+  ['generate_5fplan_1',['generate_plan',['../ai__generator_8py.html#a4a97cd4119074f62959ad36334e0d042',1,'api::v1::endpoints::ai_generator']]],
+  ['get_5fbody_5fmeasure_5frecords_5fby_5fuser_2',['get_body_measure_records_by_user',['../crud_8py.html#ab67ef2bb2e16f6a387aedf6d1310da47',1,'services::crud']]],
+  ['get_5fcardio_5frecords_5fby_5fuser_3',['get_cardio_records_by_user',['../crud_8py.html#afa60f75b03cd56bcea605ed150850549',1,'services::crud']]],
+  ['get_5fcurrent_5factive_5fuser_4',['get_current_active_user',['../dependencies_8py.html#ab738312bbd77a6494a0a8521c93e7430',1,'core::dependencies']]],
+  ['get_5fcurrent_5fuser_5',['get_current_user',['../dependencies_8py.html#a7971dbfba62c55f9ff332b8f62168e14',1,'core::dependencies']]],
+  ['get_5fdaily_5ffitness_5ftip_6',['get_daily_fitness_tip',['../classservices_1_1ai__generation__service_1_1AIGenerationService.html#aa83e3ec036a751f1eaa937949abdee7a',1,'services::ai_generation_service::AIGenerationService']]],
+  ['get_5fdaily_5ftip_7',['get_daily_tip',['../ai__generator_8py.html#a0784c14e61aaf3d0ee50d4925e41c28f',1,'api::v1::endpoints::ai_generator']]],
+  ['get_5fdb_8',['get_db',['../database_8py.html#a0b8c9121a0789812b02b7164e80b8e99',1,'core::database']]],
+  ['get_5fexercicio_5fby_5fnome_9',['get_exercicio_by_nome',['../crud_8py.html#a9e13e73d90ee45b015cf3bdb486af7f1',1,'services::crud']]],
+  ['get_5fexercicios_10',['get_exercicios',['../crud_8py.html#a953feba1183aa1a257009ecc6f0a1984',1,'services::crud']]],
+  ['get_5fexercise_5finstructions_11',['get_exercise_instructions',['../api_2v1_2endpoints_2exercicio_8py.html#ada0f7345eda3f509700a2dd0adc5a080',1,'api.v1.endpoints.exercicio.get_exercise_instructions()'],['../exercises_8py.html#a5cffefdcc264da7c2ee5b08081dadcd5',1,'api.v1.endpoints.exercises.get_exercise_instructions()']]],
+  ['get_5fia_5finteractions_5fby_5fuser_12',['get_ia_interactions_by_user',['../crud_8py.html#a1b0d0062beb3d3814fd9ab5f69b6fccf',1,'services::crud']]],
+  ['get_5fpassword_5fhash_13',['get_password_hash',['../security_8py.html#a20231d0536159113040937b93e5271c0',1,'core::security']]],
+  ['get_5fsessions_5fby_5fuser_14',['get_sessions_by_user',['../crud_8py.html#ad086c557e400c9d22fa2d77540f41d9d',1,'services::crud']]],
+  ['get_5fuser_5fby_5femail_15',['get_user_by_email',['../crud_8py.html#a7ac22e3e3ebc9408869e22d948955012',1,'services::crud']]],
+  ['get_5fweight_5frecords_5fby_5fuser_16',['get_weight_records_by_user',['../crud_8py.html#a9a11d419f6ad8de31cc8813c4710520d',1,'services::crud']]],
+  ['googletoken_17',['GoogleToken',['../classapi_1_1v1_1_1endpoints_1_1auth_1_1GoogleToken.html',1,'api::v1::endpoints::auth']]]
+];

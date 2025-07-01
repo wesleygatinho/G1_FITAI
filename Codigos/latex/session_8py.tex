@@ -1,0 +1,74 @@
+\doxysection{backend/app/api/v1/endpoints/session.py File Reference}
+\hypertarget{session_8py}{}\label{session_8py}\index{backend/app/api/v1/endpoints/session.py@{backend/app/api/v1/endpoints/session.py}}
+
+
+Define os endpoints da API para a gestão de sessões de treino do utilizador.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{session_8py_a2adbd7138661ff7d64ce8d3b1e4d37a9}{api.\+v1.\+endpoints.\+session.\+read\+\_\+workout\+\_\+sessions}} (Session db=Depends(get\+\_\+db), int skip=0, int limit=25, User\+Model current\+\_\+user=Depends(get\+\_\+current\+\_\+active\+\_\+user))
+\begin{DoxyCompactList}\small\item\em Recupera o histórico paginado de sessões de treino para o utilizador autenticado. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{session_8py_ab2895ccea59bfafa64d03e219a86cac6}{api.\+v1.\+endpoints.\+session.\+create\+\_\+workout\+\_\+session}} (\texorpdfstring{$\ast$}{*}Session db=Depends(get\+\_\+db), Sessao\+De\+Treino\+Create session\+\_\+in, User\+Model current\+\_\+user=Depends(get\+\_\+current\+\_\+active\+\_\+user))
+\begin{DoxyCompactList}\small\item\em Cria uma nova sessão de treino para o utilizador autenticado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{session_8py_a45e30f6524896d7401202cd8a942062a}\label{session_8py_a45e30f6524896d7401202cd8a942062a} 
+{\bfseries api.\+v1.\+endpoints.\+session.\+router} = APIRouter()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Define os endpoints da API para a gestão de sessões de treino do utilizador. 
+
+\begin{DoxyAuthor}{Author}
+André Luis Aguiar do Nascimento 
+
+Hugo Samuel de Lima Oliveira 
+
+Leonardo Sampaio Serra 
+
+Lucas Emanoel Amaral Gomes 
+
+Wesley dos Santos Gatinho 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{session_8py_ab2895ccea59bfafa64d03e219a86cac6}\label{session_8py_ab2895ccea59bfafa64d03e219a86cac6} 
+\index{session.py@{session.py}!create\_workout\_session@{create\_workout\_session}}
+\index{create\_workout\_session@{create\_workout\_session}!session.py@{session.py}}
+\doxysubsubsection{\texorpdfstring{create\_workout\_session()}{create\_workout\_session()}}
+{\footnotesize\ttfamily api.\+v1.\+endpoints.\+session.\+create\+\_\+workout\+\_\+session (\begin{DoxyParamCaption}\item[{\texorpdfstring{$\ast$}{*}Session }]{db = {\ttfamily Depends(get\+\_\+db)},  }\item[{Sessao\+De\+Treino\+Create}]{session\+\_\+in,  }\item[{User\+Model }]{current\+\_\+user = {\ttfamily Depends(get\+\_\+current\+\_\+active\+\_\+user)} }\end{DoxyParamCaption})}
+
+
+
+Cria uma nova sessão de treino para o utilizador autenticado. 
+
+\begin{DoxyVerb}Recebe uma lista de exercícios realizados (itens da sessão) e os persiste na base de dados.
+
+:param (Session) db: A sessão da base de dados.
+:param (SessaoDeTreinoCreate) session_in: Os dados da sessão a ser criada, incluindo seus itens.
+:param (UserModel) current_user: O utilizador autenticado.
+:raises HTTPException: Se a sessão de treino não contiver nenhum item.
+:return (SessaoDeTreino): A sessão de treino recém-criada.
+\end{DoxyVerb}
+ \Hypertarget{session_8py_a2adbd7138661ff7d64ce8d3b1e4d37a9}\label{session_8py_a2adbd7138661ff7d64ce8d3b1e4d37a9} 
+\index{session.py@{session.py}!read\_workout\_sessions@{read\_workout\_sessions}}
+\index{read\_workout\_sessions@{read\_workout\_sessions}!session.py@{session.py}}
+\doxysubsubsection{\texorpdfstring{read\_workout\_sessions()}{read\_workout\_sessions()}}
+{\footnotesize\ttfamily api.\+v1.\+endpoints.\+session.\+read\+\_\+workout\+\_\+sessions (\begin{DoxyParamCaption}\item[{Session }]{db = {\ttfamily Depends(get\+\_\+db)},  }\item[{int }]{skip = {\ttfamily 0},  }\item[{int }]{limit = {\ttfamily 25},  }\item[{User\+Model }]{current\+\_\+user = {\ttfamily Depends(get\+\_\+current\+\_\+active\+\_\+user)} }\end{DoxyParamCaption})}
+
+
+
+Recupera o histórico paginado de sessões de treino para o utilizador autenticado. 
+
+\begin{DoxyVerb}:param (Session) db: A sessão da base de dados.
+:param (int) skip: O número de sessões a pular (para paginação).
+:param (int) limit: O número máximo de sessões a retornar.
+:param (UserModel) current_user: O utilizador autenticado.
+:return (List[SessaoDeTreino]): Uma lista de objetos de sessão de treino.
+\end{DoxyVerb}
+ 

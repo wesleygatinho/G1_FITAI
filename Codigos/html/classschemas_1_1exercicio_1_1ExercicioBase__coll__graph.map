@@ -1,0 +1,7 @@
+<map id="schemas.exercicio.ExercicioBase" name="schemas.exercicio.ExercicioBase">
+<area shape="rect" id="Node000001" title="Schema base que define os campos comuns de um exercício." alt="" coords="5,108,241,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="21,5,116,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,42,119,107,115,109,79,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="141,5,218,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="168,44,132,109,127,107,164,42"/>
+</map>

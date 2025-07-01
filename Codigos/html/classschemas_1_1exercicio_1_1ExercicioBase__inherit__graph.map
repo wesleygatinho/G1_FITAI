@@ -1,0 +1,11 @@
+<map id="schemas.exercicio.ExercicioBase" name="schemas.exercicio.ExercicioBase">
+<area shape="rect" id="Node000001" title="Schema base que define os campos comuns de um exercício." alt="" coords="148,63,384,88"/>
+<area shape="rect" id="Node000003" href="$classschemas_1_1exercicio_1_1Exercicio.html" title="Schema usado para representar um exercício lido da base de dados." alt="" coords="432,5,636,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="339,57,473,28,475,33,340,62"/>
+<area shape="rect" id="Node000004" href="$classschemas_1_1exercicio_1_1ExercicioCreate.html" title="Schema usado para validar os dados ao criar um novo exercício." alt="" coords="432,55,636,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="398,73,432,73,432,78,398,78"/>
+<area shape="rect" id="Node000005" href="$classschemas_1_1exercicio_1_1ExercicioUpdate.html" title="Schema usado para validar os dados ao atualizar um exercício existente." alt="" coords="432,119,636,159"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="334,89,450,117,449,122,333,94"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,63,100,88"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,73,148,73,148,78,114,78"/>
+</map>

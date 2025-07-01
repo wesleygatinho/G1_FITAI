@@ -1,0 +1,23 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,159,60,184"/>
+<area shape="rect" id="Node000001" href="$classmodels_1_1exercicio_1_1Exercicio.html" title="Modelo para a tabela &#39;exercicios&#39;." alt="" coords="129,5,323,31"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="39,144,63,92,82,64,106,41,130,28,132,33,110,45,86,68,68,94,44,147"/>
+<area shape="rect" id="Node000002" href="$classmodels_1_1exercise__session_1_1ItemSessao.html" title="Modelo para a tabela &#39;itens_sessao&#39;." alt="" coords="132,55,320,95"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="53,147,77,125,107,105,134,93,136,98,109,110,81,129,57,151"/>
+<area shape="rect" id="Node000003" href="$classmodels_1_1exercise__session_1_1SessaoDeTreino.html" title="Modelo para a tabela &#39;sessoes_de_treino&#39;." alt="" coords="132,119,320,159"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="73,162,131,152,132,158,74,167"/>
+<area shape="rect" id="Node000004" href="$classmodels_1_1ia__interaction_1_1RegistroInteracaoIA.html" title="Modelo para a tabela &#39;registro_interacao_ia&#39;." alt="" coords="115,183,337,223"/>
+<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="74,175,115,182,115,188,73,181"/>
+<area shape="rect" id="Node000005" href="$classmodels_1_1progress__record_1_1RegistroProgresso.html" title="Modelo base para todos os tipos de registos de progresso." alt="" coords="108,247,344,287"/>
+<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="57,192,81,214,109,233,136,245,134,250,107,238,77,218,53,196"/>
+<area shape="rect" id="Node000010" href="$classmodels_1_1user_1_1User.html" title="Modelo de dados para a tabela &#39;users&#39;, representando um utilizador no sistema." alt="" coords="159,312,293,337"/>
+<area shape="poly" id="edge10_Node000000_Node000010" title=" " alt="" coords="44,196,68,248,86,275,110,297,133,310,159,317,158,323,131,315,106,301,82,278,63,251,39,198"/>
+<area shape="rect" id="Node000006" href="$classmodels_1_1progress__record_1_1BodyMeasureRecord.html" title="Modelo para Registos de Medidas Corporais, herdando de RegistroProgresso." alt="" coords="403,151,617,191"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="325,240,343,233,367,217,391,201,422,189,424,194,393,206,369,222,345,238,327,245"/>
+<area shape="rect" id="Node000007" href="$classmodels_1_1progress__record_1_1CardioRecord.html" title="Modelo para Registos de Exercício Cardiovascular, herdando de RegistroProgresso." alt="" coords="398,215,622,255"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="357,250,397,245,398,251,358,255"/>
+<area shape="rect" id="Node000008" href="$classmodels_1_1progress__record_1_1RegistroImagemCorpo.html" title="Modelo para Registos de Imagem Corporal, herdando de RegistroProgresso." alt="" coords="392,279,628,319"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="358,279,392,283,391,289,357,285"/>
+<area shape="rect" id="Node000009" href="$classmodels_1_1progress__record_1_1WeightRecord.html" title="Modelo para Registos de Peso, herdando de RegistroProgresso." alt="" coords="397,343,623,383"/>
+<area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="327,289,345,297,369,313,393,329,424,341,422,346,391,334,367,318,343,302,325,294"/>
+</map>
