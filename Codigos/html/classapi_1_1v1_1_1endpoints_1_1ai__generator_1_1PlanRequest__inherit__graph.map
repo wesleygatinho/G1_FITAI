@@ -1,0 +1,5 @@
+<map id="api.v1.endpoints.ai_generator.PlanRequest" name="api.v1.endpoints.ai_generator.PlanRequest">
+<area shape="rect" id="Node000001" title="Schema para a requisição de geração de plano de treino." alt="" coords="5,79,181,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="46,5,141,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,44,96,79,91,79,91,44"/>
+</map>

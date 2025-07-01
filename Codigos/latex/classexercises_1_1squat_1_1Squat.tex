@@ -1,0 +1,88 @@
+\doxysection{exercises.\+squat.\+Squat Class Reference}
+\hypertarget{classexercises_1_1squat_1_1Squat}{}\label{classexercises_1_1squat_1_1Squat}\index{exercises.squat.Squat@{exercises.squat.Squat}}
+
+
+Gerencia o estado, contagem de repeti√ß√µes e feedback para o exerc√≠cio de agachamento.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexercises_1_1squat_1_1Squat_ab8fe08b347b50cf39d4f23de2b6cdf18}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\begin{DoxyCompactList}\small\item\em Inicializa o rastreador do exerc√≠cio de agachamento. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classexercises_1_1squat_1_1Squat_a25179e5ff9d9f35e81d1994fa07ea21f}{track\+\_\+squat}} (self, landmarks, image\+\_\+shape)
+\begin{DoxyCompactList}\small\item\em Processa os marcos de pose para rastrear uma repeti√ß√£o do agachamento. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classexercises_1_1squat_1_1Squat_a36b49804cb364c4464b2f8c47081fc49}\label{classexercises_1_1squat_1_1Squat_a36b49804cb364c4464b2f8c47081fc49} 
+{\bfseries stage}
+\item 
+\Hypertarget{classexercises_1_1squat_1_1Squat_ab8bdd402b3aa818716538cbf6f45923f}\label{classexercises_1_1squat_1_1Squat_ab8bdd402b3aa818716538cbf6f45923f} 
+{\bfseries counter}
+\item 
+\Hypertarget{classexercises_1_1squat_1_1Squat_aa1cf418b53e50937b51fd5a1ff9df71b}\label{classexercises_1_1squat_1_1Squat_aa1cf418b53e50937b51fd5a1ff9df71b} 
+{\bfseries feedback}
+\item 
+\Hypertarget{classexercises_1_1squat_1_1Squat_a24340ce25174463bc244ff0e680c9b17}\label{classexercises_1_1squat_1_1Squat_a24340ce25174463bc244ff0e680c9b17} 
+{\bfseries angle\+\_\+min}
+\item 
+\Hypertarget{classexercises_1_1squat_1_1Squat_a33f6c2ceff394bdf8d6102a2363daba4}\label{classexercises_1_1squat_1_1Squat_a33f6c2ceff394bdf8d6102a2363daba4} 
+{\bfseries angle\+\_\+max}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gerencia o estado, contagem de repeti√ß√µes e feedback para o exerc√≠cio de agachamento. 
+
+\begin{DoxyVerb}Esta classe utiliza os marcos de pose para calcular os √¢ngulos do joelho e do tronco,
+contar as repeti√ß√µes e fornecer feedback sobre a profundidade e a postura.
+
+Attributes:
+    stage (str): O est√°gio atual do exerc√≠cio, podendo ser 'up' (em p√©) ou 'down' (agachado).
+    counter (int): Contador de repeti√ß√µes completas.
+    feedback (str): Mensagem de texto para orientar o usu√°rio.
+    angle_min (int): √Çngulo m√≠nimo do joelho para registrar a fase 'down'.
+    angle_max (int): √Çngulo m√°ximo do joelho para registrar a fase 'up'.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classexercises_1_1squat_1_1Squat_ab8fe08b347b50cf39d4f23de2b6cdf18}\label{classexercises_1_1squat_1_1Squat_ab8fe08b347b50cf39d4f23de2b6cdf18} 
+\index{exercises.squat.Squat@{exercises.squat.Squat}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!exercises.squat.Squat@{exercises.squat.Squat}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily exercises.\+squat.\+Squat.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Inicializa o rastreador do exerc√≠cio de agachamento. 
+
+\begin{DoxyVerb}    Define os valores iniciais para o contador, o est√°gio do movimento e os
+    limites de √¢ngulo que caracterizam a repeti√ß√£o.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classexercises_1_1squat_1_1Squat_a25179e5ff9d9f35e81d1994fa07ea21f}\label{classexercises_1_1squat_1_1Squat_a25179e5ff9d9f35e81d1994fa07ea21f} 
+\index{exercises.squat.Squat@{exercises.squat.Squat}!track\_squat@{track\_squat}}
+\index{track\_squat@{track\_squat}!exercises.squat.Squat@{exercises.squat.Squat}}
+\doxysubsubsection{\texorpdfstring{track\_squat()}{track\_squat()}}
+{\footnotesize\ttfamily exercises.\+squat.\+Squat.\+track\+\_\+squat (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{landmarks,  }\item[{}]{image\+\_\+shape }\end{DoxyParamCaption})}
+
+
+
+Processa os marcos de pose para rastrear uma repeti√ß√£o do agachamento. 
+
+\begin{DoxyVerb}    Verifica a visibilidade dos marcos, calcula √¢ngulos, atualiza o est√°gio do
+    movimento, incrementa o contador e gera feedback de profundidade e postura.
+
+    :param (object) landmarks: O objeto de resultados do MediaPipe com a lista de marcos da pose.
+    :param (tuple) image_shape: A forma (altura, largura) do quadro (n√£o utilizado).
+    :return (tuple): Uma tupla contendo (contador, √¢ngulo, est√°gio, feedback, marcos, progresso).
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/exercises/\mbox{\hyperlink{squat_8py}{squat.\+py}}\end{DoxyCompactItemize}

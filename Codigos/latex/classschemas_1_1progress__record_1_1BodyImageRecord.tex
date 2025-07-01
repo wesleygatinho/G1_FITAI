@@ -1,0 +1,66 @@
+\doxysection{schemas.\+progress\+\_\+record.\+Body\+Image\+Record Class Reference}
+\hypertarget{classschemas_1_1progress__record_1_1BodyImageRecord}{}\label{classschemas_1_1progress__record_1_1BodyImageRecord}\index{schemas.progress\_record.BodyImageRecord@{schemas.progress\_record.BodyImageRecord}}
+
+
+Schema para representar um registo de imagem corporal lido da base de dados.  
+
+
+
+
+Inheritance diagram for schemas.\+progress\+\_\+record.\+Body\+Image\+Record\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{classschemas_1_1progress__record_1_1BodyImageRecord__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for schemas.\+progress\+\_\+record.\+Body\+Image\+Record\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classschemas_1_1progress__record_1_1BodyImageRecord__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1BodyImageRecord_1_1Config}{Config}}
+\begin{DoxyCompactList}\small\item\em Configuração Pydantic para mapeamento ORM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classschemas_1_1progress__record_1_1BodyImageRecord_a497a12fa178d0724410b878794c4cb83}\label{classschemas_1_1progress__record_1_1BodyImageRecord_a497a12fa178d0724410b878794c4cb83} 
+uuid {\bfseries id} .UUID
+\item 
+\Hypertarget{classschemas_1_1progress__record_1_1BodyImageRecord_a8925df4d2e5f56ac2ac3369858f4fb25}\label{classschemas_1_1progress__record_1_1BodyImageRecord_a8925df4d2e5f56ac2ac3369858f4fb25} 
+datetime {\bfseries data}
+\item 
+\Hypertarget{classschemas_1_1progress__record_1_1BodyImageRecord_a517fcb290c640cedc8a187172dcfe22b}\label{classschemas_1_1progress__record_1_1BodyImageRecord_a517fcb290c640cedc8a187172dcfe22b} 
+uuid {\bfseries user\+\_\+id} .UUID
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classschemas_1_1progress__record_1_1BodyImageRecordBase}{schemas.\+progress\+\_\+record.\+Body\+Image\+Record\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+str {\bfseries endereco\+\_\+imagem}
+\item 
+Optional {\bfseries posicao} = None
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Schema para representar um registo de imagem corporal lido da base de dados. 
+
+\begin{DoxyVerb}Attributes:
+    id (uuid.UUID): ID único do registo.
+    data (datetime): Data e hora do registo.
+    user_id (uuid.UUID): ID do utilizador associado.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/schemas/\mbox{\hyperlink{schemas_2progress__record_8py}{progress\+\_\+record.\+py}}\end{DoxyCompactItemize}

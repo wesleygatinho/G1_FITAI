@@ -1,0 +1,122 @@
+\doxysection{backend/app/main.py File Reference}
+\hypertarget{app_2main_8py}{}\label{app_2main_8py}\index{backend/app/main.py@{backend/app/main.py}}
+
+
+Arquivo principal para inicialização da API Fit\+AI, configuração dos endpoints e população inicial da base de dados.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{app_2main_8py_a3d2e079df3b0171a9d37d04f512090e5}{main.\+populate\+\_\+initial\+\_\+exercises}} ()
+\begin{DoxyCompactList}\small\item\em Popula a base de dados com um conjunto inicial de exercícios. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{app_2main_8py_a69845a571c8ef12e33ef07594f94c399}{main.\+read\+\_\+root}} ()
+\begin{DoxyCompactList}\small\item\em Endpoint principal (raiz) da API. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{app_2main_8py_a84490d23fa7a66ba4fbab70b4a53b6e5}\label{app_2main_8py_a84490d23fa7a66ba4fbab70b4a53b6e5} 
+{\bfseries main.\+bind}
+\item 
+\mbox{\hyperlink{app_2main_8py_a5fa94f0581009434c7a63791944d6ff4}{main.\+app}}
+\item 
+\Hypertarget{app_2main_8py_ab277227e15a80c8a674b8540cc01f33f}\label{app_2main_8py_ab277227e15a80c8a674b8540cc01f33f} 
+{\bfseries main.\+allow\+\_\+origins}
+\item 
+\Hypertarget{app_2main_8py_a723efd63c798243e87a130a80fcdafc0}\label{app_2main_8py_a723efd63c798243e87a130a80fcdafc0} 
+{\bfseries main.\+allow\+\_\+credentials}
+\item 
+\Hypertarget{app_2main_8py_a1b7923d71410345d3dbff8017b7e6f0d}\label{app_2main_8py_a1b7923d71410345d3dbff8017b7e6f0d} 
+{\bfseries main.\+allow\+\_\+methods}
+\item 
+\Hypertarget{app_2main_8py_ab58bda9b3875379c76aa7d3bd977b5bd}\label{app_2main_8py_ab58bda9b3875379c76aa7d3bd977b5bd} 
+{\bfseries main.\+allow\+\_\+headers}
+\item 
+\Hypertarget{app_2main_8py_a07dc19a957de3365d7a1ac8b010206c3}\label{app_2main_8py_a07dc19a957de3365d7a1ac8b010206c3} 
+{\bfseries main.\+api\+\_\+router}
+\item 
+\Hypertarget{app_2main_8py_a7221161d0128781b144c684790040251}\label{app_2main_8py_a7221161d0128781b144c684790040251} 
+{\bfseries main.\+prefix}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Arquivo principal para inicialização da API Fit\+AI, configuração dos endpoints e população inicial da base de dados. 
+
+\begin{DoxyAuthor}{Author}
+André Luis Aguiar do Nascimento 
+
+Hugo Samuel de Lima Oliveira 
+
+Leonardo Sampaio Serra 
+
+Lucas Emanoel Amaral Gomes 
+
+Wesley dos Santos Gatinho 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{app_2main_8py_a3d2e079df3b0171a9d37d04f512090e5}\label{app_2main_8py_a3d2e079df3b0171a9d37d04f512090e5} 
+\index{main.py@{main.py}!populate\_initial\_exercises@{populate\_initial\_exercises}}
+\index{populate\_initial\_exercises@{populate\_initial\_exercises}!main.py@{main.py}}
+\doxysubsubsection{\texorpdfstring{populate\_initial\_exercises()}{populate\_initial\_exercises()}}
+{\footnotesize\ttfamily main.\+populate\+\_\+initial\+\_\+exercises (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Popula a base de dados com um conjunto inicial de exercícios. 
+
+\begin{DoxyVerb}Esta função verifica se os exercícios padrão ('squat', 'push_up', 'hammer_curl')
+já existem na base de dados. Caso não existam, eles são criados e adicionados.
+A conexão com a base de dados é aberta e fechada dentro da função.
+
+:return: None
+\end{DoxyVerb}
+
+
+\begin{DoxyVerb}Esta função verifica se os exercícios padrão ('squat', 'push_up', 'hammer_curl')
+já existem na base de dados. Caso não existam, eles são criados e adicionados.
+A conexão com a base de dados é aberta no início da função e fechada ao final.
+
+:return: None
+\end{DoxyVerb}
+ \Hypertarget{app_2main_8py_a69845a571c8ef12e33ef07594f94c399}\label{app_2main_8py_a69845a571c8ef12e33ef07594f94c399} 
+\index{main.py@{main.py}!read\_root@{read\_root}}
+\index{read\_root@{read\_root}!main.py@{main.py}}
+\doxysubsubsection{\texorpdfstring{read\_root()}{read\_root()}}
+{\footnotesize\ttfamily main.\+read\+\_\+root (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Endpoint principal (raiz) da API. 
+
+\begin{DoxyVerb}Retorna uma mensagem de boas-vindas para verificar se a API está operacional.
+
+:return (dict): Uma mensagem de boas-vindas em formato JSON.
+\end{DoxyVerb}
+
+
+\begin{DoxyVerb}Retorna uma mensagem de boas-vindas simples para verificar se a API está
+operacional.
+
+:return (dict): Uma mensagem de boas-vindas em formato JSON.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{app_2main_8py_a5fa94f0581009434c7a63791944d6ff4}\label{app_2main_8py_a5fa94f0581009434c7a63791944d6ff4} 
+\index{main.py@{main.py}!app@{app}}
+\index{app@{app}!main.py@{main.py}}
+\doxysubsubsection{\texorpdfstring{app}{app}}
+{\footnotesize\ttfamily main.\+app}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ FastAPI(}
+\DoxyCodeLine{00002\ \ \ \ \ title=\textcolor{stringliteral}{"{}FitAI\ API"{}},}
+\DoxyCodeLine{00003\ \ \ \ \ description=\textcolor{stringliteral}{"{}A\ API\ para\ o\ aplicativo\ de\ monitoramento\ de\ exercícios\ FitAI."{}},}
+\DoxyCodeLine{00004\ \ \ \ \ version=\textcolor{stringliteral}{"{}1.0.0"{}}}
+\DoxyCodeLine{00005\ )}
+
+\end{DoxyCode}

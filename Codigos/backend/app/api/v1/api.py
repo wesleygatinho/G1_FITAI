@@ -1,25 +1,32 @@
+"""
+@file api.py
+@brief Agrega todos os roteadores de endpoints da API v1.
+@author Gemini AI <example@example.com>
+"""
+
 from fastapi import APIRouter
 from .endpoints import auth, exercises, progress, ai_generator, session, users, exercicio
 
+# Cria o roteador principal da API v1, que incluirá todos os outros.
 api_router = APIRouter()
 
-# Roteador de Autenticação
+# Inclui o roteador de autenticação (login, etc.) com o prefixo /auth.
 api_router.include_router(auth.router, prefix="/auth", tags=["Authentication"])
 
-# Roteador de Análise de Exercícios
+# Inclui o roteador para a análise de frames de exercícios em tempo real.
 api_router.include_router(exercises.router, prefix="/exercises", tags=["Exercises"])
 
-# Roteador do Gerador com IA
+# Inclui o roteador para interações com a IA generativa (dicas, planos de treino, OCR).
 api_router.include_router(ai_generator.router, prefix="/ai", tags=["AI Generator"])
 
-# Roteador para Registo de Progresso
+# Inclui o roteador para o registo de progresso (peso, medidas, cardio).
 api_router.include_router(progress.router, prefix="/progress", tags=["Progress"])
 
-# NOVO ROTEADOR PARA SESSÕES DE TREINO
+# Inclui o roteador para a gestão de sessões de treino.
 api_router.include_router(session.router, prefix="/sessions", tags=["Workout Sessions"])
 
-# Roteador de Utilizadores
+# Inclui o roteador para a gestão de utilizadores (perfis, etc.).
 api_router.include_router(users.router, prefix="/users", tags=["Users"])
 
-# Roteador de Exercícios
+# Inclui o roteador para a gestão de exercícios (CRUD de exercícios).
 api_router.include_router(exercicio.router, prefix="/exercicios", tags=["Exercises Management"])

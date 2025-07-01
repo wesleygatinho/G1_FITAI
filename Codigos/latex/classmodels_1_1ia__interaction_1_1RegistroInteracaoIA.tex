@@ -1,0 +1,69 @@
+\doxysection{models.\+ia\+\_\+interaction.\+Registro\+Interacao\+IA Class Reference}
+\hypertarget{classmodels_1_1ia__interaction_1_1RegistroInteracaoIA}{}\label{classmodels_1_1ia__interaction_1_1RegistroInteracaoIA}\index{models.ia\_interaction.RegistroInteracaoIA@{models.ia\_interaction.RegistroInteracaoIA}}
+
+
+Modelo para a tabela \textquotesingle{}registro\+\_\+interacao\+\_\+ia\textquotesingle{}.  
+
+
+
+
+Inheritance diagram for models.\+ia\+\_\+interaction.\+Registro\+Interacao\+IA\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{classmodels_1_1ia__interaction_1_1RegistroInteracaoIA__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for models.\+ia\+\_\+interaction.\+Registro\+Interacao\+IA\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{classmodels_1_1ia__interaction_1_1RegistroInteracaoIA__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classmodels_1_1ia__interaction_1_1RegistroInteracaoIA_a7d9645920cd8612be44cefa72262edbc}\label{classmodels_1_1ia__interaction_1_1RegistroInteracaoIA_a7d9645920cd8612be44cefa72262edbc} 
+{\bfseries id} = Column(UUID(as\+\_\+uuid=True), primary\+\_\+key=True, default=uuid.\+uuid4)
+\item 
+\Hypertarget{classmodels_1_1ia__interaction_1_1RegistroInteracaoIA_a171321459688b6fb8a97ec415691981c}\label{classmodels_1_1ia__interaction_1_1RegistroInteracaoIA_a171321459688b6fb8a97ec415691981c} 
+{\bfseries data} = Column(Date\+Time, default=datetime.\+utcnow, nullable=False)
+\item 
+\Hypertarget{classmodels_1_1ia__interaction_1_1RegistroInteracaoIA_a885a8730f645308127ed2f179b0757f9}\label{classmodels_1_1ia__interaction_1_1RegistroInteracaoIA_a885a8730f645308127ed2f179b0757f9} 
+{\bfseries prompt\+\_\+usuario} = Column(Text, nullable=False)
+\item 
+\Hypertarget{classmodels_1_1ia__interaction_1_1RegistroInteracaoIA_ab07b2d923aec38ec222c1f38e1db3bc5}\label{classmodels_1_1ia__interaction_1_1RegistroInteracaoIA_ab07b2d923aec38ec222c1f38e1db3bc5} 
+{\bfseries resposta\+\_\+ia} = Column(Text, nullable=False)
+\item 
+\Hypertarget{classmodels_1_1ia__interaction_1_1RegistroInteracaoIA_a2f687942c5778df9547c7a213523110f}\label{classmodels_1_1ia__interaction_1_1RegistroInteracaoIA_a2f687942c5778df9547c7a213523110f} 
+{\bfseries user\+\_\+id} = Column(UUID(as\+\_\+uuid=True), Foreign\+Key("{}users.\+id"{}), nullable=False)
+\item 
+\Hypertarget{classmodels_1_1ia__interaction_1_1RegistroInteracaoIA_adf10adb9505f216d7b97665a20eba120}\label{classmodels_1_1ia__interaction_1_1RegistroInteracaoIA_adf10adb9505f216d7b97665a20eba120} 
+{\bfseries owner} = relationship("{}User"{}, back\+\_\+populates="{}registros\+\_\+interacao\+\_\+ia"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Modelo para a tabela \textquotesingle{}registro\+\_\+interacao\+\_\+ia\textquotesingle{}. 
+
+\begin{DoxyVerb}Armazena o histórico de todas as interações entre um utilizador e o serviço
+de IA generativa, guardando o prompt e a resposta correspondente.
+
+Attributes:
+    id (UUID): ID único do registo de interação, gerado automaticamente.
+    data (DateTime): Data e hora em que a interação ocorreu.
+    prompt_usuario (Text): O prompt (pergunta) que o utilizador enviou para a IA.
+    resposta_ia (Text): A resposta que a IA gerou para o prompt do utilizador.
+    user_id (UUID): Chave estrangeira que liga o registo ao utilizador que fez a pergunta.
+    owner (relationship): Relacionamento de volta para o utilizador.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/models/\mbox{\hyperlink{models_2ia__interaction_8py}{ia\+\_\+interaction.\+py}}\end{DoxyCompactItemize}

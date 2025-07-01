@@ -1,0 +1,13 @@
+<map id="schemas.progress_record.BodyImageRecord" name="schemas.progress_record.BodyImageRecord">
+<area shape="rect" id="Node000001" title="Schema para representar um registo de imagem corporal lido da base de dados." alt="" coords="157,211,349,251"/>
+<area shape="rect" id="Node000002" href="$classschemas_1_1progress__record_1_1BodyImageRecordBase.html" title="Schema base para um registo de imagem corporal." alt="" coords="11,93,203,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,140,230,208,227,212,140,144"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,100,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="69,41,99,92,94,95,64,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="125,5,202,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="152,44,121,95,116,92,147,41"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="227,101,278,126"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="255,140,255,210,250,210,250,140"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="303,101,384,126"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="336,140,324,164,308,188,282,212,279,209,304,185,320,162,331,138"/>
+</map>

@@ -1,0 +1,67 @@
+\doxysection{models.\+progress\+\_\+record.\+Body\+Measure\+Record Class Reference}
+\hypertarget{classmodels_1_1progress__record_1_1BodyMeasureRecord}{}\label{classmodels_1_1progress__record_1_1BodyMeasureRecord}\index{models.progress\_record.BodyMeasureRecord@{models.progress\_record.BodyMeasureRecord}}
+
+
+Modelo para Registos de Medidas Corporais, herdando de Registro\+Progresso.  
+
+
+
+
+Inheritance diagram for models.\+progress\+\_\+record.\+Body\+Measure\+Record\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classmodels_1_1progress__record_1_1BodyMeasureRecord__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for models.\+progress\+\_\+record.\+Body\+Measure\+Record\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classmodels_1_1progress__record_1_1BodyMeasureRecord__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1BodyMeasureRecord_a88187db5d62032fa8fc3ba0b413108d4}\label{classmodels_1_1progress__record_1_1BodyMeasureRecord_a88187db5d62032fa8fc3ba0b413108d4} 
+{\bfseries id} = Column(UUID(as\+\_\+uuid=True), Foreign\+Key("{}registro\+\_\+progresso.\+id"{}), primary\+\_\+key=True)
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1BodyMeasureRecord_a6b8524ce32354c6b68757421eee823a4}\label{classmodels_1_1progress__record_1_1BodyMeasureRecord_a6b8524ce32354c6b68757421eee823a4} 
+{\bfseries tipo\+\_\+medida} = Column(String, nullable=False)
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1BodyMeasureRecord_ab64d70e6e2d568e6071c6571af64c431}\label{classmodels_1_1progress__record_1_1BodyMeasureRecord_ab64d70e6e2d568e6071c6571af64c431} 
+{\bfseries valor\+\_\+cm} = Column(Float, nullable=False)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classmodels_1_1progress__record_1_1RegistroProgresso}{models.\+progress\+\_\+record.\+Registro\+Progresso}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries id} = Column(UUID(as\+\_\+uuid=True), primary\+\_\+key=True, default=uuid.\+uuid4)
+\item 
+{\bfseries data} = Column(Date\+Time, default=datetime.\+utcnow, nullable=False)
+\item 
+{\bfseries user\+\_\+id} = Column(UUID(as\+\_\+uuid=True), Foreign\+Key("{}users.\+id"{}), nullable=False)
+\item 
+{\bfseries type} = Column(String(50))
+\item 
+{\bfseries owner} = relationship("{}User"{}, back\+\_\+populates="{}registros\+\_\+progresso"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Modelo para Registos de Medidas Corporais, herdando de Registro\+Progresso. 
+
+\begin{DoxyVerb}Attributes:
+    id (UUID): Chave primária que é também uma chave estrangeira para a tabela base.
+    tipo_medida (str): O tipo de medida (ex: "braço", "cintura", "peito").
+    valor_cm (float): O valor da medida em centímetros.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/models/\mbox{\hyperlink{models_2progress__record_8py}{progress\+\_\+record.\+py}}\end{DoxyCompactItemize}

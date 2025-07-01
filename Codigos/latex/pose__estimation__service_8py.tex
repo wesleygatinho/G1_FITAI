@@ -1,0 +1,60 @@
+\doxysection{backend/app/services/pose\+\_\+estimation\+\_\+service.py File Reference}
+\hypertarget{pose__estimation__service_8py}{}\label{pose__estimation__service_8py}\index{backend/app/services/pose\_estimation\_service.py@{backend/app/services/pose\_estimation\_service.py}}
+
+
+Orquestra a análise de frames de exercícios, da decodificação à contagem.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{pose__estimation__service_8py_abba9d42bbf381bdc73f3b9a23c19624d}{services.\+pose\+\_\+estimation\+\_\+service.\+analyze\+\_\+exercise\+\_\+frame}} (str exercise\+\_\+type, str image\+\_\+b64)
+\begin{DoxyCompactList}\small\item\em Analisa um único frame de um exercício recebido como uma string base64. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{pose__estimation__service_8py_a6f606e9dfa600296deb60bd5f03731f0}\label{pose__estimation__service_8py_a6f606e9dfa600296deb60bd5f03731f0} 
+{\bfseries services.\+pose\+\_\+estimation\+\_\+service.\+pose\+\_\+estimator} = \mbox{\hyperlink{classexercises_1_1estimation_1_1PoseEstimator}{Pose\+Estimator}}()
+\item 
+\Hypertarget{pose__estimation__service_8py_af6d1c6764597872c3632ee45830b969e}\label{pose__estimation__service_8py_af6d1c6764597872c3632ee45830b969e} 
+dict {\bfseries services.\+pose\+\_\+estimation\+\_\+service.\+exercise\+\_\+trackers} = \{"{}squat"{}\+: \mbox{\hyperlink{classexercises_1_1squat_1_1Squat}{Squat}}(), "{}push\+\_\+up"{}\+: \mbox{\hyperlink{classexercises_1_1push__up_1_1PushUp}{Push\+Up}}(), "{}hammer\+\_\+curl"{}\+: \mbox{\hyperlink{classexercises_1_1hummer__curl_1_1HammerCurl}{Hammer\+Curl}}()\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Orquestra a análise de frames de exercícios, da decodificação à contagem. 
+
+\begin{DoxyAuthor}{Author}
+André Luis Aguiar do Nascimento 
+
+Hugo Samuel de Lima Oliveira 
+
+Leonardo Sampaio Serra 
+
+Lucas Emanoel Amaral Gomes 
+
+Wesley dos Santos Gatinho 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{pose__estimation__service_8py_abba9d42bbf381bdc73f3b9a23c19624d}\label{pose__estimation__service_8py_abba9d42bbf381bdc73f3b9a23c19624d} 
+\index{pose\_estimation\_service.py@{pose\_estimation\_service.py}!analyze\_exercise\_frame@{analyze\_exercise\_frame}}
+\index{analyze\_exercise\_frame@{analyze\_exercise\_frame}!pose\_estimation\_service.py@{pose\_estimation\_service.py}}
+\doxysubsubsection{\texorpdfstring{analyze\_exercise\_frame()}{analyze\_exercise\_frame()}}
+{\footnotesize\ttfamily services.\+pose\+\_\+estimation\+\_\+service.\+analyze\+\_\+exercise\+\_\+frame (\begin{DoxyParamCaption}\item[{str}]{exercise\+\_\+type,  }\item[{str}]{image\+\_\+b64 }\end{DoxyParamCaption})}
+
+
+
+Analisa um único frame de um exercício recebido como uma string base64. 
+
+\begin{DoxyVerb}Esta função decodifica a imagem, executa a estimativa de pose para encontrar
+os marcos corporais e, em seguida, passa esses marcos para o rastreador de
+exercício específico para análise de movimento, contagem e feedback.
+
+:param (str) exercise_type: O tipo de exercício a ser analisado ('squat', 'push_up', 'hammer_curl').
+:param (str) image_b64: A imagem do frame codificada em formato base64.
+:raises ValueError: Se o tipo de exercício não for suportado ou se a imagem for inválida.
+:return (dict): Um dicionário contendo os dados da análise ou uma mensagem de erro.
+\end{DoxyVerb}
+ 

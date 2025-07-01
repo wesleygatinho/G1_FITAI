@@ -8,9 +8,20 @@ import 'ai/ai_generator_screen.dart';
 import 'history/workout_history_screen.dart';
 import 'auth/login_screen.dart';
 
+/// A tela principal da aplicação, exibida após o login do utilizador.
+///
+/// Esta tela serve como um painel de navegação, fornecendo acesso rápido
+/// às principais funcionalidades do FitAI, como iniciar um treino, ver o progresso,
+/// consultar o histórico e interagir com a IA.
 class HomeScreen extends StatelessWidget {
+  /// Cria a instância da tela inicial.
   const HomeScreen({super.key});
 
+  /// Constrói a interface do widget da tela inicial.
+  ///
+  /// Utiliza um [ChangeNotifierProvider] para o [DashboardProvider] que busca
+  /// a dica do dia. Mostra um indicador de progresso enquanto os dados
+  /// estão a ser carregados.
   @override
   Widget build(BuildContext context) {
     // Obtemos o token do nosso AuthService para passar para as telas que precisam.
@@ -27,10 +38,12 @@ class HomeScreen extends StatelessWidget {
               tooltip: 'Sair',
               onPressed: () async {
                 await Provider.of<AuthService>(context, listen: false).logout();
-                
+
+                // Navega para a tela de login e remove todas as rotas anteriores.
                 if (context.mounted) {
                   Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(builder: (context) => const LoginScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => const LoginScreen()),
                     (Route<dynamic> route) => false,
                   );
                 }
@@ -47,7 +60,6 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      // Usando o cabeçalho com o ícone de casinha da versão antiga.
                       _buildWelcomeHeader(),
                       const SizedBox(height: 24),
                       _buildDailyTipCard(dashboard.dailyTip),
@@ -57,7 +69,6 @@ class HomeScreen extends StatelessWidget {
                           label: 'INICIAR TREINO',
                           screen: const ExerciseListScreen()),
                       const SizedBox(height: 16),
-                      // Lógica corrigida para passar o token.
                       _buildNavButton(context,
                           icon: Icons.bar_chart,
                           label: 'VER PROGRESSO',
@@ -83,7 +94,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  // --- CABEÇALHO DA VERSÃO ANTIGA INTEGRADO ---
+  /// Constrói o cabeçalho de boas-vindas da tela.
   Widget _buildWelcomeHeader() {
     return const Column(
       children: [
@@ -98,7 +109,9 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  // Usando a estrutura do "Card de Dica" da versão nova.
+  /// Constrói o card que exibe a dica do dia.
+  ///
+  /// Recebe a [tip] do [DashboardProvider] e a exibe dentro de um [Card] estilizado.
   Widget _buildDailyTipCard(String? tip) {
     return Card(
       elevation: 4,
@@ -117,14 +130,16 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-  
-  // Usando a lógica de botões da versão nova (com a cor laranja).
+
+  /// Constrói um botão de navegação estilizado.
+  ///
+  /// Pode ser um [ElevatedButton] (padrão) ou um [OutlinedButton] se
+  /// [isOutlined] for `true`. Ao ser pressionado, navega para a [screen] fornecida.
   Widget _buildNavButton(BuildContext context,
       {required IconData icon,
       required String label,
       required Widget screen,
       bool isOutlined = false}) {
-
     final Color orangeColor = Theme.of(context).colorScheme.primary;
 
     final style = isOutlined
@@ -132,11 +147,13 @@ class HomeScreen extends StatelessWidget {
             foregroundColor: orangeColor,
             side: BorderSide(color: orangeColor, width: 2),
             padding: const EdgeInsets.symmetric(vertical: 16),
-            textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            textStyle:
+                const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           )
         : ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 16),
-            textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            textStyle:
+                const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           );
 
     return isOutlined

@@ -1,0 +1,63 @@
+\doxysection{schemas.\+exercicio.\+Exercicio Class Reference}
+\hypertarget{classschemas_1_1exercicio_1_1Exercicio}{}\label{classschemas_1_1exercicio_1_1Exercicio}\index{schemas.exercicio.Exercicio@{schemas.exercicio.Exercicio}}
+
+
+Schema usado para representar um exercício lido da base de dados.  
+
+
+
+
+Inheritance diagram for schemas.\+exercicio.\+Exercicio\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classschemas_1_1exercicio_1_1Exercicio__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for schemas.\+exercicio.\+Exercicio\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{classschemas_1_1exercicio_1_1Exercicio__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classschemas_1_1exercicio_1_1Exercicio_1_1Config}{Config}}
+\begin{DoxyCompactList}\small\item\em Configuração do Pydantic para o schema. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classschemas_1_1exercicio_1_1Exercicio_aada432c7420ef5b9a82c1dd3ba82810d}\label{classschemas_1_1exercicio_1_1Exercicio_aada432c7420ef5b9a82c1dd3ba82810d} 
+uuid {\bfseries id} .UUID
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classschemas_1_1exercicio_1_1ExercicioBase}{schemas.\+exercicio.\+Exercicio\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+str {\bfseries nome}
+\item 
+Optional {\bfseries descricao} = None
+\item 
+Optional {\bfseries instrucoes} = None
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Schema usado para representar um exercício lido da base de dados. 
+
+\begin{DoxyVerb}Inclui todos os campos do ExercicioBase e adiciona o ID único do exercício,
+que é gerado pela base de dados.
+
+Attributes:
+    id (uuid.UUID): ID único do exercício no formato UUID.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/schemas/\mbox{\hyperlink{schemas_2exercicio_8py}{exercicio.\+py}}\end{DoxyCompactItemize}

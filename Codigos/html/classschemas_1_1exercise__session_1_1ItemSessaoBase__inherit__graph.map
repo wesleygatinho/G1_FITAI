@@ -1,0 +1,9 @@
+<map id="schemas.exercise_session.ItemSessaoBase" name="schemas.exercise_session.ItemSessaoBase">
+<area shape="rect" id="Node000001" title="Schema base para um item de uma sessão de treino." alt="" coords="116,79,315,119"/>
+<area shape="rect" id="Node000003" href="$classschemas_1_1exercise__session_1_1ItemSessao.html" title="Schema para representar um item de sessão lido da base de dados." alt="" coords="5,167,204,207"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="181,129,131,169,128,164,178,125"/>
+<area shape="rect" id="Node000004" href="$classschemas_1_1exercise__session_1_1ItemSessaoCreate.html" title="Schema para validar os dados ao criar um novo item de sessão." alt="" coords="228,167,427,207"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="253,125,304,164,301,169,250,129"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="168,5,263,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,44,218,79,213,79,213,44"/>
+</map>

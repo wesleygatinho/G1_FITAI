@@ -1,0 +1,88 @@
+\doxysection{exercises.\+push\+\_\+up.\+Push\+Up Class Reference}
+\hypertarget{classexercises_1_1push__up_1_1PushUp}{}\label{classexercises_1_1push__up_1_1PushUp}\index{exercises.push\_up.PushUp@{exercises.push\_up.PushUp}}
+
+
+Gerencia o estado, a contagem e o feedback para o exercício de flexão.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexercises_1_1push__up_1_1PushUp_a578a6299457bf5018e69c20b0f5bd342}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\begin{DoxyCompactList}\small\item\em Inicializa o rastreador do exercício de flexão. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classexercises_1_1push__up_1_1PushUp_a766649b6326ce1289cf20cf001662f03}{track\+\_\+push\+\_\+up}} (self, landmarks, frame\+\_\+shape)
+\begin{DoxyCompactList}\small\item\em Processa os marcos de pose para rastrear uma repetição do exercício de flexão. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classexercises_1_1push__up_1_1PushUp_a9eea5967ff918d9f1eb1d2ecb293ec6e}\label{classexercises_1_1push__up_1_1PushUp_a9eea5967ff918d9f1eb1d2ecb293ec6e} 
+{\bfseries counter}
+\item 
+\Hypertarget{classexercises_1_1push__up_1_1PushUp_ac6c10a7beab4ae5b9ffe38537ca3e89e}\label{classexercises_1_1push__up_1_1PushUp_ac6c10a7beab4ae5b9ffe38537ca3e89e} 
+{\bfseries stage}
+\item 
+\Hypertarget{classexercises_1_1push__up_1_1PushUp_ab13127ecd7e5d5a2eeab197a9a4a0c2a}\label{classexercises_1_1push__up_1_1PushUp_ab13127ecd7e5d5a2eeab197a9a4a0c2a} 
+{\bfseries feedback}
+\item 
+\Hypertarget{classexercises_1_1push__up_1_1PushUp_a7d545bf681626f05fdf4af0d3b713063}\label{classexercises_1_1push__up_1_1PushUp_a7d545bf681626f05fdf4af0d3b713063} 
+{\bfseries angle\+\_\+min}
+\item 
+\Hypertarget{classexercises_1_1push__up_1_1PushUp_a8dc3793a29b9cadb8d687996d8c13ab1}\label{classexercises_1_1push__up_1_1PushUp_a8dc3793a29b9cadb8d687996d8c13ab1} 
+{\bfseries angle\+\_\+max}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gerencia o estado, a contagem e o feedback para o exercício de flexão. 
+
+\begin{DoxyVerb}Esta classe utiliza os marcos de pose para calcular o ângulo do cotovelo,
+contar as repetições e fornecer feedback sobre a execução do movimento de flexão.
+
+Attributes:
+    counter (int): Contador de repetições completas.
+    stage (str): Estágio atual do exercício, 'up' (subida) ou 'down' (descida).
+    feedback (str): Mensagem de texto para orientar o usuário.
+    angle_min (int): Ângulo mínimo do cotovelo para registrar a fase 'down'.
+    angle_max (int): Ângulo máximo do cotovelo para registrar a fase 'up'.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classexercises_1_1push__up_1_1PushUp_a578a6299457bf5018e69c20b0f5bd342}\label{classexercises_1_1push__up_1_1PushUp_a578a6299457bf5018e69c20b0f5bd342} 
+\index{exercises.push\_up.PushUp@{exercises.push\_up.PushUp}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!exercises.push\_up.PushUp@{exercises.push\_up.PushUp}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily exercises.\+push\+\_\+up.\+Push\+Up.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Inicializa o rastreador do exercício de flexão. 
+
+\begin{DoxyVerb}    Define os valores iniciais para o contador, o estágio do movimento (começando
+    em 'up') e os limites de ângulo que caracterizam a repetição.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classexercises_1_1push__up_1_1PushUp_a766649b6326ce1289cf20cf001662f03}\label{classexercises_1_1push__up_1_1PushUp_a766649b6326ce1289cf20cf001662f03} 
+\index{exercises.push\_up.PushUp@{exercises.push\_up.PushUp}!track\_push\_up@{track\_push\_up}}
+\index{track\_push\_up@{track\_push\_up}!exercises.push\_up.PushUp@{exercises.push\_up.PushUp}}
+\doxysubsubsection{\texorpdfstring{track\_push\_up()}{track\_push\_up()}}
+{\footnotesize\ttfamily exercises.\+push\+\_\+up.\+Push\+Up.\+track\+\_\+push\+\_\+up (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{landmarks,  }\item[{}]{frame\+\_\+shape }\end{DoxyParamCaption})}
+
+
+
+Processa os marcos de pose para rastrear uma repetição do exercício de flexão. 
+
+\begin{DoxyVerb}    Calcula o ângulo do cotovelo esquerdo, atualiza o estágio do movimento,
+    incrementa o contador e gera feedback para o usuário.
+
+    :param (object) landmarks: O objeto de resultados do MediaPipe com os marcos da pose.
+    :param (tuple) frame_shape: A forma (altura, largura) do quadro (não utilizado diretamente).
+    :return (tuple): Uma tupla contendo (contador, ângulo, estágio, feedback, marcos, progresso).
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/exercises/\mbox{\hyperlink{push__up_8py}{push\+\_\+up.\+py}}\end{DoxyCompactItemize}

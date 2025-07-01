@@ -1,0 +1,13 @@
+<map id="schemas.exercise_session.SessaoDeTreino" name="schemas.exercise_session.SessaoDeTreino">
+<area shape="rect" id="Node000001" title="Schema para representar uma sessão de treino lida da base de dados." alt="" coords="197,183,396,223"/>
+<area shape="rect" id="Node000002" href="$classschemas_1_1exercise__session_1_1SessaoDeTreinoBase.html" title="Schema base para uma sessão de treino, serve como base para outros schemas." alt="" coords="5,80,204,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,124,262,180,259,185,151,129"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="57,5,152,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="107,44,107,80,102,80,102,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="227,87,278,113"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="266,124,291,181,286,184,261,126"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="303,87,384,113"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="335,126,308,184,303,181,330,124"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="410,87,487,113"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="437,126,423,144,405,161,361,185,358,180,402,157,419,141,432,123"/>
+</map>

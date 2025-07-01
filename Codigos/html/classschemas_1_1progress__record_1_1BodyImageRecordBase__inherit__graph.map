@@ -1,0 +1,9 @@
+<map id="schemas.progress_record.BodyImageRecordBase" name="schemas.progress_record.BodyImageRecordBase">
+<area shape="rect" id="Node000001" title="Schema base para um registo de imagem corporal." alt="" coords="148,37,340,77"/>
+<area shape="rect" id="Node000003" href="$classschemas_1_1progress__record_1_1BodyImageRecord.html" title="Schema para representar um registo de imagem corporal lido da base de dados." alt="" coords="388,5,580,45"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="353,40,388,35,388,41,354,45"/>
+<area shape="rect" id="Node000004" href="$classschemas_1_1progress__record_1_1BodyImageRecordCreate.html" title="Schema para validar dados ao criar um novo registo de imagem corporal." alt="" coords="388,69,580,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="354,69,388,74,388,79,353,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,45,100,70"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,55,148,55,148,60,114,60"/>
+</map>

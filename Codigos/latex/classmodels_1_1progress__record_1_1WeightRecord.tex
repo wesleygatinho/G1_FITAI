@@ -1,0 +1,63 @@
+\doxysection{models.\+progress\+\_\+record.\+Weight\+Record Class Reference}
+\hypertarget{classmodels_1_1progress__record_1_1WeightRecord}{}\label{classmodels_1_1progress__record_1_1WeightRecord}\index{models.progress\_record.WeightRecord@{models.progress\_record.WeightRecord}}
+
+
+Modelo para Registos de Peso, herdando de Registro\+Progresso.  
+
+
+
+
+Inheritance diagram for models.\+progress\+\_\+record.\+Weight\+Record\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classmodels_1_1progress__record_1_1WeightRecord__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for models.\+progress\+\_\+record.\+Weight\+Record\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classmodels_1_1progress__record_1_1WeightRecord__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1WeightRecord_a2f34c42cbb7fd4a55c0f45432f825fca}\label{classmodels_1_1progress__record_1_1WeightRecord_a2f34c42cbb7fd4a55c0f45432f825fca} 
+{\bfseries id} = Column(UUID(as\+\_\+uuid=True), Foreign\+Key("{}registro\+\_\+progresso.\+id"{}), primary\+\_\+key=True)
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1WeightRecord_a53aed436c22f7559457816d69388fbd5}\label{classmodels_1_1progress__record_1_1WeightRecord_a53aed436c22f7559457816d69388fbd5} 
+{\bfseries peso\+\_\+kg} = Column(Float, nullable=False)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classmodels_1_1progress__record_1_1RegistroProgresso}{models.\+progress\+\_\+record.\+Registro\+Progresso}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries id} = Column(UUID(as\+\_\+uuid=True), primary\+\_\+key=True, default=uuid.\+uuid4)
+\item 
+{\bfseries data} = Column(Date\+Time, default=datetime.\+utcnow, nullable=False)
+\item 
+{\bfseries user\+\_\+id} = Column(UUID(as\+\_\+uuid=True), Foreign\+Key("{}users.\+id"{}), nullable=False)
+\item 
+{\bfseries type} = Column(String(50))
+\item 
+{\bfseries owner} = relationship("{}User"{}, back\+\_\+populates="{}registros\+\_\+progresso"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Modelo para Registos de Peso, herdando de Registro\+Progresso. 
+
+\begin{DoxyVerb}Attributes:
+    id (UUID): Chave primária que é também uma chave estrangeira para a tabela base.
+    peso_kg (float): O valor do peso em quilogramas.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/models/\mbox{\hyperlink{models_2progress__record_8py}{progress\+\_\+record.\+py}}\end{DoxyCompactItemize}

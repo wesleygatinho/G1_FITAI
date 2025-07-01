@@ -1,0 +1,71 @@
+\doxysection{backend/app/core/database.py File Reference}
+\hypertarget{database_8py}{}\label{database_8py}\index{backend/app/core/database.py@{backend/app/core/database.py}}
+
+
+Configura a conexão com a base de dados e a gestão de sessões do SQLAlchemy.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{database_8py_a0b8c9121a0789812b02b7164e80b8e99}{core.\+database.\+get\+\_\+db}} ()
+\begin{DoxyCompactList}\small\item\em Fornece uma sessão de base de dados para ser usada como dependência nos endpoints. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{database_8py_aa7f58946bb113357b042c2163db42610}{core.\+database.\+engine}}
+\item 
+\Hypertarget{database_8py_a7645d7ab61aaa16d7c514d91526688d3}\label{database_8py_a7645d7ab61aaa16d7c514d91526688d3} 
+{\bfseries core.\+database.\+Session\+Local} = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Configura a conexão com a base de dados e a gestão de sessões do SQLAlchemy. 
+
+\begin{DoxyAuthor}{Author}
+André Luis Aguiar do Nascimento 
+
+Hugo Samuel de Lima Oliveira 
+
+Leonardo Sampaio Serra 
+
+Lucas Emanoel Amaral Gomes 
+
+Wesley dos Santos Gatinho 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{database_8py_a0b8c9121a0789812b02b7164e80b8e99}\label{database_8py_a0b8c9121a0789812b02b7164e80b8e99} 
+\index{database.py@{database.py}!get\_db@{get\_db}}
+\index{get\_db@{get\_db}!database.py@{database.py}}
+\doxysubsubsection{\texorpdfstring{get\_db()}{get\_db()}}
+{\footnotesize\ttfamily core.\+database.\+get\+\_\+db (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fornece uma sessão de base de dados para ser usada como dependência nos endpoints. 
+
+\begin{DoxyVerb}Esta função geradora cria uma nova sessão para cada requisição, disponibiliza-a
+e garante que seja sempre fechada no final, mesmo que ocorram erros.
+
+:return (Generator): Um gerador que fornece uma instância da sessão do SQLAlchemy.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{database_8py_aa7f58946bb113357b042c2163db42610}\label{database_8py_aa7f58946bb113357b042c2163db42610} 
+\index{database.py@{database.py}!engine@{engine}}
+\index{engine@{engine}!database.py@{database.py}}
+\doxysubsubsection{\texorpdfstring{engine}{engine}}
+{\footnotesize\ttfamily core.\+database.\+engine}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ create\_engine(}
+\DoxyCodeLine{00002\ \ \ \ \ settings.DATABASE\_URL,}
+\DoxyCodeLine{00003\ \ \ \ \ pool\_pre\_ping=\textcolor{keyword}{True}}
+\DoxyCodeLine{00004\ )}
+
+\end{DoxyCode}

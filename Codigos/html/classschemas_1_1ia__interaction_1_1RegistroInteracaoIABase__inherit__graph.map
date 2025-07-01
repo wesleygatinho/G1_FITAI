@@ -1,0 +1,9 @@
+<map id="schemas.ia_interaction.RegistroInteracaoIABase" name="schemas.ia_interaction.RegistroInteracaoIABase">
+<area shape="rect" id="Node000001" title="Schema base que define os campos comuns de uma interação com a IA." alt="" coords="148,37,379,77"/>
+<area shape="rect" id="Node000003" href="$classschemas_1_1ia__interaction_1_1RegistroInteracaoIA.html" title="Schema usado para representar um registo de interação lido da base de dados." alt="" coords="427,5,657,45"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="392,40,426,36,427,41,393,45"/>
+<area shape="rect" id="Node000004" href="$classschemas_1_1ia__interaction_1_1RegistroInteracaoIACreate.html" title="Schema usado para validar os dados ao criar um novo registo de interação." alt="" coords="427,69,657,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="393,69,427,73,426,79,392,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,45,100,70"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,55,148,55,148,60,114,60"/>
+</map>

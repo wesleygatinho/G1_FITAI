@@ -1,0 +1,78 @@
+\doxysection{backend/app/core/dependencies.py File Reference}
+\hypertarget{dependencies_8py}{}\label{dependencies_8py}\index{backend/app/core/dependencies.py@{backend/app/core/dependencies.py}}
+
+
+Define as dependências da API para autenticação e autorização de utilizadores.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+User \mbox{\hyperlink{dependencies_8py_a7971dbfba62c55f9ff332b8f62168e14}{core.\+dependencies.\+get\+\_\+current\+\_\+user}} (Session db=Depends(get\+\_\+db), str token=Depends(oauth2\+\_\+scheme))
+\begin{DoxyCompactList}\small\item\em Decodifica o token JWT para obter o utilizador atual da base de dados. \end{DoxyCompactList}\item 
+User \mbox{\hyperlink{dependencies_8py_ab738312bbd77a6494a0a8521c93e7430}{core.\+dependencies.\+get\+\_\+current\+\_\+active\+\_\+user}} (User current\+\_\+user=Depends(\mbox{\hyperlink{dependencies_8py_a7971dbfba62c55f9ff332b8f62168e14}{get\+\_\+current\+\_\+user}}))
+\begin{DoxyCompactList}\small\item\em Obtém o utilizador autenticado e verifica se ele está ativo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{dependencies_8py_a56c95908fea266cd702c8d1358d49893}\label{dependencies_8py_a56c95908fea266cd702c8d1358d49893} 
+{\bfseries core.\+dependencies.\+oauth2\+\_\+scheme} = OAuth2\+Password\+Bearer(token\+Url="{}/api/v1/auth/login"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Define as dependências da API para autenticação e autorização de utilizadores. 
+
+\begin{DoxyAuthor}{Author}
+André Luis Aguiar do Nascimento 
+
+Hugo Samuel de Lima Oliveira 
+
+Leonardo Sampaio Serra 
+
+Lucas Emanoel Amaral Gomes 
+
+Wesley dos Santos Gatinho 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{dependencies_8py_ab738312bbd77a6494a0a8521c93e7430}\label{dependencies_8py_ab738312bbd77a6494a0a8521c93e7430} 
+\index{dependencies.py@{dependencies.py}!get\_current\_active\_user@{get\_current\_active\_user}}
+\index{get\_current\_active\_user@{get\_current\_active\_user}!dependencies.py@{dependencies.py}}
+\doxysubsubsection{\texorpdfstring{get\_current\_active\_user()}{get\_current\_active\_user()}}
+{\footnotesize\ttfamily  User core.\+dependencies.\+get\+\_\+current\+\_\+active\+\_\+user (\begin{DoxyParamCaption}\item[{User }]{current\+\_\+user = {\ttfamily Depends(\mbox{\hyperlink{dependencies_8py_a7971dbfba62c55f9ff332b8f62168e14}{get\+\_\+current\+\_\+user}})} }\end{DoxyParamCaption})}
+
+
+
+Obtém o utilizador autenticado e verifica se ele está ativo. 
+
+\begin{DoxyVerb}Esta é a dependência principal para proteger endpoints. Ela primeiro obtém
+o utilizador com `get_current_user` e depois verifica a flag `is_active`.
+
+:param (User) current_user: O utilizador, injetado pela dependência `get_current_user`.
+:raises HTTPException: Se a conta do utilizador estiver inativa.
+:return (User): O modelo SQLAlchemy do utilizador ativo e autenticado.
+\end{DoxyVerb}
+ \Hypertarget{dependencies_8py_a7971dbfba62c55f9ff332b8f62168e14}\label{dependencies_8py_a7971dbfba62c55f9ff332b8f62168e14} 
+\index{dependencies.py@{dependencies.py}!get\_current\_user@{get\_current\_user}}
+\index{get\_current\_user@{get\_current\_user}!dependencies.py@{dependencies.py}}
+\doxysubsubsection{\texorpdfstring{get\_current\_user()}{get\_current\_user()}}
+{\footnotesize\ttfamily  User core.\+dependencies.\+get\+\_\+current\+\_\+user (\begin{DoxyParamCaption}\item[{Session }]{db = {\ttfamily Depends(get\+\_\+db)},  }\item[{str }]{token = {\ttfamily Depends(oauth2\+\_\+scheme)} }\end{DoxyParamCaption})}
+
+
+
+Decodifica o token JWT para obter o utilizador atual da base de dados. 
+
+\begin{DoxyVerb}Esta função é uma dependência que:
+1. Extrai o token JWT da requisição.
+2. Decodifica e valida o token.
+3. Extrai o e-mail (subject) do payload do token.
+4. Busca o utilizador na base de dados com base no e-mail.
+
+:param (Session) db: A sessão da base de dados, injetada por `get_db`.
+:param (str) token: O token JWT, injetado por `oauth2_scheme`.
+:raises HTTPException: Se o token for inválido, malformado ou o utilizador não existir.
+:return (User): O modelo SQLAlchemy do utilizador autenticado.
+\end{DoxyVerb}
+ 

@@ -1,0 +1,70 @@
+\doxysection{schemas.\+progress\+\_\+record.\+Cardio\+Record Class Reference}
+\hypertarget{classschemas_1_1progress__record_1_1CardioRecord}{}\label{classschemas_1_1progress__record_1_1CardioRecord}\index{schemas.progress\_record.CardioRecord@{schemas.progress\_record.CardioRecord}}
+
+
+Schema para representar um registo de cardio lido da base de dados.  
+
+
+
+
+Inheritance diagram for schemas.\+progress\+\_\+record.\+Cardio\+Record\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{classschemas_1_1progress__record_1_1CardioRecord__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for schemas.\+progress\+\_\+record.\+Cardio\+Record\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classschemas_1_1progress__record_1_1CardioRecord__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1CardioRecord_1_1Config}{Config}}
+\begin{DoxyCompactList}\small\item\em Configuração Pydantic para mapeamento ORM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classschemas_1_1progress__record_1_1CardioRecord_a0afb8707bf0c644baac34300882e7264}\label{classschemas_1_1progress__record_1_1CardioRecord_a0afb8707bf0c644baac34300882e7264} 
+uuid {\bfseries id} .UUID
+\item 
+\Hypertarget{classschemas_1_1progress__record_1_1CardioRecord_a3ff25b7f553dc2a9a62fa304135bffe5}\label{classschemas_1_1progress__record_1_1CardioRecord_a3ff25b7f553dc2a9a62fa304135bffe5} 
+datetime {\bfseries data}
+\item 
+\Hypertarget{classschemas_1_1progress__record_1_1CardioRecord_a2a329c47bafdbcc74f0975eea6887bdb}\label{classschemas_1_1progress__record_1_1CardioRecord_a2a329c47bafdbcc74f0975eea6887bdb} 
+uuid {\bfseries user\+\_\+id} .UUID
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classschemas_1_1progress__record_1_1CardioRecordBase}{schemas.\+progress\+\_\+record.\+Cardio\+Record\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries tempo\+\_\+min}
+\item 
+Optional {\bfseries tipo\+\_\+equipamento} = None
+\item 
+Optional {\bfseries distancia\+\_\+km} = None
+\item 
+Optional {\bfseries calorias} = None
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Schema para representar um registo de cardio lido da base de dados. 
+
+\begin{DoxyVerb}Attributes:
+    id (uuid.UUID): ID único do registo.
+    data (datetime): Data e hora do registo.
+    user_id (uuid.UUID): ID do utilizador associado.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/schemas/\mbox{\hyperlink{schemas_2progress__record_8py}{progress\+\_\+record.\+py}}\end{DoxyCompactItemize}

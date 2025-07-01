@@ -1,0 +1,64 @@
+\doxysection{backend/app/schemas/progress\+\_\+record.py File Reference}
+\hypertarget{schemas_2progress__record_8py}{}\label{schemas_2progress__record_8py}\index{backend/app/schemas/progress\_record.py@{backend/app/schemas/progress\_record.py}}
+
+
+Define os schemas Pydantic para as diferentes entidades de registo de progresso.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1RegistroProgressoBase}{schemas.\+progress\+\_\+record.\+Registro\+Progresso\+Base}}
+\begin{DoxyCompactList}\small\item\em Schema base de referência para todos os registos de progresso. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1WeightRecordBase}{schemas.\+progress\+\_\+record.\+Weight\+Record\+Base}}
+\begin{DoxyCompactList}\small\item\em Schema base para um registo de peso. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1WeightRecordCreate}{schemas.\+progress\+\_\+record.\+Weight\+Record\+Create}}
+\begin{DoxyCompactList}\small\item\em Schema para validar dados ao criar um novo registo de peso. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1WeightRecord}{schemas.\+progress\+\_\+record.\+Weight\+Record}}
+\begin{DoxyCompactList}\small\item\em Schema para representar um registo de peso lido da base de dados. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1WeightRecord_1_1Config}{schemas.\+progress\+\_\+record.\+Weight\+Record.\+Config}}
+\begin{DoxyCompactList}\small\item\em Configuração Pydantic para mapeamento ORM. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1BodyMeasureRecordBase}{schemas.\+progress\+\_\+record.\+Body\+Measure\+Record\+Base}}
+\begin{DoxyCompactList}\small\item\em Schema base para um registo de medida corporal. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1BodyMeasureRecordCreate}{schemas.\+progress\+\_\+record.\+Body\+Measure\+Record\+Create}}
+\begin{DoxyCompactList}\small\item\em Schema para validar dados ao criar um novo registo de medida corporal. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1BodyMeasureRecord}{schemas.\+progress\+\_\+record.\+Body\+Measure\+Record}}
+\begin{DoxyCompactList}\small\item\em Schema para representar um registo de medida corporal lido da base de dados. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1BodyMeasureRecord_1_1Config}{schemas.\+progress\+\_\+record.\+Body\+Measure\+Record.\+Config}}
+\begin{DoxyCompactList}\small\item\em Configuração Pydantic para mapeamento ORM. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1CardioRecordBase}{schemas.\+progress\+\_\+record.\+Cardio\+Record\+Base}}
+\begin{DoxyCompactList}\small\item\em Schema base para um registo de exercício cardiovascular. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1CardioRecordCreate}{schemas.\+progress\+\_\+record.\+Cardio\+Record\+Create}}
+\begin{DoxyCompactList}\small\item\em Schema para validar dados ao criar um novo registo de cardio. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1CardioRecord}{schemas.\+progress\+\_\+record.\+Cardio\+Record}}
+\begin{DoxyCompactList}\small\item\em Schema para representar um registo de cardio lido da base de dados. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1CardioRecord_1_1Config}{schemas.\+progress\+\_\+record.\+Cardio\+Record.\+Config}}
+\begin{DoxyCompactList}\small\item\em Configuração Pydantic para mapeamento ORM. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1BodyImageRecordBase}{schemas.\+progress\+\_\+record.\+Body\+Image\+Record\+Base}}
+\begin{DoxyCompactList}\small\item\em Schema base para um registo de imagem corporal. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1BodyImageRecordCreate}{schemas.\+progress\+\_\+record.\+Body\+Image\+Record\+Create}}
+\begin{DoxyCompactList}\small\item\em Schema para validar dados ao criar um novo registo de imagem corporal. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1BodyImageRecord}{schemas.\+progress\+\_\+record.\+Body\+Image\+Record}}
+\begin{DoxyCompactList}\small\item\em Schema para representar um registo de imagem corporal lido da base de dados. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1BodyImageRecord_1_1Config}{schemas.\+progress\+\_\+record.\+Body\+Image\+Record.\+Config}}
+\begin{DoxyCompactList}\small\item\em Configuração Pydantic para mapeamento ORM. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1OcrRequest}{schemas.\+progress\+\_\+record.\+Ocr\+Request}}
+\begin{DoxyCompactList}\small\item\em Schema para a requisição de extração de dados por OCR a partir de uma imagem. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classschemas_1_1progress__record_1_1OcrResponse}{schemas.\+progress\+\_\+record.\+Ocr\+Response}}
+\begin{DoxyCompactList}\small\item\em Schema para a resposta da extração de dados por OCR. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Define os schemas Pydantic para as diferentes entidades de registo de progresso. 
+
+\begin{DoxyAuthor}{Author}
+André Luis Aguiar do Nascimento 
+
+Hugo Samuel de Lima Oliveira 
+
+Leonardo Sampaio Serra 
+
+Lucas Emanoel Amaral Gomes 
+
+Wesley dos Santos Gatinho 
+\end{DoxyAuthor}

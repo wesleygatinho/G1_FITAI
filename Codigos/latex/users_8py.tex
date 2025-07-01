@@ -1,0 +1,68 @@
+\doxysection{backend/app/api/v1/endpoints/users.py File Reference}
+\hypertarget{users_8py}{}\label{users_8py}\index{backend/app/api/v1/endpoints/users.py@{backend/app/api/v1/endpoints/users.py}}
+
+
+Define os endpoints da API para a gestão do perfil do utilizador autenticado.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{users_8py_a06e387f6f9518b475388c488a9b05a57}{api.\+v1.\+endpoints.\+users.\+read\+\_\+user\+\_\+me}} (User\+Model current\+\_\+user=Depends(get\+\_\+current\+\_\+active\+\_\+user))
+\begin{DoxyCompactList}\small\item\em Recupera os dados do perfil do utilizador atualmente autenticado. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{users_8py_a0e5d842c1c25da06647738c53c888ff0}{api.\+v1.\+endpoints.\+users.\+update\+\_\+user\+\_\+me}} (\texorpdfstring{$\ast$}{*}Session db=Depends(get\+\_\+db), User\+Update user\+\_\+in, User\+Model current\+\_\+user=Depends(get\+\_\+current\+\_\+active\+\_\+user))
+\begin{DoxyCompactList}\small\item\em Atualiza os dados do perfil do utilizador atualmente autenticado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{users_8py_a093a174bf1e46e6ae6d768f4f501d7c8}\label{users_8py_a093a174bf1e46e6ae6d768f4f501d7c8} 
+{\bfseries api.\+v1.\+endpoints.\+users.\+router} = APIRouter()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Define os endpoints da API para a gestão do perfil do utilizador autenticado. 
+
+\begin{DoxyAuthor}{Author}
+André Luis Aguiar do Nascimento 
+
+Hugo Samuel de Lima Oliveira 
+
+Leonardo Sampaio Serra 
+
+Lucas Emanoel Amaral Gomes 
+
+Wesley dos Santos Gatinho 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{users_8py_a06e387f6f9518b475388c488a9b05a57}\label{users_8py_a06e387f6f9518b475388c488a9b05a57} 
+\index{users.py@{users.py}!read\_user\_me@{read\_user\_me}}
+\index{read\_user\_me@{read\_user\_me}!users.py@{users.py}}
+\doxysubsubsection{\texorpdfstring{read\_user\_me()}{read\_user\_me()}}
+{\footnotesize\ttfamily api.\+v1.\+endpoints.\+users.\+read\+\_\+user\+\_\+me (\begin{DoxyParamCaption}\item[{User\+Model }]{current\+\_\+user = {\ttfamily Depends(get\+\_\+current\+\_\+active\+\_\+user)} }\end{DoxyParamCaption})}
+
+
+
+Recupera os dados do perfil do utilizador atualmente autenticado. 
+
+\begin{DoxyVerb}:param (UserModel) current_user: O utilizador autenticado, injetado pela dependência.
+:return (User): O objeto do utilizador com os seus dados de perfil.
+\end{DoxyVerb}
+ \Hypertarget{users_8py_a0e5d842c1c25da06647738c53c888ff0}\label{users_8py_a0e5d842c1c25da06647738c53c888ff0} 
+\index{users.py@{users.py}!update\_user\_me@{update\_user\_me}}
+\index{update\_user\_me@{update\_user\_me}!users.py@{users.py}}
+\doxysubsubsection{\texorpdfstring{update\_user\_me()}{update\_user\_me()}}
+{\footnotesize\ttfamily api.\+v1.\+endpoints.\+users.\+update\+\_\+user\+\_\+me (\begin{DoxyParamCaption}\item[{\texorpdfstring{$\ast$}{*}Session }]{db = {\ttfamily Depends(get\+\_\+db)},  }\item[{User\+Update}]{user\+\_\+in,  }\item[{User\+Model }]{current\+\_\+user = {\ttfamily Depends(get\+\_\+current\+\_\+active\+\_\+user)} }\end{DoxyParamCaption})}
+
+
+
+Atualiza os dados do perfil do utilizador atualmente autenticado. 
+
+\begin{DoxyVerb}:param (Session) db: A sessão da base de dados.
+:param (UserUpdate) user_in: Os novos dados a serem atualizados para o utilizador.
+:param (UserModel) current_user: O utilizador autenticado a ser atualizado.
+:return (User): O objeto do utilizador com os dados atualizados.
+\end{DoxyVerb}
+ 

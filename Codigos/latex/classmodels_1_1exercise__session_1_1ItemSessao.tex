@@ -1,0 +1,76 @@
+\doxysection{models.\+exercise\+\_\+session.\+Item\+Sessao Class Reference}
+\hypertarget{classmodels_1_1exercise__session_1_1ItemSessao}{}\label{classmodels_1_1exercise__session_1_1ItemSessao}\index{models.exercise\_session.ItemSessao@{models.exercise\_session.ItemSessao}}
+
+
+Modelo para a tabela \textquotesingle{}itens\+\_\+sessao\textquotesingle{}.  
+
+
+
+
+Inheritance diagram for models.\+exercise\+\_\+session.\+Item\+Sessao\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classmodels_1_1exercise__session_1_1ItemSessao__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for models.\+exercise\+\_\+session.\+Item\+Sessao\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classmodels_1_1exercise__session_1_1ItemSessao__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classmodels_1_1exercise__session_1_1ItemSessao_a911c4886b25a90892868f18631b1c629}\label{classmodels_1_1exercise__session_1_1ItemSessao_a911c4886b25a90892868f18631b1c629} 
+{\bfseries id} = Column(UUID(as\+\_\+uuid=True), primary\+\_\+key=True, default=uuid.\+uuid4)
+\item 
+\Hypertarget{classmodels_1_1exercise__session_1_1ItemSessao_a28be301fade9486bf643a49b0ea13f41}\label{classmodels_1_1exercise__session_1_1ItemSessao_a28be301fade9486bf643a49b0ea13f41} 
+{\bfseries series} = Column(Integer)
+\item 
+\Hypertarget{classmodels_1_1exercise__session_1_1ItemSessao_a9a7ba69f83b198608c236a4983c3e91d}\label{classmodels_1_1exercise__session_1_1ItemSessao_a9a7ba69f83b198608c236a4983c3e91d} 
+{\bfseries repeticoes} = Column(Integer)
+\item 
+\Hypertarget{classmodels_1_1exercise__session_1_1ItemSessao_af6d90c96ff17ff09329d3a31623a1a12}\label{classmodels_1_1exercise__session_1_1ItemSessao_af6d90c96ff17ff09329d3a31623a1a12} 
+{\bfseries feedback\+\_\+ia} = Column(Text, nullable=True)
+\item 
+\Hypertarget{classmodels_1_1exercise__session_1_1ItemSessao_a886a6fe3cc3f25de9b3b4748b4c7178b}\label{classmodels_1_1exercise__session_1_1ItemSessao_a886a6fe3cc3f25de9b3b4748b4c7178b} 
+{\bfseries exercicio\+\_\+id} = Column(UUID(as\+\_\+uuid=True), Foreign\+Key("{}exercicios.\+id"{}), nullable=False)
+\item 
+\Hypertarget{classmodels_1_1exercise__session_1_1ItemSessao_a6da6d0be5841e7c7c67fb8ca003dd1ad}\label{classmodels_1_1exercise__session_1_1ItemSessao_a6da6d0be5841e7c7c67fb8ca003dd1ad} 
+{\bfseries sessao\+\_\+id} = Column(UUID(as\+\_\+uuid=True), Foreign\+Key("{}sessoes\+\_\+de\+\_\+treino.\+id"{}), nullable=False)
+\item 
+\Hypertarget{classmodels_1_1exercise__session_1_1ItemSessao_a042fb8c9169b8eed516e5d2fa7f4d5b8}\label{classmodels_1_1exercise__session_1_1ItemSessao_a042fb8c9169b8eed516e5d2fa7f4d5b8} 
+{\bfseries sessao} = relationship("{}Sessao\+De\+Treino"{}, back\+\_\+populates="{}itens"{})
+\item 
+\Hypertarget{classmodels_1_1exercise__session_1_1ItemSessao_a1693b3edfa6cad43eeff339f29f82829}\label{classmodels_1_1exercise__session_1_1ItemSessao_a1693b3edfa6cad43eeff339f29f82829} 
+{\bfseries exercicio} = relationship("{}Exercicio"{}, back\+\_\+populates="{}itens\+\_\+sessao"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Modelo para a tabela \textquotesingle{}itens\+\_\+sessao\textquotesingle{}. 
+
+\begin{DoxyVerb}Representa um exercício específico dentro de uma sessão de treino.
+
+Attributes:
+    id (UUID): ID único do item da sessão.
+    series (int): Número de séries realizadas.
+    repeticoes (int): Número de repetições realizadas.
+    feedback_ia (Text): Feedback detalhado gerado pela IA sobre a execução.
+    exercicio_id (UUID): Chave estrangeira para a tabela 'exercicios'.
+    sessao_id (UUID): Chave estrangeira para a tabela 'sessoes_de_treino'.
+    sessao (relationship): Relacionamento para aceder à sessão de treino pai.
+    exercicio (relationship): Relacionamento para aceder ao exercício correspondente.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/models/\mbox{\hyperlink{models_2exercise__session_8py}{exercise\+\_\+session.\+py}}\end{DoxyCompactItemize}

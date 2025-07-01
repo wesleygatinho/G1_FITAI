@@ -1,0 +1,66 @@
+\doxysection{schemas.\+ia\+\_\+interaction.\+Registro\+Interacao\+IA Class Reference}
+\hypertarget{classschemas_1_1ia__interaction_1_1RegistroInteracaoIA}{}\label{classschemas_1_1ia__interaction_1_1RegistroInteracaoIA}\index{schemas.ia\_interaction.RegistroInteracaoIA@{schemas.ia\_interaction.RegistroInteracaoIA}}
+
+
+Schema usado para representar um registo de interação lido da base de dados.  
+
+
+
+
+Inheritance diagram for schemas.\+ia\+\_\+interaction.\+Registro\+Interacao\+IA\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{classschemas_1_1ia__interaction_1_1RegistroInteracaoIA__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for schemas.\+ia\+\_\+interaction.\+Registro\+Interacao\+IA\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classschemas_1_1ia__interaction_1_1RegistroInteracaoIA__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classschemas_1_1ia__interaction_1_1RegistroInteracaoIA_1_1Config}{Config}}
+\begin{DoxyCompactList}\small\item\em Configuração Pydantic para permitir a criação a partir de atributos do modelo ORM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classschemas_1_1ia__interaction_1_1RegistroInteracaoIA_abb3bcf058bd7660e2f1d3cd050033d8b}\label{classschemas_1_1ia__interaction_1_1RegistroInteracaoIA_abb3bcf058bd7660e2f1d3cd050033d8b} 
+uuid {\bfseries id} .UUID
+\item 
+\Hypertarget{classschemas_1_1ia__interaction_1_1RegistroInteracaoIA_ae7297b359f62b14885abf966395ae02b}\label{classschemas_1_1ia__interaction_1_1RegistroInteracaoIA_ae7297b359f62b14885abf966395ae02b} 
+datetime {\bfseries data}
+\item 
+\Hypertarget{classschemas_1_1ia__interaction_1_1RegistroInteracaoIA_a2c588bb57ced9262bf68fd2465ce0627}\label{classschemas_1_1ia__interaction_1_1RegistroInteracaoIA_a2c588bb57ced9262bf68fd2465ce0627} 
+uuid {\bfseries user\+\_\+id} .UUID
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classschemas_1_1ia__interaction_1_1RegistroInteracaoIABase}{schemas.\+ia\+\_\+interaction.\+Registro\+Interacao\+IABase}}}
+\begin{DoxyCompactItemize}
+\item 
+str {\bfseries prompt\+\_\+usuario}
+\item 
+str {\bfseries resposta\+\_\+ia}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Schema usado para representar um registo de interação lido da base de dados. 
+
+\begin{DoxyVerb}Attributes:
+    id (uuid.UUID): ID único do registo de interação.
+    data (datetime): Data e hora em que a interação ocorreu, gerada automaticamente.
+    user_id (uuid.UUID): ID do utilizador que realizou a interação.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/schemas/\mbox{\hyperlink{schemas_2ia__interaction_8py}{ia\+\_\+interaction.\+py}}\end{DoxyCompactItemize}

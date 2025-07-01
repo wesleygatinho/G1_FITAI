@@ -1,0 +1,79 @@
+\doxysection{backend/main.py File Reference}
+\hypertarget{main_8py}{}\label{main_8py}\index{backend/main.py@{backend/main.py}}
+
+
+Arquivo principal para inicialização da API Fit\+AI, configuração dos endpoints e população inicial da base de dados.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{app_2main_8py_a3d2e079df3b0171a9d37d04f512090e5}{main.\+populate\+\_\+initial\+\_\+exercises}} ()
+\begin{DoxyCompactList}\small\item\em Popula a base de dados com um conjunto inicial de exercícios. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{app_2main_8py_a69845a571c8ef12e33ef07594f94c399}{main.\+read\+\_\+root}} ()
+\begin{DoxyCompactList}\small\item\em Endpoint principal (raiz) da API. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Arquivo principal para inicialização da API Fit\+AI, configuração dos endpoints e população inicial da base de dados. 
+
+\begin{DoxyAuthor}{Author}
+André Luis Aguiar do Nascimento 
+
+Hugo Samuel de Lima Oliveira 
+
+Leonardo Sampaio Serra 
+
+Lucas Emanoel Amaral Gomes 
+
+Wesley dos Santos Gatinho 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{app_2main_8py_a3d2e079df3b0171a9d37d04f512090e5}\label{app_2main_8py_a3d2e079df3b0171a9d37d04f512090e5} 
+\index{main.py@{main.py}!populate\_initial\_exercises@{populate\_initial\_exercises}}
+\index{populate\_initial\_exercises@{populate\_initial\_exercises}!main.py@{main.py}}
+\doxysubsubsection{\texorpdfstring{populate\_initial\_exercises()}{populate\_initial\_exercises()}}
+{\footnotesize\ttfamily main.\+populate\+\_\+initial\+\_\+exercises (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Popula a base de dados com um conjunto inicial de exercícios. 
+
+\begin{DoxyVerb}Esta função verifica se os exercícios padrão ('squat', 'push_up', 'hammer_curl')
+já existem na base de dados. Caso não existam, eles são criados e adicionados.
+A conexão com a base de dados é aberta e fechada dentro da função.
+
+:return: None
+\end{DoxyVerb}
+
+
+\begin{DoxyVerb}Esta função verifica se os exercícios padrão ('squat', 'push_up', 'hammer_curl')
+já existem na base de dados. Caso não existam, eles são criados e adicionados.
+A conexão com a base de dados é aberta no início da função e fechada ao final.
+
+:return: None
+\end{DoxyVerb}
+ \Hypertarget{app_2main_8py_a69845a571c8ef12e33ef07594f94c399}\label{app_2main_8py_a69845a571c8ef12e33ef07594f94c399} 
+\index{main.py@{main.py}!read\_root@{read\_root}}
+\index{read\_root@{read\_root}!main.py@{main.py}}
+\doxysubsubsection{\texorpdfstring{read\_root()}{read\_root()}}
+{\footnotesize\ttfamily main.\+read\+\_\+root (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Endpoint principal (raiz) da API. 
+
+\begin{DoxyVerb}Retorna uma mensagem de boas-vindas para verificar se a API está operacional.
+
+:return (dict): Uma mensagem de boas-vindas em formato JSON.
+\end{DoxyVerb}
+
+
+\begin{DoxyVerb}Retorna uma mensagem de boas-vindas simples para verificar se a API está
+operacional.
+
+:return (dict): Uma mensagem de boas-vindas em formato JSON.
+\end{DoxyVerb}
+ 

@@ -1,0 +1,88 @@
+\doxysection{exercises.\+hummer\+\_\+curl.\+Hammer\+Curl Class Reference}
+\hypertarget{classexercises_1_1hummer__curl_1_1HammerCurl}{}\label{classexercises_1_1hummer__curl_1_1HammerCurl}\index{exercises.hummer\_curl.HammerCurl@{exercises.hummer\_curl.HammerCurl}}
+
+
+Gerencia o estado, a contagem e o feedback para o exercício de rosca martelo.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexercises_1_1hummer__curl_1_1HammerCurl_aaef57decac21304cd21a9c2afff94d55}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\begin{DoxyCompactList}\small\item\em Inicializa o rastreador do exercício de rosca martelo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classexercises_1_1hummer__curl_1_1HammerCurl_a63d792c9be0406de80ac0f86e60cff9a}{track\+\_\+hammer\+\_\+curl}} (self, landmarks, frame\+\_\+shape)
+\begin{DoxyCompactList}\small\item\em Processa os marcos de pose para rastrear uma repetição do exercício. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classexercises_1_1hummer__curl_1_1HammerCurl_a718253e4e99adc20d4894952ad27e0a5}\label{classexercises_1_1hummer__curl_1_1HammerCurl_a718253e4e99adc20d4894952ad27e0a5} 
+{\bfseries counter}
+\item 
+\Hypertarget{classexercises_1_1hummer__curl_1_1HammerCurl_acf46d31ac7e05544d53521e204a00c43}\label{classexercises_1_1hummer__curl_1_1HammerCurl_acf46d31ac7e05544d53521e204a00c43} 
+{\bfseries stage}
+\item 
+\Hypertarget{classexercises_1_1hummer__curl_1_1HammerCurl_ac994aa5f5dc3e84992d8515364aab4cd}\label{classexercises_1_1hummer__curl_1_1HammerCurl_ac994aa5f5dc3e84992d8515364aab4cd} 
+{\bfseries feedback}
+\item 
+\Hypertarget{classexercises_1_1hummer__curl_1_1HammerCurl_a404860fb01317f9c9f5f731bf75f146a}\label{classexercises_1_1hummer__curl_1_1HammerCurl_a404860fb01317f9c9f5f731bf75f146a} 
+{\bfseries angle\+\_\+min}
+\item 
+\Hypertarget{classexercises_1_1hummer__curl_1_1HammerCurl_ada921b1ab31249ac4b2f480f73f4a6ec}\label{classexercises_1_1hummer__curl_1_1HammerCurl_ada921b1ab31249ac4b2f480f73f4a6ec} 
+{\bfseries angle\+\_\+max}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gerencia o estado, a contagem e o feedback para o exercício de rosca martelo. 
+
+\begin{DoxyVerb}Esta classe utiliza os marcos de pose para calcular o ângulo do cotovelo,
+contar as repetições e fornecer feedback sobre a execução do movimento.
+
+Attributes:
+    counter (int): Contador de repetições completas.
+    stage (str): Estágio atual do exercício, podendo ser 'up' (subida) ou 'down' (descida).
+    feedback (str): Mensagem de texto para orientar o usuário.
+    angle_min (int): Ângulo mínimo do cotovelo para registrar a fase 'up'.
+    angle_max (int): Ângulo máximo do cotovelo para registrar a fase 'down'.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classexercises_1_1hummer__curl_1_1HammerCurl_aaef57decac21304cd21a9c2afff94d55}\label{classexercises_1_1hummer__curl_1_1HammerCurl_aaef57decac21304cd21a9c2afff94d55} 
+\index{exercises.hummer\_curl.HammerCurl@{exercises.hummer\_curl.HammerCurl}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!exercises.hummer\_curl.HammerCurl@{exercises.hummer\_curl.HammerCurl}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily exercises.\+hummer\+\_\+curl.\+Hammer\+Curl.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Inicializa o rastreador do exercício de rosca martelo. 
+
+\begin{DoxyVerb}    Define os valores iniciais para o contador, estágio do movimento e os
+    limites de ângulo que caracterizam a repetição.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classexercises_1_1hummer__curl_1_1HammerCurl_a63d792c9be0406de80ac0f86e60cff9a}\label{classexercises_1_1hummer__curl_1_1HammerCurl_a63d792c9be0406de80ac0f86e60cff9a} 
+\index{exercises.hummer\_curl.HammerCurl@{exercises.hummer\_curl.HammerCurl}!track\_hammer\_curl@{track\_hammer\_curl}}
+\index{track\_hammer\_curl@{track\_hammer\_curl}!exercises.hummer\_curl.HammerCurl@{exercises.hummer\_curl.HammerCurl}}
+\doxysubsubsection{\texorpdfstring{track\_hammer\_curl()}{track\_hammer\_curl()}}
+{\footnotesize\ttfamily exercises.\+hummer\+\_\+curl.\+Hammer\+Curl.\+track\+\_\+hammer\+\_\+curl (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{landmarks,  }\item[{}]{frame\+\_\+shape }\end{DoxyParamCaption})}
+
+
+
+Processa os marcos de pose para rastrear uma repetição do exercício. 
+
+\begin{DoxyVerb}    Calcula o ângulo do cotovelo direito, atualiza o estágio do movimento,
+    incrementa o contador de repetições e gera feedback para o usuário.
+
+    :param (object) landmarks: O objeto de resultados do MediaPipe com os marcos da pose.
+    :param (tuple) frame_shape: A forma (altura, largura) do quadro do vídeo (não utilizado diretamente aqui).
+    :return (tuple): Uma tupla contendo (contador, ângulo, estágio, feedback, marcos, progresso).
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/exercises/hummer\+\_\+curl.\+py\end{DoxyCompactItemize}

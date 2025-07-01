@@ -1,0 +1,64 @@
+\doxysection{schemas.\+exercise\+\_\+session.\+Item\+Sessao Class Reference}
+\hypertarget{classschemas_1_1exercise__session_1_1ItemSessao}{}\label{classschemas_1_1exercise__session_1_1ItemSessao}\index{schemas.exercise\_session.ItemSessao@{schemas.exercise\_session.ItemSessao}}
+
+
+Schema para representar um item de sessão lido da base de dados.  
+
+
+
+
+Inheritance diagram for schemas.\+exercise\+\_\+session.\+Item\+Sessao\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classschemas_1_1exercise__session_1_1ItemSessao__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for schemas.\+exercise\+\_\+session.\+Item\+Sessao\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classschemas_1_1exercise__session_1_1ItemSessao__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classschemas_1_1exercise__session_1_1ItemSessao_1_1Config}{Config}}
+\begin{DoxyCompactList}\small\item\em Configuração Pydantic para permitir a criação a partir de atributos do modelo ORM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classschemas_1_1exercise__session_1_1ItemSessao_ab1f41bd293aaea54ba09a1a7803140ef}\label{classschemas_1_1exercise__session_1_1ItemSessao_ab1f41bd293aaea54ba09a1a7803140ef} 
+uuid {\bfseries id} .UUID
+\item 
+\Hypertarget{classschemas_1_1exercise__session_1_1ItemSessao_ab60ad6e1e1bf2738eb4804ad81975655}\label{classschemas_1_1exercise__session_1_1ItemSessao_ab60ad6e1e1bf2738eb4804ad81975655} 
+\mbox{\hyperlink{classschemas_1_1exercicio_1_1Exercicio}{Exercicio}} {\bfseries exercicio}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classschemas_1_1exercise__session_1_1ItemSessaoBase}{schemas.\+exercise\+\_\+session.\+Item\+Sessao\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries series}
+\item 
+int {\bfseries repeticoes}
+\item 
+Optional {\bfseries feedback\+\_\+ia} = None
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Schema para representar um item de sessão lido da base de dados. 
+
+\begin{DoxyVerb}Attributes:
+    id (uuid.UUID): ID único do item da sessão.
+    exercicio (Exercicio): Objeto completo do exercício, aninhado para fornecer detalhes.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/schemas/\mbox{\hyperlink{schemas_2exercise__session_8py}{exercise\+\_\+session.\+py}}\end{DoxyCompactItemize}

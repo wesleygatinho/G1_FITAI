@@ -1,0 +1,65 @@
+\doxysection{models.\+exercicio.\+Exercicio Class Reference}
+\hypertarget{classmodels_1_1exercicio_1_1Exercicio}{}\label{classmodels_1_1exercicio_1_1Exercicio}\index{models.exercicio.Exercicio@{models.exercicio.Exercicio}}
+
+
+Modelo para a tabela \textquotesingle{}exercicios\textquotesingle{}.  
+
+
+
+
+Inheritance diagram for models.\+exercicio.\+Exercicio\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{classmodels_1_1exercicio_1_1Exercicio__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for models.\+exercicio.\+Exercicio\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{classmodels_1_1exercicio_1_1Exercicio__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classmodels_1_1exercicio_1_1Exercicio_a05b8dbf98c3553b113c1bb3bb88bb210}\label{classmodels_1_1exercicio_1_1Exercicio_a05b8dbf98c3553b113c1bb3bb88bb210} 
+{\bfseries id} = Column(UUID(as\+\_\+uuid=True), primary\+\_\+key=True, default=uuid.\+uuid4)
+\item 
+\Hypertarget{classmodels_1_1exercicio_1_1Exercicio_a0b7ac7d11fd19d8afbd707dde66112bd}\label{classmodels_1_1exercicio_1_1Exercicio_a0b7ac7d11fd19d8afbd707dde66112bd} 
+{\bfseries nome} = Column(String(100), unique=True, nullable=False, index=True)
+\item 
+\Hypertarget{classmodels_1_1exercicio_1_1Exercicio_a18a91e785d2371e209e2d82a719fc7d5}\label{classmodels_1_1exercicio_1_1Exercicio_a18a91e785d2371e209e2d82a719fc7d5} 
+{\bfseries descricao} = Column(Text, nullable=True)
+\item 
+\Hypertarget{classmodels_1_1exercicio_1_1Exercicio_a4aaf114835e6e27f484dc9e55a69cd3d}\label{classmodels_1_1exercicio_1_1Exercicio_a4aaf114835e6e27f484dc9e55a69cd3d} 
+{\bfseries instrucoes} = Column(Text, nullable=True)
+\item 
+\Hypertarget{classmodels_1_1exercicio_1_1Exercicio_a41eb2a83d9ed5c4a538d892bf9cc0d1a}\label{classmodels_1_1exercicio_1_1Exercicio_a41eb2a83d9ed5c4a538d892bf9cc0d1a} 
+{\bfseries itens\+\_\+sessao} = relationship("{}Item\+Sessao"{}, back\+\_\+populates="{}exercicio"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Modelo para a tabela \textquotesingle{}exercicios\textquotesingle{}. 
+
+\begin{DoxyVerb}Armazena os detalhes de cada exercício disponível na aplicação,
+como nome, descrição e instruções de execução.
+
+Attributes:
+    id (UUID): ID único do exercício, gerado automaticamente.
+    nome (str): Nome do exercício, deve ser único e é indexado.
+    descricao (Text): Descrição textual do exercício.
+    instrucoes (Text): Instruções detalhadas de como realizar o exercício.
+    itens_sessao (relationship): Relacionamento com os itens de sessão associados.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/models/\mbox{\hyperlink{models_2exercicio_8py}{exercicio.\+py}}\end{DoxyCompactItemize}

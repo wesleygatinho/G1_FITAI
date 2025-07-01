@@ -1,0 +1,75 @@
+\doxysection{models.\+progress\+\_\+record.\+Cardio\+Record Class Reference}
+\hypertarget{classmodels_1_1progress__record_1_1CardioRecord}{}\label{classmodels_1_1progress__record_1_1CardioRecord}\index{models.progress\_record.CardioRecord@{models.progress\_record.CardioRecord}}
+
+
+Modelo para Registos de Exercício Cardiovascular, herdando de Registro\+Progresso.  
+
+
+
+
+Inheritance diagram for models.\+progress\+\_\+record.\+Cardio\+Record\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classmodels_1_1progress__record_1_1CardioRecord__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for models.\+progress\+\_\+record.\+Cardio\+Record\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classmodels_1_1progress__record_1_1CardioRecord__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1CardioRecord_a831dc54bdd6e0ae59931e46e554bf7eb}\label{classmodels_1_1progress__record_1_1CardioRecord_a831dc54bdd6e0ae59931e46e554bf7eb} 
+{\bfseries id} = Column(UUID(as\+\_\+uuid=True), Foreign\+Key("{}registro\+\_\+progresso.\+id"{}), primary\+\_\+key=True)
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1CardioRecord_a325fea0e022b4879297220fef3c1454f}\label{classmodels_1_1progress__record_1_1CardioRecord_a325fea0e022b4879297220fef3c1454f} 
+{\bfseries tipo\+\_\+equipamento} = Column(String, nullable=True)
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1CardioRecord_a5232d66a8dba133f4a1266851a7fd92f}\label{classmodels_1_1progress__record_1_1CardioRecord_a5232d66a8dba133f4a1266851a7fd92f} 
+{\bfseries distancia\+\_\+km} = Column(Float, nullable=True)
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1CardioRecord_ac8341b78a6b9b446e3832b3d05270aec}\label{classmodels_1_1progress__record_1_1CardioRecord_ac8341b78a6b9b446e3832b3d05270aec} 
+{\bfseries tempo\+\_\+min} = Column(Integer, nullable=False)
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1CardioRecord_af25c1bbf9e9e0684973767eb62b53c1a}\label{classmodels_1_1progress__record_1_1CardioRecord_af25c1bbf9e9e0684973767eb62b53c1a} 
+{\bfseries calorias} = Column(Integer, nullable=True)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classmodels_1_1progress__record_1_1RegistroProgresso}{models.\+progress\+\_\+record.\+Registro\+Progresso}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries id} = Column(UUID(as\+\_\+uuid=True), primary\+\_\+key=True, default=uuid.\+uuid4)
+\item 
+{\bfseries data} = Column(Date\+Time, default=datetime.\+utcnow, nullable=False)
+\item 
+{\bfseries user\+\_\+id} = Column(UUID(as\+\_\+uuid=True), Foreign\+Key("{}users.\+id"{}), nullable=False)
+\item 
+{\bfseries type} = Column(String(50))
+\item 
+{\bfseries owner} = relationship("{}User"{}, back\+\_\+populates="{}registros\+\_\+progresso"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Modelo para Registos de Exercício Cardiovascular, herdando de Registro\+Progresso. 
+
+\begin{DoxyVerb}Attributes:
+    id (UUID): Chave primária que é também uma chave estrangeira para a tabela base.
+    tipo_equipamento (str): O tipo de equipamento utilizado (ex: "passadeira", "bicicleta").
+    distancia_km (float): A distância percorrida em quilómetros.
+    tempo_min (int): A duração do exercício em minutos.
+    calorias (int): As calorias queimadas durante o exercício.
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/models/\mbox{\hyperlink{models_2progress__record_8py}{progress\+\_\+record.\+py}}\end{DoxyCompactItemize}

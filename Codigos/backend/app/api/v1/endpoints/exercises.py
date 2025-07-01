@@ -1,27 +1,51 @@
+"""
+@file exercises.py
+@brief Define os endpoints da API para análise de exercícios em tempo real e consulta de instruções.
+@author André Luis Aguiar do Nascimento
+@author Hugo Samuel de Lima Oliveira
+@author Leonardo Sampaio Serra
+@author Lucas Emanoel Amaral Gomes
+@author Wesley dos Santos Gatinho
+"""
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel
 from typing import Dict, Any
 
 from app.models.user import User
 from app.core.dependencies import get_current_active_user
+# O nome do serviço foi inferido a partir do uso no código.
 from app.services import pose_estimation_service
 
+# Cria uma nova instância de roteador para os endpoints de análise de exercícios.
 router = APIRouter()
 
 class ExerciseRequest(BaseModel):
-    """Schema para a requisição de análise de exercício."""
+    """Schema para a requisição de análise de exercício.
+
+    Attributes:
+        exercise_type (str): O tipo de exercício a ser analisado (ex: "squat").
+        image_b64 (str): O frame do vídeo codificado como uma string base64.
+    """
     exercise_type: str
     image_b64: str
 
-# --- NOVO ENDPOINT DE INSTRUÇÕES ---
 @router.get("/{exercise_id}/instructions", response_model=Dict[str, str])
 def get_exercise_instructions(
     exercise_id: str,
     current_user: User = Depends(get_current_active_user)
 ):
+    """Retorna as instruções de execução para um exercício específico.
+
+    Este endpoint contém instruções pré-definidas para um conjunto fixo de exercícios.
+    Requer um utilizador autenticado e ativo.
+
+    :param (str) exercise_id: O identificador do exercício (ex: "squat", "push_up").
+    :param (User) current_user: O utilizador autenticado.
+    :raises HTTPException: Se o 'exercise_id' não corresponder a nenhum exercício conhecido.
+    :return (Dict[str, str]): Um dicionário contendo as instruções formatadas.
     """
-    Retorna as instruções de execução para um exercício específico.
-    """
+    # Nota: As instruções estão pré-definidas no código.
     instructions = {
         "squat": """
 ### Posição Inicial:
@@ -64,9 +88,15 @@ def analyze_exercise(
     request: ExerciseRequest,
     current_user: User = Depends(get_current_active_user)
 ):
-    """
-    Recebe um frame de vídeo (como imagem base64) e o tipo de exercício,
-    e retorna a análise de contagem de repetições e feedback de postura.
+    """Recebe um frame de vídeo e o tipo de exercício para análise.
+
+    Delega a análise para o serviço de estimativa de pose, que retorna a
+    contagem de repetições, estágio do movimento e feedback de postura.
+
+    :param (ExerciseRequest) request: O corpo da requisição com o tipo de exercício e a imagem em base64.
+    :param (User) current_user: O utilizador autenticado.
+    :raises HTTPException: Se a requisição for inválida ou se ocorrer um erro interno.
+    :return (Dict[str, Any]): Um dicionário com os resultados da análise.
     """
     try:
         analysis_result = pose_estimation_service.analyze_exercise_frame(
@@ -75,11 +105,13 @@ def analyze_exercise(
         )
         return analysis_result
     except ValueError as e:
+        # Erros de validação, como tipo de exercício não suportado ou imagem inválida.
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e),
         )
     except Exception as e:
+        # Captura outras exceções inesperadas durante a análise.
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Ocorreu um erro interno durante a análise: {e}",

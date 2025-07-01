@@ -1,0 +1,67 @@
+\doxysection{models.\+progress\+\_\+record.\+Registro\+Imagem\+Corpo Class Reference}
+\hypertarget{classmodels_1_1progress__record_1_1RegistroImagemCorpo}{}\label{classmodels_1_1progress__record_1_1RegistroImagemCorpo}\index{models.progress\_record.RegistroImagemCorpo@{models.progress\_record.RegistroImagemCorpo}}
+
+
+Modelo para Registos de Imagem Corporal, herdando de Registro\+Progresso.  
+
+
+
+
+Inheritance diagram for models.\+progress\+\_\+record.\+Registro\+Imagem\+Corpo\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classmodels_1_1progress__record_1_1RegistroImagemCorpo__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for models.\+progress\+\_\+record.\+Registro\+Imagem\+Corpo\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classmodels_1_1progress__record_1_1RegistroImagemCorpo__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1RegistroImagemCorpo_a3a3939798ce72715a10ed21e0ee7069d}\label{classmodels_1_1progress__record_1_1RegistroImagemCorpo_a3a3939798ce72715a10ed21e0ee7069d} 
+{\bfseries id} = Column(UUID(as\+\_\+uuid=True), Foreign\+Key("{}registro\+\_\+progresso.\+id"{}), primary\+\_\+key=True)
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1RegistroImagemCorpo_a4d707ed099107182a3ed41b5d909c779}\label{classmodels_1_1progress__record_1_1RegistroImagemCorpo_a4d707ed099107182a3ed41b5d909c779} 
+{\bfseries endereco\+\_\+imagem} = Column(String, nullable=False)
+\item 
+\Hypertarget{classmodels_1_1progress__record_1_1RegistroImagemCorpo_a96ec766cbfcd98dc312600211e87b759}\label{classmodels_1_1progress__record_1_1RegistroImagemCorpo_a96ec766cbfcd98dc312600211e87b759} 
+{\bfseries posicao} = Column(String, nullable=True)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classmodels_1_1progress__record_1_1RegistroProgresso}{models.\+progress\+\_\+record.\+Registro\+Progresso}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries id} = Column(UUID(as\+\_\+uuid=True), primary\+\_\+key=True, default=uuid.\+uuid4)
+\item 
+{\bfseries data} = Column(Date\+Time, default=datetime.\+utcnow, nullable=False)
+\item 
+{\bfseries user\+\_\+id} = Column(UUID(as\+\_\+uuid=True), Foreign\+Key("{}users.\+id"{}), nullable=False)
+\item 
+{\bfseries type} = Column(String(50))
+\item 
+{\bfseries owner} = relationship("{}User"{}, back\+\_\+populates="{}registros\+\_\+progresso"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Modelo para Registos de Imagem Corporal, herdando de Registro\+Progresso. 
+
+\begin{DoxyVerb}Attributes:
+    id (UUID): Chave primária que é também uma chave estrangeira para a tabela base.
+    endereco_imagem (str): URL ou caminho para o ficheiro da imagem armazenada.
+    posicao (str): Posição da fotografia (ex: "frente", "lado", "costas").
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+backend/app/models/\mbox{\hyperlink{models_2progress__record_8py}{progress\+\_\+record.\+py}}\end{DoxyCompactItemize}
