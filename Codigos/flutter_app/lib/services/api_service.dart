@@ -20,7 +20,7 @@ class ApiService {
   // --- CONFIGURAÇÃO DO NGROK ---
   /// Se [_useNgrok] for 'true', cole a sua URL do ngrok aqui.
   static const String _ngrokUrl =
-      "https://bb0f-2804-d4b-7737-c100-3d83-4227-15b8-9fca.ngrok-free.app/api/v1";
+      "https://b210-2804-4a4-ffd6-8800-b011-d627-2d6-74e4.ngrok-free.app/api/v1";
 
   // --- CONFIGURAÇÃO LOCAL (EMULADOR/WEB) ---
   /// IP especial para o emulador Android aceder ao localhost do computador.
