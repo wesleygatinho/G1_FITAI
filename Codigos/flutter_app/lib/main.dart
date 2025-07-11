@@ -43,13 +43,14 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.orange,
 
             // Define o esquema de cores de forma mais detalhada.
-            colorScheme: ColorScheme.fromSwatch(
-              primarySwatch: Colors.orange,
-              brightness: Brightness.light,
-            ).copyWith(
-              // A cor 'secondary' é usada para elementos de destaque, como o FloatingActionButton.
-              secondary: Colors.deepOrangeAccent,
-            ),
+            colorScheme:
+                ColorScheme.fromSwatch(
+                  primarySwatch: Colors.orange,
+                  brightness: Brightness.light,
+                ).copyWith(
+                  // A cor 'secondary' é usada para elementos de destaque, como o FloatingActionButton.
+                  secondary: Colors.deepOrangeAccent,
+                ),
 
             // Estilo para os botões principais.
             elevatedButtonTheme: ElevatedButtonThemeData(
@@ -70,11 +71,45 @@ class MyApp extends StatelessWidget {
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
 
-          // Decide a tela inicial com base no estado de autenticação.
-          // Se o utilizador estiver autenticado, mostra a [HomeScreen],
-          // caso contrário, mostra a [LoginScreen].
-          home: auth.isAuthenticated ? const HomeScreen() : const LoginScreen(),
+          // MODIFICAÇÃO PRINCIPAL: Agora verifica se ainda está carregando
+          // antes de decidir qual tela mostrar
+          home: auth.isLoading
+              ? const SplashScreen() // Tela de carregamento enquanto verifica autenticação
+              : auth.isAuthenticated
+              ? const HomeScreen()
+              : const LoginScreen(),
           debugShowCheckedModeBanner: false,
+        ),
+      ),
+    );
+  }
+}
+
+/// NOVO: Widget de tela de carregamento mostrado durante a verificação inicial de autenticação.
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.orange,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.fitness_center, size: 100, color: Colors.white),
+            const SizedBox(height: 24),
+            Text(
+              'FitAI',
+              style: TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(height: 24),
+            CircularProgressIndicator(color: Colors.white),
+          ],
         ),
       ),
     );

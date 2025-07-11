@@ -14,12 +14,28 @@ import 'api_service.dart';
 class AuthService with ChangeNotifier {
   String? _token;
   bool _isAuthenticated = false;
+  bool _isLoading = true; // NOVO: controla o estado de carregamento inicial
 
   /// Retorna `true` se o utilizador estiver autenticado.
   bool get isAuthenticated => _isAuthenticated;
 
   /// Retorna o token de acesso do utilizador, ou `null` se não estiver autenticado.
   String? get token => _token;
+
+  /// NOVO: Retorna `true` se ainda estiver verificando a autenticação inicial.
+  bool get isLoading => _isLoading;
+
+  /// NOVO: Construtor que automaticamente verifica a autenticação ao criar o serviço.
+  AuthService() {
+    _checkInitialAuth();
+  }
+
+  /// NOVO: Verifica se o utilizador já está autenticado ao iniciar a aplicação.
+  Future<void> _checkInitialAuth() async {
+    await tryAutoLogin();
+    _isLoading = false;
+    notifyListeners();
+  }
 
   /// Atualiza o estado da aplicação após um login bem-sucedido.
   ///
@@ -44,11 +60,7 @@ class AuthService with ChangeNotifier {
       final response = await http.post(
         url,
         headers: {'Content-Type': 'application/json'},
-        body: json.encode({
-          'nome': nome,
-          'email': email,
-          'password': password,
-        }),
+        body: json.encode({'nome': nome, 'email': email, 'password': password}),
       );
 
       if (response.statusCode != 201) {

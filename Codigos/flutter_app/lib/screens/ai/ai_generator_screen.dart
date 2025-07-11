@@ -11,9 +11,7 @@ class AiGeneratorScreen extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (ctx) => AiProvider(),
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Assistente de IA'),
-        ),
+        appBar: AppBar(title: const Text('Assistente de IA')),
         body: RefreshIndicator(
           onRefresh: () =>
               Provider.of<AiProvider>(context, listen: false).fetchHistory(),
@@ -28,8 +26,10 @@ class AiGeneratorScreen extends StatelessWidget {
                 const SizedBox(height: 24),
                 const Divider(),
                 const SizedBox(height: 16),
-                Text('Histórico de Interações',
-                    style: Theme.of(context).textTheme.headlineSmall),
+                Text(
+                  'Histórico de Interações',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
                 const SizedBox(height: 16),
                 _buildHistoryList(),
               ],
@@ -52,8 +52,10 @@ class _buildDailyTipCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text('Dica Fitness do Dia',
-                style: Theme.of(context).textTheme.titleLarge),
+            Text(
+              'Dica Fitness do Dia',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             const SizedBox(height: 16),
             Consumer<AiProvider>(
               builder: (ctx, aiData, _) {
@@ -61,8 +63,10 @@ class _buildDailyTipCard extends StatelessWidget {
                   return const Center(child: CircularProgressIndicator());
                 }
                 if (aiData.dailyTip != null) {
-                  return Text(aiData.dailyTip!,
-                      style: Theme.of(context).textTheme.bodyLarge);
+                  return Text(
+                    aiData.dailyTip!,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  );
                 }
                 return const SizedBox.shrink();
               },
@@ -72,9 +76,12 @@ class _buildDailyTipCard extends StatelessWidget {
               icon: const Icon(Icons.lightbulb_outline),
               label: const Text('Obter Nova Dica'),
               onPressed: () {
-                Provider.of<AiProvider>(context, listen: false).fetchDailyTip();
+                Provider.of<AiProvider>(
+                  context,
+                  listen: false,
+                ).forceNewDailyTip();
               },
-            )
+            ),
           ],
         ),
       ),
@@ -101,8 +108,10 @@ class _buildPlanGeneratorCardState extends State<_buildPlanGeneratorCard> {
 
   void _submit() {
     if (_promptController.text.trim().isEmpty) return;
-    Provider.of<AiProvider>(context, listen: false)
-        .generatePlan(_promptController.text);
+    Provider.of<AiProvider>(
+      context,
+      listen: false,
+    ).generatePlan(_promptController.text);
   }
 
   @override
@@ -115,8 +124,10 @@ class _buildPlanGeneratorCardState extends State<_buildPlanGeneratorCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text('Gerador de Plano Personalizado',
-                style: Theme.of(context).textTheme.titleLarge),
+            Text(
+              'Gerador de Plano Personalizado',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             const SizedBox(height: 16),
             TextField(
               controller: _promptController,
@@ -141,10 +152,13 @@ class _buildPlanGeneratorCardState extends State<_buildPlanGeneratorCard> {
                 padding: const EdgeInsets.all(12),
                 // ignore: deprecated_member_use
                 decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(8)),
-                child: Text(aiProvider.generatedPlan!,
-                    style: Theme.of(context).textTheme.bodyMedium),
+                  color: Colors.black.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(
+                  aiProvider.generatedPlan!,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
               ),
           ],
         ),
@@ -182,24 +196,30 @@ class _buildHistoryList extends StatelessWidget {
                   'Interação de ${DateFormat('dd/MM/yyyy').format(interaction.data)}',
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
-                subtitle: Text(interaction.promptUsuario,
-                    overflow: TextOverflow.ellipsis),
+                subtitle: Text(
+                  interaction.promptUsuario,
+                  overflow: TextOverflow.ellipsis,
+                ),
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('O seu pedido:',
-                            style: Theme.of(context).textTheme.titleSmall),
+                        Text(
+                          'O seu pedido:',
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
                         Text(interaction.promptUsuario),
                         const Divider(height: 24),
-                        Text('Resposta da IA:',
-                            style: Theme.of(context).textTheme.titleSmall),
+                        Text(
+                          'Resposta da IA:',
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
                         Text(interaction.respostaIa),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             );
