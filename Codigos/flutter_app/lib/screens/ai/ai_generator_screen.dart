@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../../providers/ai_provider.dart';
+import 'package:table_calendar/table_calendar.dart';
+import '../../models/ia_interaction.dart';
 
 class AiGeneratorScreen extends StatelessWidget {
   const AiGeneratorScreen({super.key});
@@ -12,36 +13,47 @@ class AiGeneratorScreen extends StatelessWidget {
       create: (ctx) => AiProvider(),
       child: Scaffold(
         appBar: AppBar(title: const Text('Assistente de IA')),
-        body: RefreshIndicator(
-          onRefresh: () =>
-              Provider.of<AiProvider>(context, listen: false).fetchHistory(),
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                _buildDailyTipCard(),
-                const SizedBox(height: 24),
-                _buildPlanGeneratorCard(),
-                const SizedBox(height: 24),
-                const Divider(),
-                const SizedBox(height: 16),
-                Text(
-                  'Histórico de Interações',
-                  style: Theme.of(context).textTheme.headlineSmall,
+        body: LayoutBuilder(
+          builder: (context, constraints) {
+            return RefreshIndicator(
+              onRefresh: () => Provider.of<AiProvider>(context, listen: false)
+                  .fetchHistory(),
+              child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                        16, 16, 16, 32), // bottom extra!
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        _buildDailyTipCard(),
+                        const SizedBox(height: 24),
+                        _buildPlanGeneratorCard(),
+                        const SizedBox(height: 24),
+                        const Divider(),
+                        const SizedBox(height: 16),
+                        Text(
+                          'Histórico de Interações',
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                        const SizedBox(height: 16),
+                        const InteractionCalendarWidget(),
+                      ],
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 16),
-                _buildHistoryList(),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
       ),
     );
   }
 }
 
-// ignore: camel_case_types
+// --- DICA DO DIA ---
 class _buildDailyTipCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -89,14 +101,13 @@ class _buildDailyTipCard extends StatelessWidget {
   }
 }
 
-// ignore: camel_case_types
+// --- GERADOR DE PLANO ---
 class _buildPlanGeneratorCard extends StatefulWidget {
   @override
   State<_buildPlanGeneratorCard> createState() =>
       _buildPlanGeneratorCardState();
 }
 
-// ignore: camel_case_types
 class _buildPlanGeneratorCardState extends State<_buildPlanGeneratorCard> {
   final _promptController = TextEditingController();
 
@@ -150,7 +161,6 @@ class _buildPlanGeneratorCardState extends State<_buildPlanGeneratorCard> {
             else if (aiProvider.generatedPlan != null)
               Container(
                 padding: const EdgeInsets.all(12),
-                // ignore: deprecated_member_use
                 decoration: BoxDecoration(
                   color: Colors.black.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(8),
@@ -167,65 +177,137 @@ class _buildPlanGeneratorCardState extends State<_buildPlanGeneratorCard> {
   }
 }
 
-// --- NOVO WIDGET PARA EXIBIR O HISTÓRICO ---
-// ignore: camel_case_types
-class _buildHistoryList extends StatelessWidget {
+// --- CALENDÁRIO DE INTERAÇÕES (DICAS + PLANOS) ---
+class InteractionCalendarWidget extends StatefulWidget {
+  const InteractionCalendarWidget({Key? key}) : super(key: key);
+
+  @override
+  State<InteractionCalendarWidget> createState() =>
+      _InteractionCalendarWidgetState();
+}
+
+class _InteractionCalendarWidgetState extends State<InteractionCalendarWidget> {
+  DateTime _focusedDay = DateTime.now();
+  DateTime? _selectedDay;
+
   @override
   Widget build(BuildContext context) {
-    return Consumer<AiProvider>(
-      builder: (ctx, aiData, _) {
-        if (aiData.isLoadingHistory) {
-          return const Center(child: CircularProgressIndicator());
-        }
-        if (aiData.history.isEmpty) {
-          return const Center(child: Text('Nenhuma interação guardada ainda.'));
-        }
-        return ListView.builder(
-          shrinkWrap:
-              true, // Para que a ListView funcione dentro de uma SingleChildScrollView
-          physics:
-              const NeverScrollableScrollPhysics(), // Desativa o scroll da ListView
-          itemCount: aiData.history.length,
-          itemBuilder: (ctx, index) {
-            final interaction = aiData.history[index];
-            return Card(
-              margin: const EdgeInsets.symmetric(vertical: 6),
-              child: ExpansionTile(
-                leading: const Icon(Icons.history),
-                title: Text(
-                  'Interação de ${DateFormat('dd/MM/yyyy').format(interaction.data)}',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                subtitle: Text(
-                  interaction.promptUsuario,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
+    final aiProvider = Provider.of<AiProvider>(context);
+
+    // Agrupa todas as interações por data
+    final Map<DateTime, List<IAInteraction>> interactionsByDate = {};
+    for (final interaction in aiProvider.history) {
+      final date = DateTime(
+        interaction.data.year,
+        interaction.data.month,
+        interaction.data.day,
+      );
+      interactionsByDate.putIfAbsent(date, () => []).add(interaction);
+    }
+
+    List<IAInteraction> _getInteractionsForDay(DateTime day) {
+      final date = DateTime(day.year, day.month, day.day);
+      return interactionsByDate[date] ?? [];
+    }
+
+    return Column(
+      children: [
+        TableCalendar<IAInteraction>(
+          firstDay: DateTime.now().subtract(const Duration(days: 365)),
+          lastDay: DateTime.now().add(const Duration(days: 365)),
+          focusedDay: _focusedDay,
+          selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+          calendarFormat: CalendarFormat.month,
+          eventLoader: _getInteractionsForDay,
+          onDaySelected: (selectedDay, focusedDay) {
+            setState(() {
+              _selectedDay = selectedDay;
+              _focusedDay = focusedDay;
+            });
+            final interactions = _getInteractionsForDay(selectedDay);
+            if (interactions.isNotEmpty) {
+              showDialog(
+                context: context,
+                builder: (_) => AlertDialog(
+                  title: Text(
+                      'Interações de ${selectedDay.day}/${selectedDay.month}/${selectedDay.year}'),
+                  content: SingleChildScrollView(
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'O seu pedido:',
-                          style: Theme.of(context).textTheme.titleSmall,
-                        ),
-                        Text(interaction.promptUsuario),
-                        const Divider(height: 24),
-                        Text(
-                          'Resposta da IA:',
-                          style: Theme.of(context).textTheme.titleSmall,
-                        ),
-                        Text(interaction.respostaIa),
-                      ],
+                      mainAxisSize: MainAxisSize.min,
+                      children: interactions.map((interaction) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              if (interaction.promptUsuario.trim().isNotEmpty)
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Plano solicitado:",
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold)),
+                                    Text(interaction.promptUsuario),
+                                    const SizedBox(height: 4),
+                                    Text("Plano:",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold)),
+                                    Text(interaction.respostaIa),
+                                  ],
+                                )
+                              else
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Dica do Dia:",
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold)),
+                                    Text(interaction.respostaIa),
+                                  ],
+                                ),
+                            ],
+                          ),
+                        );
+                      }).toList(),
                     ),
                   ),
-                ],
-              ),
-            );
+                ),
+              );
+            }
           },
-        );
-      },
+          calendarStyle: const CalendarStyle(
+            markerDecoration: BoxDecoration(
+              color: Colors.orange,
+              shape: BoxShape.circle,
+            ),
+          ),
+          headerStyle: const HeaderStyle(
+            formatButtonVisible: false,
+            titleCentered: true,
+          ),
+        ),
+        const SizedBox(height: 16),
+        if (_selectedDay != null)
+          ..._getInteractionsForDay(_selectedDay!).map((interaction) => Card(
+                margin: const EdgeInsets.symmetric(vertical: 4),
+                child: ListTile(
+                  leading: Icon(interaction.promptUsuario.trim().isNotEmpty
+                      ? Icons.history
+                      : Icons.lightbulb),
+                  title: interaction.respostaIa.isNotEmpty
+                      ? Text(interaction.respostaIa)
+                      : null,
+                  subtitle: Text(
+                      "Registrado em: ${interaction.data.day}/${interaction.data.month}/${interaction.data.year}"),
+                ),
+              )),
+        if (_selectedDay != null &&
+            _getInteractionsForDay(_selectedDay!).isEmpty)
+          const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text('Nenhuma interação neste dia.'),
+          ),
+      ],
     );
   }
 }

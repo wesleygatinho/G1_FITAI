@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../models/ia_interaction.dart';
 import '../services/api_service.dart';
-import '../services/daily_tip_cache_service.dart';
 
 class AiProvider with ChangeNotifier {
   String? _dailyTip;
@@ -28,59 +27,62 @@ class AiProvider with ChangeNotifier {
   Future<void> fetchDailyTip() async {
     _isLoadingTip = true;
     notifyListeners();
-
     try {
-      // NOVA LÓGICA: Primeiro verifica se já existe uma dica para hoje
-      String? cachedTip = await DailyTipCacheService.getTodaysTip();
-
-      if (cachedTip != null) {
-        // Se existe dica cached para hoje, usa ela
-        _dailyTip = cachedTip;
-        _isLoadingTip = false;
-        notifyListeners();
-        return;
-      }
-
-      // Se não existe dica cached, busca uma nova da API
       final response = await ApiService.get('ai/tips/daily');
       if (response.statusCode == 200) {
         final responseData = json.decode(utf8.decode(response.bodyBytes));
         _dailyTip = responseData['tip'];
 
-        // Salva a nova dica no cache
-        await DailyTipCacheService.saveTodaysTip(_dailyTip!);
+        // Salvar a dica no histórico, se ainda não tiver dica hoje
+        final today = DateTime.now();
+        final hasTipToday = _history.any((i) =>
+            i.isDica &&
+            i.data.year == today.year &&
+            i.data.month == today.month &&
+            i.data.day == today.day);
+        if (!hasTipToday) {
+          await ApiService.post(
+              'ai/interactions/history',
+              json.encode({
+                "prompt_usuario": "",
+                "resposta_ia": _dailyTip,
+              }));
+          await fetchHistory();
+        }
       } else {
         _dailyTip = 'Erro ao buscar a dica do dia.';
       }
     } catch (e) {
       _dailyTip = 'Erro de conexão ao buscar a dica.';
     }
-
     _isLoadingTip = false;
     notifyListeners();
   }
 
-  /// FUNÇÃO MODIFICADA: Agora força uma nova dica (ignora cache)
+  // Força uma nova dica
   Future<void> forceNewDailyTip() async {
     _isLoadingTip = true;
     notifyListeners();
-
     try {
-      // Força buscar uma nova dica da API
-      final response = await ApiService.get('ai/tips/daily');
+      final response = await ApiService.get('ai/tips/daily?force_new=true');
       if (response.statusCode == 200) {
         final responseData = json.decode(utf8.decode(response.bodyBytes));
         _dailyTip = responseData['tip'];
 
-        // Atualiza o cache com a nova dica
-        await DailyTipCacheService.saveTodaysTip(_dailyTip!);
+        // Sempre salva nova dica no histórico
+        await ApiService.post(
+            'ai/interactions/history',
+            json.encode({
+              "prompt_usuario": "",
+              "resposta_ia": _dailyTip,
+            }));
+        await fetchHistory();
       } else {
         _dailyTip = 'Erro ao buscar a dica do dia.';
       }
     } catch (e) {
       _dailyTip = 'Erro de conexão ao buscar a dica.';
     }
-
     _isLoadingTip = false;
     notifyListeners();
   }
@@ -91,12 +93,12 @@ class AiProvider with ChangeNotifier {
     notifyListeners();
     try {
       final response = await ApiService.post(
-        'ai/plans/generate',
-        json.encode({'prompt': prompt}),
-      );
+          'ai/plans/generate', json.encode({'prompt': prompt}));
       if (response.statusCode == 201) {
         final responseData = json.decode(utf8.decode(response.bodyBytes));
         _generatedPlan = responseData['plan'];
+
+        // O backend já deve registrar a interação, mas para garantir, pode fazer:
         await fetchHistory();
       } else {
         final errorData = json.decode(response.body);
@@ -115,12 +117,10 @@ class AiProvider with ChangeNotifier {
     try {
       final response = await ApiService.get('ai/interactions/history');
       if (response.statusCode == 200) {
-        final List<dynamic> responseData = json.decode(
-          utf8.decode(response.bodyBytes),
-        );
-        _history = responseData
-            .map((data) => IAInteraction.fromJson(data))
-            .toList();
+        final List<dynamic> responseData =
+            json.decode(utf8.decode(response.bodyBytes));
+        _history =
+            responseData.map((data) => IAInteraction.fromJson(data)).toList();
       }
     } catch (e) {
       print("Erro ao buscar histórico de IA: $e");

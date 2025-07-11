@@ -11,13 +11,15 @@ class IAInteraction {
     required this.respostaIa,
   });
 
-  // Factory para criar um IAInteraction a partir do JSON da API
   factory IAInteraction.fromJson(Map<String, dynamic> json) {
     return IAInteraction(
-      id: json['id'],
+      id: json['id'].toString(),
       data: DateTime.parse(json['data']),
-      promptUsuario: json['prompt_usuario'],
-      respostaIa: json['resposta_ia'],
+      promptUsuario: json['prompt_usuario'] ?? "",
+      respostaIa: json['resposta_ia'] ?? "",
     );
   }
+
+  bool get isPlanoPersonalizado => promptUsuario.trim().isNotEmpty;
+  bool get isDica => promptUsuario.trim().isEmpty;
 }

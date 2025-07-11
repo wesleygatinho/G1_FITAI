@@ -43,14 +43,13 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.orange,
 
             // Define o esquema de cores de forma mais detalhada.
-            colorScheme:
-                ColorScheme.fromSwatch(
-                  primarySwatch: Colors.orange,
-                  brightness: Brightness.light,
-                ).copyWith(
-                  // A cor 'secondary' é usada para elementos de destaque, como o FloatingActionButton.
-                  secondary: Colors.deepOrangeAccent,
-                ),
+            colorScheme: ColorScheme.fromSwatch(
+              primarySwatch: Colors.orange,
+              brightness: Brightness.light,
+            ).copyWith(
+              // A cor 'secondary' é usada para elementos de destaque, como o FloatingActionButton.
+              secondary: Colors.deepOrangeAccent,
+            ),
 
             // Estilo para os botões principais.
             elevatedButtonTheme: ElevatedButtonThemeData(
@@ -76,8 +75,8 @@ class MyApp extends StatelessWidget {
           home: auth.isLoading
               ? const SplashScreen() // Tela de carregamento enquanto verifica autenticação
               : auth.isAuthenticated
-              ? const HomeScreen()
-              : const LoginScreen(),
+                  ? const HomeScreen()
+                  : const LoginScreen(),
           debugShowCheckedModeBanner: false,
         ),
       ),
@@ -97,7 +96,11 @@ class SplashScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.fitness_center, size: 100, color: Colors.white),
+            Icon(
+              Icons.fitness_center,
+              size: 100,
+              color: Colors.white,
+            ),
             const SizedBox(height: 24),
             Text(
               'FitAI',
@@ -108,7 +111,9 @@ class SplashScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-            CircularProgressIndicator(color: Colors.white),
+            CircularProgressIndicator(
+              color: Colors.white,
+            ),
           ],
         ),
       ),
