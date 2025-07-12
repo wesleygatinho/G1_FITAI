@@ -16,7 +16,7 @@ Para detalhes específicos sobre cada parte do projeto, consulte os respectivos 
 
 * **Backend:** [Consulte o README do Backend](https://github.com/wesleygatinho/G1_FITAI/blob/main/Codigos/backend/README.md)
 * **App Flutter:** [Consulte o README do App Flutter](https://github.com/wesleygatinho/G1_FITAI/blob/main/Codigos/flutter_app/README.md)
-
+* **Pasta Adicional:** [Pasta APK do APP FITAI](https://drive.google.com/drive/folders/1yXh-N1C-jJqAhx7zjTAPUkgJtsq_k0RJ?usp=sharing)
 ## Como Rodar
 
 1.  **Clone o repositório:**
