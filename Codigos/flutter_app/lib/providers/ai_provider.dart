@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import '../models/ia_interaction.dart'; // Importar o novo modelo
+import '../models/ia_interaction.dart';
 import '../services/api_service.dart';
 
 class AiProvider with ChangeNotifier {
@@ -9,11 +9,9 @@ class AiProvider with ChangeNotifier {
   bool _isLoadingTip = false;
   bool _isLoadingPlan = false;
 
-  // --- NOVAS PROPRIEDADES PARA O HISTÓRICO ---
   List<IAInteraction> _history = [];
   bool _isLoadingHistory = true;
 
-  // --- Getters ---
   String? get dailyTip => _dailyTip;
   String? get generatedPlan => _generatedPlan;
   bool get isLoadingTip => _isLoadingTip;
@@ -21,7 +19,6 @@ class AiProvider with ChangeNotifier {
   List<IAInteraction> get history => [..._history];
   bool get isLoadingHistory => _isLoadingHistory;
 
-  // Ao iniciar o provider, busca a dica do dia e o histórico
   AiProvider() {
     fetchDailyTip();
     fetchHistory();
@@ -35,6 +32,51 @@ class AiProvider with ChangeNotifier {
       if (response.statusCode == 200) {
         final responseData = json.decode(utf8.decode(response.bodyBytes));
         _dailyTip = responseData['tip'];
+
+        // Salvar a dica no histórico, se ainda não tiver dica hoje
+        final today = DateTime.now();
+        final hasTipToday = _history.any((i) =>
+            i.isDica &&
+            i.data.year == today.year &&
+            i.data.month == today.month &&
+            i.data.day == today.day);
+        if (!hasTipToday) {
+          await ApiService.post(
+              'ai/interactions/history',
+              json.encode({
+                "prompt_usuario": "",
+                "resposta_ia": _dailyTip,
+              }));
+          await fetchHistory();
+        }
+      } else {
+        _dailyTip = 'Erro ao buscar a dica do dia.';
+      }
+    } catch (e) {
+      _dailyTip = 'Erro de conexão ao buscar a dica.';
+    }
+    _isLoadingTip = false;
+    notifyListeners();
+  }
+
+  // Força uma nova dica
+  Future<void> forceNewDailyTip() async {
+    _isLoadingTip = true;
+    notifyListeners();
+    try {
+      final response = await ApiService.get('ai/tips/daily?force_new=true');
+      if (response.statusCode == 200) {
+        final responseData = json.decode(utf8.decode(response.bodyBytes));
+        _dailyTip = responseData['tip'];
+
+        // Sempre salva nova dica no histórico
+        await ApiService.post(
+            'ai/interactions/history',
+            json.encode({
+              "prompt_usuario": "",
+              "resposta_ia": _dailyTip,
+            }));
+        await fetchHistory();
       } else {
         _dailyTip = 'Erro ao buscar a dica do dia.';
       }
@@ -50,11 +92,13 @@ class AiProvider with ChangeNotifier {
     _generatedPlan = null;
     notifyListeners();
     try {
-      final response = await ApiService.post('ai/plans/generate', json.encode({'prompt': prompt}));
+      final response = await ApiService.post(
+          'ai/plans/generate', json.encode({'prompt': prompt}));
       if (response.statusCode == 201) {
         final responseData = json.decode(utf8.decode(response.bodyBytes));
         _generatedPlan = responseData['plan'];
-        // Após gerar um novo plano, atualiza o histórico
+
+        // O backend já deve registrar a interação, mas para garantir, pode fazer:
         await fetchHistory();
       } else {
         final errorData = json.decode(response.body);
@@ -67,18 +111,18 @@ class AiProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  // --- NOVA FUNÇÃO PARA BUSCAR O HISTÓRICO ---
   Future<void> fetchHistory() async {
     _isLoadingHistory = true;
     notifyListeners();
     try {
       final response = await ApiService.get('ai/interactions/history');
       if (response.statusCode == 200) {
-        final List<dynamic> responseData = json.decode(utf8.decode(response.bodyBytes));
-        _history = responseData.map((data) => IAInteraction.fromJson(data)).toList();
+        final List<dynamic> responseData =
+            json.decode(utf8.decode(response.bodyBytes));
+        _history =
+            responseData.map((data) => IAInteraction.fromJson(data)).toList();
       }
     } catch (e) {
-      // Ignora o erro silenciosamente para não interromper a UI principal
       print("Erro ao buscar histórico de IA: $e");
     }
     _isLoadingHistory = false;
