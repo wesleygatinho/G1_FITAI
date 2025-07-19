@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the build method from the MyApp class, for the Dart programming language.">
+  <title>build method - MyApp class - main library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">flutter_app</a></li>
+    <li><a href="../../main/">main.dart</a></li>
+    <li><a href="../../main/MyApp-class.html">MyApp</a></li>
+    <li class="self-crumb">build method</li>
+  </ol>
+  <div class="self-name">build</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="main&#47;MyApp-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">build</span> method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+  <div>
+    <ol class="annotation-list">
+        <li>@<a href="https://api.flutter.dev/flutter/dart-core/override-constant.html">override</a></li>
+    </ol>
+  </div>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a></span>
+<span class="name ">build</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="build-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span></span></li>
+</ol>)
+
+      <div class="features"><span class="feature">override</span></div>
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Constrói a interface do widget.</p>
+<p>Utiliza um <a href="https://pub.dev/documentation/provider/6.1.5/provider/Consumer-class.html">Consumer</a> para ouvir as mudanças no <a href="../../services_auth_service/AuthService-class.html">AuthService</a> e
+reconstruir a árvore de widgets quando o estado de autenticação muda.</p>
+<p>Retorna um <a href="https://api.flutter.dev/flutter/material/MaterialApp-class.html">MaterialApp</a> com o tema e a rota inicial definidos.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">@override
+Widget build(BuildContext context) {
+  return ChangeNotifierProvider(
+    create: (ctx) =&gt; AuthService(),
+    child: Consumer&lt;AuthService&gt;(
+      builder: (ctx, auth, _) =&gt; MaterialApp(
+        title: &#39;FitAI&#39;,
+
+        &#47;&#47; --- TEMA ATUALIZADO ---
+        &#47;&#47; Tema claro (branco) com laranja como cor principal.
+        theme: ThemeData(
+          &#47;&#47; Define o brilho geral da aplicação para claro (fundo branco).
+          brightness: Brightness.light,
+
+          &#47;&#47; Define a paleta de cores principal a partir de uma cor base.
+          &#47;&#47; O Flutter irá gerar tons mais claros e mais escuros a partir daqui.
+          primarySwatch: Colors.orange,
+
+          &#47;&#47; Define o esquema de cores de forma mais detalhada.
+          colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: Colors.orange,
+            brightness: Brightness.light,
+          ).copyWith(
+            &#47;&#47; A cor &#39;secondary&#39; é usada para elementos de destaque, como o FloatingActionButton.
+            secondary: Colors.deepOrangeAccent,
+          ),
+
+          &#47;&#47; Estilo para os botões principais.
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.orange, &#47;&#47; Fundo do botão
+              foregroundColor: Colors.white, &#47;&#47; Cor do texto do botão
+            ),
+          ),
+
+          &#47;&#47; Estilo para os campos de texto.
+          inputDecorationTheme: const InputDecorationTheme(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            ),
+          ),
+
+          &#47;&#47; Define a densidade visual para se adaptar a diferentes plataformas.
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+
+        &#47;&#47; Decide a tela inicial com base no estado de autenticação.
+        &#47;&#47; Se o utilizador estiver autenticado, mostra a [HomeScreen],
+        &#47;&#47; caso contrário, mostra a [LoginScreen].
+        home: auth.isAuthenticated ? const HomeScreen() : const LoginScreen(),
+        debugShowCheckedModeBanner: false,
+      ),
+    ),
+  );
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">flutter_app</a></li>
+    <li><a href="../../main/">main</a></li>
+    <li><a href="../../main/MyApp-class.html">MyApp</a></li>
+    <li class="self-crumb">build method</li>
+</ol>
+
+    <h5>MyApp class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    flutter_app
+      1.0.0+1
+  </span>
+  
+</footer>
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+
